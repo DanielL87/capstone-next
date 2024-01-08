@@ -29,3 +29,12 @@ fetch(`api/users/register`, {
   }),
 });
 ```
+
+### Response:
+
+```js
+{
+  "success": true,
+  user
+}
+```
