@@ -5,7 +5,7 @@ Nampeera Moreen
 Daniel Lira
 
 
-# Task-Manager-backend
+# Capstone/Pets
 
 Back end repository for capstone project.
 
