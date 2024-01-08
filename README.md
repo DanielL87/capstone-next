@@ -32,3 +32,24 @@ Back end repository for capstone project.
   user
 }
 ```
+
+
+## POST /users/login
+
+### Request:
+
+```js
+    const res = await fetch("/api/users/login", {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+    });
+```
+
+### Response:
+
+```js
+{
+  "success": true,
+  user
+}
+```
