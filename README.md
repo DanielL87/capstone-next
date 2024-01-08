@@ -18,16 +18,10 @@ Back end repository for capstone project.
 ### Request:
 
 ```js
-fetch(`api/users/register`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    username: "Daniel",
-    password: "123",
-  }),
-});
+    const res = await fetch("/api/users/register", {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+    });
 ```
 
 ### Response:
