@@ -32,15 +32,19 @@ model Wallet {
 model Pet {
   id        String   @id @default(uuid())
   name      String
+  type      String
+  evoId     Int
+  pokedexId Int
   user      User     @relation(fields: [userId], references: [id])
   userId    String
-  url       String
-  rarity    String
+  spriteUrl String
   cost      Int
   species   String
   hearts    Int
   Task      Task[]
   createdAt DateTime @default(now())
+  isRare    Boolean
+  ranAway   Boolean  @default(false)
 }
 
 model Task {
