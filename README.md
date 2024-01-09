@@ -1,9 +1,10 @@
+Pet Taskmaster
+
 Team:
 
 Lynjai Jimenez
 Nampeera Moreen
 Daniel Lira
-
 
 # Capstone/Pets
 
@@ -18,10 +19,10 @@ Back end repository for capstone project.
 ### Request:
 
 ```js
-    const res = await fetch("/api/users/register", {
-      method: "POST",
-      body: JSON.stringify({ username, password }),
-    });
+const res = await fetch("/api/users/register", {
+  method: "POST",
+  body: JSON.stringify({ username, password }),
+});
 ```
 
 ### Response:
@@ -33,16 +34,15 @@ Back end repository for capstone project.
 }
 ```
 
-
 ## POST /users/login
 
 ### Request:
 
 ```js
-    const res = await fetch("/api/users/login", {
-      method: "POST",
-      body: JSON.stringify({ username, password }),
-    });
+const res = await fetch("/api/users/login", {
+  method: "POST",
+  body: JSON.stringify({ username, password }),
+});
 ```
 
 ### Response:
