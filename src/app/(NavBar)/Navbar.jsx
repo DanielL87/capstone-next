@@ -1,15 +1,29 @@
-import React from 'react';
-import styles from '../page.module.css';
-import Link from 'next/link';
+import React from "react";
+
+import Link from "next/link";
+import Logout from "../components/Logout.jsx";
+import { fetchUser } from "../lib/fetchUser.js";
 
 export default async function Navbar() {
+  const user = await fetchUser();
+  console.log(user);
+
   return (
-    <div className={styles.navBarContainer}>
+    <div>
       <Link href={"/"}> Home</Link>
-      <Link className={styles.login} href={"/login"}>
-        Login
-      </Link>
-      <Link href={"/register"}>Sign Up</Link>
+      {!user.id ? (
+        <div>
+          <Link className="sub" href={"/login"}>
+            Login
+          </Link>
+          <Link href={"/register"}>Sign Up</Link>
+        </div>
+      ) : (
+        <div>
+          <div>Welcome {user.username}</div>
+          <Logout />
+        </div>
+      )}
     </div>
   );
 }
