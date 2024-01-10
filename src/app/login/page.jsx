@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState } from 'react';
 
-import Link from "next/link";
-import { useRouter } from "next/navigation.js";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation.js';
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -13,7 +13,7 @@ export default function Login() {
 
   async function handleLogin(e) {
     e.preventDefault();
-    const response = await fetch("/api/users/Login", {
+    const response = await fetch("/api/users/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
@@ -52,7 +52,7 @@ export default function Login() {
           Login
         </button>
         <p>No acount yet?</p>
-        <Link href={"/Register"}>Sign Up</Link>
+        <Link href={"/register"}>Sign Up</Link>
         <p className="error-message">{error}</p>
       </form>
     </div>

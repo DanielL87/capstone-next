@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState } from 'react';
 
-import Link from "next/link";
-import { useRouter } from "next/navigation.js";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation.js';
 
 export default function SignUp() {
   const [username, setUsername] = useState("");
@@ -21,7 +21,7 @@ export default function SignUp() {
       return;
     }
 
-    const response = await fetch("/api/users/Register", {
+    const response = await fetch("/api/users/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, email, password }), // Include email in the payload
