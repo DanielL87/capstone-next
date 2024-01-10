@@ -1,7 +1,14 @@
-import React from 'react'
+import React from "react";
+
+import Link from "next/link";
 
 export default async function Navbar() {
   return (
-    <div>navbar inks go here</div>
-  )
+    <div>
+      <Link href={"/"}> Home</Link>
+      <Link className="sub" href={"/login"}>
+        Login
+      </Link>
+    </div>
+  );
 }
