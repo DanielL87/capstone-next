@@ -1,8 +1,8 @@
 "use client";
-import { useState } from 'react';
-
-import Link from 'next/link';
-import { useRouter } from 'next/navigation.js';
+import { useState } from "react";
+import styles from "../page.module.css";
+import Link from "next/link";
+import { useRouter } from "next/navigation.js";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -19,7 +19,7 @@ export default function Login() {
       body: JSON.stringify({ username, password }),
     });
     const info = await response.json();
-    console.log("info", info);
+
     if (info.error) {
       return setError(info.error);
     }
@@ -27,9 +27,11 @@ export default function Login() {
     router.refresh();
   }
 
+  function createPet() {}
+
   return (
-    <div className="login-container">
-      <form onSubmit={handleLogin} className="login-form">
+    <div className={styles.formContainer}>
+      <form onSubmit={handleLogin} className={styles.form}>
         <label htmlFor="username">Username:</label>
         <input
           type="text"
@@ -51,7 +53,7 @@ export default function Login() {
         <button className="login-btn" type="submit">
           Login
         </button>
-        <p>No acount yet?</p>
+        <p>No account yet?</p>
         <Link href={"/register"}>Sign Up</Link>
         <p className="error-message">{error}</p>
       </form>

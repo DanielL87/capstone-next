@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Jura:wght@300;400;500;600;700&family=Marhey:wght@300;400;500;600;700&family=Philosopher:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Sansita:wght@400;700;800;900&family=Tenor+Sans&family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gruppo&family=Jura:wght@300;400;500;600;700&family=Marhey:wght@300;400;500;600;700&family=Philosopher:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Sansita:wght@400;700;800;900&family=Tenor+Sans&family=Varela+Round&display=swap");
 
 /* Navbar styles */
 .navBarContainer {
@@ -6,7 +6,7 @@
   width: 100%;
   height: 85px;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.326);
-  background-color: #D5F0C1;
+  background-color: #d5f0c1;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,11 +23,11 @@
 }
 
 .navBarTitle {
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 3rem;
-  color: #2F4858;
+  color: #2f4858;
   font-weight: 600;
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
 }
 
 .userSignInContainer {
@@ -35,53 +35,80 @@
   align-items: center;
   gap: 20px;
   margin-right: 2rem;
-  font-family: 'Tenor Sans', sans-serif;
+  font-family: "Tenor Sans", sans-serif;
 }
 
-.loginBtn{
-  background: linear-gradient(to right,#f9f7c9 ,#e5bf22);
+.loginBtn {
+  background: linear-gradient(to right, #f9f7c9, #e5bf22);
   background-color: #f9f7c9;
   color: #fff;
   font-family: Arial;
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
-  color:#2F4858;
+  color: #2f4858;
   text-decoration: none;
   padding: 7px 20px;
   border: 0px solid #000;
   border-radius: 10px;
   display: inline-block;
-  box-shadow: 1px 2px 7px -3px #2D2D2D;
- }
- .loginBtn:hover{
-  background: linear-gradient(to right,#faf8cf ,#e8c657);
+  box-shadow: 1px 2px 7px -3px #2d2d2d;
+}
+.loginBtn:hover {
+  background: linear-gradient(to right, #faf8cf, #e8c657);
   background-color: #faf8cf;
- }
- .loginBtn:active{
+}
+.loginBtn:active {
   transform: scale(0.95);
- }
+}
 
- .registerBtn{
-  background: linear-gradient(to right,#f9f7c9 ,#e5bf22);
+.registerBtn {
+  background: linear-gradient(to right, #f9f7c9, #e5bf22);
   background-color: #f9f7c9;
   color: #fff;
   font-family: Arial;
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
-  color:#2F4858;
+  color: #2f4858;
   text-decoration: none;
   padding: 7px 20px;
   border: 0px solid #000;
   border-radius: 10px;
   display: inline-block;
-  box-shadow: 1px 2px 7px -3px #2D2D2D;
- }
- .registerBtn:hover{
-  background: linear-gradient(to right,#faf8cf ,#e8c657);
+  box-shadow: 1px 2px 7px -3px #2d2d2d;
+}
+.registerBtn:hover {
+  background: linear-gradient(to right, #faf8cf, #e8c657);
   background-color: #faf8cf;
- }
- .registerBtn:active{
+}
+.registerBtn:active {
   transform: scale(0.95);
- }
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  align-items: center;
+  gap: 5px;
+}
+
+.bodyContainer {
+  display: flex;
+}
+
+.blurb {
+  flex: 1;
+  margin-right: 20px; /* Adjust as needed for spacing */
+}
+
+.videoContainer {
+  flex: 1;
+}

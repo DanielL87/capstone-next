@@ -1,8 +1,8 @@
 "use client";
-import { useState } from 'react';
-
-import Link from 'next/link';
-import { useRouter } from 'next/navigation.js';
+import { useState } from "react";
+import styles from "../page.module.css";
+import Link from "next/link";
+import { useRouter } from "next/navigation.js";
 
 export default function SignUp() {
   const [username, setUsername] = useState("");
@@ -41,8 +41,8 @@ export default function SignUp() {
   }
 
   return (
-    <div className="login-container">
-      <form onSubmit={handleSignUp} className="login-form">
+    <div className={styles.formContainer}>
+      <form onSubmit={handleSignUp} className={styles.form}>
         <label htmlFor="username">Username:</label>
         <input
           type="text"
