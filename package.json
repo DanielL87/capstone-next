@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "@prisma/client": "^5.8.0",
+    "bcrypt": "^5.1.1",
+    "json": "^11.0.0",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "token": "^0.1.0",
+    "web": "^0.0.2"
   },
   "devDependencies": {
     "prisma": "^5.8.0"
