@@ -205,3 +205,22 @@
   background-color: white;
   margin: 5px;
 }
+/* pokemon page css */
+.pokemonContainer {
+  display: flex;
+
+  width: 150px;
+
+  border: 1px solid black;
+  justify-content: center;
+  padding: 5px;
+}
+.pokedexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.pokedex {
+  text-align: center;
+  justify-content: center;
+}

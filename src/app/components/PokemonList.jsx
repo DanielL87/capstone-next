@@ -1,5 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
+import styles from "../page.module.css";
+import PokemonDetails from "./PokemonDetails";
 
 export default function PokemonList({ startId, endId }) {
   const [pokemonArray, setPokemonArray] = useState([]);
@@ -43,17 +46,12 @@ export default function PokemonList({ startId, endId }) {
 
   return (
     <div>
-      <h1>Fetched Pokémon</h1>
-      <ul>
+      <h1 className={styles.pokedex}>Explore Our Pet Selection</h1>
+      <div className={styles.pokedexContainer}>
         {pokemonArray.map((pokemon) => (
-          <div key={pokemon.id}>
-            <li key={pokemon.id}>
-              {pokemon.capitalizedName} - ID: {pokemon.id}, Type: {pokemon.type}
-            </li>
-            <img src={pokemon.sprite} alt={`${pokemon.name} sprite`} />
-          </div>
+          <PokemonDetails pokemon={pokemon} />
         ))}
-      </ul>
+      </div>
       <p>{error}</p>
     </div>
   );
