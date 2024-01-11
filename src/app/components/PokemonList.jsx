@@ -21,7 +21,7 @@ export default function PokemonList({ startId, endId }) {
           const pokemonObject = {
             id: pokemonData.id,
             name: pokemonData.name,
-            types: pokemonData.types.map((type) => type.type.name),
+            type: pokemonData.types[0].type.name,
             sprite: pokemonData.sprites.front_default,
           };
 
@@ -36,17 +36,16 @@ export default function PokemonList({ startId, endId }) {
 
     fetchPokemonRange();
   }, [startId, endId]);
+  console.log(pokemonArray);
 
   return (
     <div>
       <h1>Fetched Pokémon</h1>
       <ul>
         {pokemonArray.map((pokemon) => (
-          <div>
-            {" "}
+          <div key={pokemon.id}>
             <li key={pokemon.id}>
-              {pokemon.name} - ID: {pokemon.id}, Types:{" "}
-              {pokemon.types.join(", ")}
+              {pokemon.name} - ID: {pokemon.id}, Types: {pokemon.type}
               {/* Display more properties as needed */}
             </li>
             <img src={pokemon.sprite} alt={`${pokemon.name} sprite`} />
