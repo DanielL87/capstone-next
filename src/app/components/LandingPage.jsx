@@ -20,9 +20,9 @@ export default function LandingPage() {
         height="315"
         src="https://www.youtube.com/embed/1roy4o4tqQM?si=09w81yFz3LRMxeef"
         title="YouTube video player"
-        frameborder="0"
+        // frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
+        // allowfullscreen
       ></iframe>
     </div>
   );
