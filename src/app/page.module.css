@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Jura:wght@300;400;500;600;700&family=Marhey:wght@300;400;500;600;700&family=Philosopher:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Sansita:wght@400;700;800;900&family=Tenor+Sans&family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gruppo&family=Jura:wght@300;400;500;600;700&family=Marhey:wght@300;400;500;600;700&family=Philosopher:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Sansita:wght@400;700;800;900&family=Tenor+Sans&family=Varela+Round&display=swap");
 
 /* Navbar styles */
 
 .logoContainer {
   position: relative;
 }
+
 .logo {
   border-radius: 0 0 50px 0;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
@@ -27,7 +28,7 @@
 }
 
 .navBarTitle {
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 48px;
   color: #003650;
   font-weight: 600;
@@ -56,7 +57,7 @@
   border-radius: 10px;
   display: inline-block;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 .loginBtn:hover {
   background: linear-gradient(to right, #d5f0c1, #aad9bb);
@@ -81,7 +82,7 @@
   border-radius: 10px;
   display: inline-block;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 .registerBtn:hover {
   background: linear-gradient(to right, #d5f0c1, #aad9bb);
@@ -113,14 +114,14 @@
   align-items: center;
   gap: 15px;
   padding-top: 20px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 
 .formInput {
   height: 25px;
   padding: 5px;
   border-radius: 5px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   width: 250px;
 }
 
@@ -144,7 +145,7 @@
   border-radius: 10px;
   display: inline-block;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 .loginFormBtn:hover {
   background: linear-gradient(to right, #a1f8c3, #46b9c5);
@@ -157,22 +158,22 @@
 .errorText {
   padding-top: 10px;
   background-color: red;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-weight: 600;
 }
 
 .successText {
   padding-top: 10px;
   background-color: green;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-weight: 600;
 }
 
 /* Landing Page */
 .bodyContainer {
   display: flex;
-  flex-direction: column;
-  font-family: 'Jura', sans-serif;
+  /* flex-direction: column; */
+  font-family: "Jura", sans-serif;
 }
 
 .blurbContainer {
@@ -185,7 +186,7 @@
   margin-right: auto;
 }
 .blurb {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   margin-right: 20px; /* Adjust as needed for spacing */
 }
 
@@ -197,4 +198,10 @@
   border: 10px solid #effec8;
   border-radius: 5px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.sidebar {
+  width: 20%;
+  background-color: white;
+  margin: 5px;
 }
