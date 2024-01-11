@@ -21,6 +21,9 @@ export default function PokemonList({ startId, endId }) {
           const pokemonObject = {
             id: pokemonData.id,
             name: pokemonData.name,
+            capitalizedName:
+              pokemonData.name.charAt(0).toUpperCase() +
+              pokemonData.name.slice(1),
             type: pokemonData.types[0].type.name,
             sprite: pokemonData.sprites.front_default,
           };
@@ -45,8 +48,7 @@ export default function PokemonList({ startId, endId }) {
         {pokemonArray.map((pokemon) => (
           <div key={pokemon.id}>
             <li key={pokemon.id}>
-              {pokemon.name} - ID: {pokemon.id}, Types: {pokemon.type}
-              {/* Display more properties as needed */}
+              {pokemon.capitalizedName} - ID: {pokemon.id}, Type: {pokemon.type}
             </li>
             <img src={pokemon.sprite} alt={`${pokemon.name} sprite`} />
           </div>
