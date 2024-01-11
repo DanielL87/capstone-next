@@ -8,6 +8,7 @@ export default function PokemonDetails({ pokemon }) {
       <div key={pokemon.id}>
         <p> {pokemon.capitalizedName} </p> <p>ID:{pokemon.id}</p>{" "}
         <p>Type: {pokemon.type}</p>
+        <p>Species: {pokemon.species}</p>
         <img src={pokemon.sprite} alt={`${pokemon.name} sprite`} />
       </div>
     </div>

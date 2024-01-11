@@ -201,14 +201,18 @@
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
   width: 20%;
   background-color: white;
   margin: 5px;
+  padding: 10px;
+  gap: 5px;
 }
 /* pokemon page css */
 .pokemonContainer {
   display: flex;
-
+  flex-direction: column;
   width: 150px;
 
   border: 1px solid black;
