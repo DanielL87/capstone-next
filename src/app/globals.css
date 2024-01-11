@@ -1,4 +1,12 @@
 * body {
-  margin: 6rem 0 2rem 0;
+  margin: 0;
   padding: 0;
+  background: rgb(182, 251, 236);
+  background: linear-gradient(
+    140deg,
+    rgba(182, 251, 236, 1) 35%,
+    rgba(239, 254, 200, 1) 100%
+  );
+  width: 100vw;
+  height: 100vh;
 }
