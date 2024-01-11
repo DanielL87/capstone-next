@@ -3,6 +3,8 @@ import styles from "../page.module.css";
 export default function LandingPage() {
   return (
     <div className={styles.bodyContainer}>
+
+      <div className={styles.blurbContainer}>
       <p className={styles.blurb}>
         Welcome to Pet Taskmaster - Where Pet Passion Meets Play! Start your
         journey with Pet Taskmaster and receive your first pet for free! Engage
@@ -12,11 +14,14 @@ export default function LandingPage() {
         connect with fellow pet enthusiasts, trade pets, and top the
         leaderboards. Our sleek interface ensures a seamless experience, and
         regular updates keep the excitement alive. Pet Taskmaster - Unleash the
-        joy of virtual companionship. Join now and make every click count!
+        joy of virtual companionship. 
+        Join now and make every click count!
       </p>
+      </div>
+      <div className={styles.videoContainer}>
       <iframe
-        className={styles.videoContainer}
-        width="560"
+        className={styles.video}
+        width="450"
         height="315"
         src="https://www.youtube.com/embed/1roy4o4tqQM?si=09w81yFz3LRMxeef"
         title="YouTube video player"
@@ -24,6 +29,7 @@ export default function LandingPage() {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         // allowfullscreen
       ></iframe>
+      </div>
     </div>
   );
 }
