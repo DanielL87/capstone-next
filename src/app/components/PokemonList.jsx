@@ -22,13 +22,13 @@ export default function PokemonList({ startId, endId }) {
 
           // Extract relevant information from the API response
           const pokemonObject = {
-            id: pokemonData.id,
+            pokedexId: pokemonData.id,
             name: pokemonData.name,
             capitalizedName:
               pokemonData.name.charAt(0).toUpperCase() +
               pokemonData.name.slice(1),
             type: pokemonData.types[0].type.name,
-            sprite: pokemonData.sprites.front_default,
+            spriteUrl: pokemonData.sprites.front_default,
           };
 
           newArray.push(pokemonObject);
