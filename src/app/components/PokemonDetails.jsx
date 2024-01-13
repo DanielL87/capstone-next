@@ -17,9 +17,9 @@ export default function PokemonDetails({ pokemon }) {
       style={{ background: gradientBackground }}
     >
       <div key={pokemon.pokedexId}>
-        <p> {pokemon.capitalizedName} </p> <p>ID:{pokemon.pokedexId}</p>{" "}
-        <p>Type: {pokemon.type}</p>
-        <p>Species: {pokemon.species}</p>
+        <p> {pokemon.capitalizedName} </p>
+        <p>PokedexNumber:{pokemon.pokedexId}</p> <p>Type: {pokemon.type}</p>
+        <p>Species: {pokemon.species} </p>
         <img src={pokemon.spriteUrl} alt={`${pokemon.name} sprite`} />
       </div>
     </div>
