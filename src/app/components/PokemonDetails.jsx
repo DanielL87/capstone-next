@@ -12,16 +12,30 @@ export default function PokemonDetails({ pokemon }) {
   const gradientBackground = `linear-gradient(45deg, ${gradient.start}, ${gradient.end})`;
 
   return (
-    <div
-      className={styles.pokemonContainer}
-      style={{ background: gradientBackground }}
-    >
-      <div key={pokemon.pokedexId}>
-        <p> {pokemon.capitalizedName} </p>
-        <p>PokedexNumber:{pokemon.pokedexId}</p> <p>Type: {pokemon.type}</p>
-        <p>Species: {pokemon.species} </p>
-        <img src={pokemon.spriteUrl} alt={`${pokemon.name} sprite`} />
+    <>
+      <div
+        className={styles.pokemonContainer}
+        style={{
+          background: `url("/poke300.png"), ${gradientBackground}`,
+        }}
+      >
+        <div className={styles.pokemonCard} key={pokemon.pokedexId}>
+          <p className={styles.pokeName}>
+            {pokemon.capitalizedName || pokemon.name}
+          </p>
+          <div className={styles.pokeInfoContainer}>
+            <p className={styles.pokeType}>Type: {pokemon.type}</p>
+
+            <img
+              className={styles.pokemon}
+              src={pokemon.spriteUrl}
+              alt={`${pokemon.name} sprite`}
+            />
+            {pokemon.nickname && <p>{pokemon.nickname}</p>}
+          </div>
+          <p className={styles.stageId}>STAGE #{pokemon.pokedexId}</p>{" "}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

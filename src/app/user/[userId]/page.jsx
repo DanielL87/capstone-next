@@ -12,6 +12,8 @@ export default async function ProfilePage() {
     },
   });
 
+  console.log(userPokemon);
+
   return (
     <div className={styles.pokedexContainer}>
       {userPokemon.map((pokemon) => (

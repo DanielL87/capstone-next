@@ -2,29 +2,24 @@
 
 /* Navbar styles */
 
-.logoContainer {
-  position: relative;
-}
-
 .logo {
   border-radius: 0 0 50px 0;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-  width: 250px;
-  position: absolute;
+  margin-top: 50px;
+  width: 130px;
   top: 0;
   left: 0;
 }
 
 .navBarContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   top: 0;
   z-index: 20;
   height: 85px;
-  margin-bottom: 2rem;
+  margin-bottom: 3.5rem;
   width: 100%;
-  margin-left: 250px;
 }
 
 .navBarTitle {
@@ -33,12 +28,14 @@
   color: #003650;
   font-weight: 600;
   letter-spacing: 0.05em;
+  text-align: center;
+  padding-left: 120px;
 }
 
 .userSignInContainer {
   display: flex;
   gap: 20px;
-
+  margin-right: 2rem;
   margin-top: 1rem;
 }
 
@@ -210,21 +207,94 @@
   gap: 5px;
 }
 /* pokemon page css */
-.pokemonContainer {
-  display: flex;
-  flex-direction: column;
-  width: 150px;
-
-  border: 1px solid black;
+.pokedexTitle {
+  text-align: center;
   justify-content: center;
-  padding: 5px;
+  font-family: "Sansita", sans-serif;
+  letter-spacing: 0.06em;
 }
 .pokedexContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-}
-.pokedex {
-  text-align: center;
+  gap: 30px;
   justify-content: center;
+}
+
+.pokemonContainer {
+  display: flex;
+  flex-direction: column;
+  width: 207px;
+  height: 300px;
+  border-radius: 5px;
+  justify-content: center;
+  background-size: cover;
+}
+
+.pokemonCard {
+  display: flex;
+  flex-direction: column;
+  width: 207px;
+  height: 300px;
+  padding: 0;
+  margin: 0;
+}
+
+.pokeName {
+  text-align: center;
+  font-family: "Sansita", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #003650;
+  text-shadow: 1px 1px 1px #fff;
+  text-transform: capitalize;
+  margin-top: 12px;
+  letter-spacing: 0.06em;
+}
+
+.pokeInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 180px;
+}
+
+.pokeType {
+  text-align: center;
+  font-family: "Jura", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #003650;
+  text-shadow: 1px 1px 1px #fff;
+  text-transform: capitalize;
+  margin: 0;
+  padding-top: 3px;
+}
+
+.pokemon {
+  display: flex;
+  align-items: center;
+  width: 60%;
+}
+
+.species {
+  text-align: center;
+  font-family: "Jura", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #003650;
+  text-shadow: 1px 1px 1px #fff;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.stageId {
+  text-align: center;
+  font-family: "Jura", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #003650;
+  text-shadow: 1px 1px 1px #fff;
+  text-transform: capitalize;
+  margin-bottom: 22px;
+  margin-top: auto;
 }
