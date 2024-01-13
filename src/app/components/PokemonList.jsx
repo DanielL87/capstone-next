@@ -45,14 +45,14 @@ export default function PokemonList({ startId, endId }) {
   console.log(pokemonArray);
 
   return (
-    <div>
-      <h1 className={styles.pokedex}>Explore Our Pet Selection</h1>
+    <>
+      <h1 className={styles.pokedexTitle}>Explore Our Pet Selection</h1>
       <div className={styles.pokedexContainer}>
         {pokemonArray.map((pokemon) => (
           <PokemonDetails pokemon={pokemon} />
         ))}
       </div>
       <p>{error}</p>
-    </div>
+    </>
   );
 }
