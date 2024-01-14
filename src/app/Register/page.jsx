@@ -35,7 +35,7 @@ export default function SignUp() {
       setSuccessMessage("Sign-up successful! Redirecting to homepage...");
       setError("");
       setTimeout(() => {
-        router.push("/");
+        router.push("/selectPet");
         router.refresh();
       }, 2000);
     }
