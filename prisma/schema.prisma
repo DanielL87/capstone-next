@@ -33,6 +33,7 @@ model Pet {
   id        String   @id @default(uuid())
   name      String //species
   nickname  String //user given name
+  species   String
   type      String
   evoId     Int
   pokedexId Int

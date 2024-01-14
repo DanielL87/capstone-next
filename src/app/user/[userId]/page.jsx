@@ -1,9 +1,10 @@
 import PokemonDetails from "@/app/components/PokemonDetails.jsx";
 import { fetchUser } from "@/app/lib/fetchUser.js";
-import { prisma } from "@/app/lib/prisma";
+
 
 import styles from "../../page.module.css";
 import Link from "next/link.js";
+import { prisma } from "@/app/lib/prisma.js";
 
 export default async function ProfilePage() {
   const user = await fetchUser();
@@ -13,6 +14,7 @@ export default async function ProfilePage() {
       userId: user.id,
     },
   });
+  console.log(userPokemon)
 
   return (
     <div className={styles.pokedexContainer}>
