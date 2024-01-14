@@ -1,3 +1,4 @@
+
 'use client';
 import React, { useEffect, useState } from 'react';
 import styles from '../page.module.css';
@@ -29,6 +30,7 @@ export default function SelectPet() {
       starters.push(pokemonObject);
     }
     setStarterArray(starters);
+
   }
 
   useEffect(() => {
@@ -36,6 +38,7 @@ export default function SelectPet() {
   }, []);
 
   console.log(starterArray);
+
 
   return (
     <>
@@ -48,4 +51,3 @@ export default function SelectPet() {
       <button>Confirm</button>
     </>
   );
-}
