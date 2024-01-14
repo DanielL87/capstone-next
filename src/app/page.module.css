@@ -298,3 +298,16 @@
   margin-bottom: 22px;
   margin-top: auto;
 }
+.drop {
+  /* border-radius: 50px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2); */
+
+  top: 0;
+  left: 0;
+}
+
+/* menu css */
+.menuicon {
+  width: 50px;
+  color: black;
+}

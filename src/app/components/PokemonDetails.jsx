@@ -1,6 +1,6 @@
 import React from "react";
-import pokeColor from "../lib/pokeColor.js";
 
+import pokeColor from "../lib/pokeColor.js";
 import styles from "../page.module.css";
 
 export default function PokemonDetails({ pokemon }) {

@@ -1,10 +1,8 @@
-import Sidebar from "../(SideBar)/Sidebar.jsx";
 import styles from "../page.module.css";
 
 export default function LandingPage() {
   return (
     <div className={styles.bodyContainer}>
-      <Sidebar />
       <div>
         <div className={styles.blurbContainer}>
           <p className={styles.blurb}>
