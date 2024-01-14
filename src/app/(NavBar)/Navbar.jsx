@@ -1,9 +1,10 @@
 import React from "react";
-import jwt from "jsonwebtoken";
+
 import Link from "next/link";
-import styles from "../page.module.css";
+
 import Logout from "../components/Logout.jsx";
 import { fetchUser } from "../lib/fetchUser.js";
+import styles from "../page.module.css";
 
 export default async function Navbar() {
   const user = await fetchUser();
@@ -18,6 +19,15 @@ export default async function Navbar() {
             alt="Logo"
             width="75"
             height="70"
+          />
+        </Link>
+        <Link href={"/"}>
+          <img
+            className={styles.drop}
+            src="/hamburger.png"
+            alt="Logo"
+            width="55"
+            height="40"
           />
         </Link>
         <div className={styles.navBarTitle}>
