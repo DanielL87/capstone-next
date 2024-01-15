@@ -1,11 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Gruppo&family=Jura:wght@300;400;500;600;700&family=Marhey:wght@300;400;500;600;700&family=Philosopher:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Sansita:wght@400;700;800;900&family=Tenor+Sans&family=Varela+Round&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Jura:wght@300;400;500;600;700&family=Marhey:wght@300;400;500;600;700&family=Philosopher:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Sansita:wght@400;700;800;900&family=Tenor+Sans&family=Varela+Round&display=swap');
 
 /* Navbar styles */
 
 .logo {
   border-radius: 0 0 50px 0;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-  margin-top: 50px;
+  margin-top: 60px;
+  margin-bottom: 10px;
   width: 130px;
   top: 0;
   left: 0;
@@ -19,11 +20,12 @@
   z-index: 20;
   height: 85px;
   margin-bottom: 3.5rem;
+  
   width: 100%;
 }
 
 .navBarTitle {
-  font-family: "Sansita", sans-serif;
+  font-family: 'Sansita', sans-serif;
   font-size: 48px;
   color: #003650;
   font-weight: 600;
@@ -39,11 +41,29 @@
   margin-top: 1rem;
 }
 
+.logoutContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  font-family: 'Jura', sans-serif;
+}
+
+.username {
+  font-family: 'Jura', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #003650;
+  letter-spacing: .05em;
+  margin: 0;
+}
+
 .loginBtn {
   background: linear-gradient(to right, #f9f7c9, #e5bf22);
   background-color: #f9f7c9;
   color: #fff;
-  font-family: Arial;
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
@@ -54,7 +74,7 @@
   border-radius: 10px;
   display: inline-block;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: "Jura", sans-serif;
+  font-family: 'Jura', sans-serif;
 }
 .loginBtn:hover {
   background: linear-gradient(to right, #d5f0c1, #aad9bb);
@@ -68,7 +88,6 @@
   background: linear-gradient(to right, #f9f7c9, #e5bf22);
   background-color: #f9f7c9;
   color: #fff;
-  font-family: Arial;
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
@@ -79,7 +98,7 @@
   border-radius: 10px;
   display: inline-block;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: "Jura", sans-serif;
+  font-family: 'Jura', sans-serif;
 }
 .registerBtn:hover {
   background: linear-gradient(to right, #d5f0c1, #aad9bb);
@@ -87,6 +106,52 @@
 }
 .registerBtn:active {
   transform: scale(0.95);
+}
+
+/* Sidebar css */
+
+.logoSidebarContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+.menuicon {
+  width: 30px;
+  height: 30px;
+}
+
+.sidebarContainer {
+  display: flex;
+  
+}
+
+.sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 30px;
+  background: linear-gradient(to right, #f9f7c9, #e5bf22);
+  background-color: #f9f7c9;
+}
+
+.sidebarLinkContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  gap: 15px;
+  background-color: white;
+  box-shadow: 1px 2px 7px -3px #2d2d2d;
+  width: 150px;
+  height: auto;
+  margin-top: 10px;
+  margin-left: 2rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
 }
 
 /* Login & Register Form */
@@ -111,14 +176,14 @@
   align-items: center;
   gap: 15px;
   padding-top: 20px;
-  font-family: "Jura", sans-serif;
+  font-family: 'Jura', sans-serif;
 }
 
 .formInput {
   height: 25px;
   padding: 5px;
   border-radius: 5px;
-  font-family: "Jura", sans-serif;
+  font-family: 'Jura', sans-serif;
   width: 250px;
 }
 
@@ -129,9 +194,7 @@
 .loginFormBtn {
   background: linear-gradient(to right, #d5f0c1, #aad9bb);
   background-color: #faf8cf;
-
   color: #fff;
-  font-family: Arial;
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
@@ -142,7 +205,7 @@
   border-radius: 10px;
   display: inline-block;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: "Jura", sans-serif;
+  font-family: 'Jura', sans-serif;
 }
 .loginFormBtn:hover {
   background: linear-gradient(to right, #a1f8c3, #46b9c5);
@@ -155,14 +218,14 @@
 .errorText {
   padding-top: 10px;
   background-color: red;
-  font-family: "Jura", sans-serif;
+  font-family: 'Jura', sans-serif;
   font-weight: 600;
 }
 
 .successText {
   padding-top: 10px;
   background-color: green;
-  font-family: "Jura", sans-serif;
+  font-family: 'Jura', sans-serif;
   font-weight: 600;
 }
 
@@ -170,7 +233,7 @@
 .bodyContainer {
   display: flex;
   /* flex-direction: column; */
-  font-family: "Jura", sans-serif;
+  font-family: 'Jura', sans-serif;
 }
 
 .blurbContainer {
@@ -183,7 +246,7 @@
   margin-right: auto;
 }
 .blurb {
-  font-family: "Jura", sans-serif;
+  font-family: 'Jura', sans-serif;
   margin-right: 20px; /* Adjust as needed for spacing */
 }
 
@@ -197,20 +260,11 @@
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  background-color: white;
-  margin: 5px;
-  padding: 10px;
-  gap: 5px;
-}
 /* pokemon page css */
 .pokedexTitle {
   text-align: center;
   justify-content: center;
-  font-family: "Sansita", sans-serif;
+  font-family: 'Sansita', sans-serif;
   letter-spacing: 0.06em;
 }
 .pokedexContainer {
@@ -241,7 +295,7 @@
 
 .pokeName {
   text-align: center;
-  font-family: "Sansita", sans-serif;
+  font-family: 'Sansita', sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: #003650;
@@ -260,7 +314,7 @@
 
 .pokeType {
   text-align: center;
-  font-family: "Jura", sans-serif;
+  font-family: 'Jura', sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #003650;
@@ -278,7 +332,7 @@
 
 .species {
   text-align: center;
-  font-family: "Jura", sans-serif;
+  font-family: 'Jura', sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #003650;
@@ -289,7 +343,7 @@
 
 .stageId {
   text-align: center;
-  font-family: "Jura", sans-serif;
+  font-family: 'Jura', sans-serif;
   font-size: 20px;
   font-weight: 600;
   color: #003650;
@@ -299,15 +353,120 @@
   margin-top: auto;
 }
 .drop {
-  /* border-radius: 50px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2); */
-
   top: 0;
   left: 0;
 }
 
-/* menu css */
-.menuicon {
-  width: 50px;
-  color: black;
+/* Select a Pet */
+.selectPetTitle {
+  text-align: center;
+  justify-content: center;
+  font-family: 'Sansita', sans-serif;
+  letter-spacing: 0.06em;
+  font-size: 48px;
+  color: #003650;
+}
+
+.confirmPetBtn {
+  display: flex;
+  background: linear-gradient(to right, #f9f7c9, #e5bf22);
+  background-color: #f9f7c9;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  color: #003650;
+  text-decoration: none;
+  padding: 7px 20px;
+  border: 0px solid #000;
+  border-radius: 10px;
+  box-shadow: 1px 2px 7px -3px #2d2d2d;
+  font-family: 'Jura', sans-serif;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.confirmPetBtn:hover {
+  background: linear-gradient(to right, #a1f8c3, #46b9c5);
+  background-color: #f9f7c9;
+}
+
+
+/* Name Pet */
+.namePetContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, #f9f7c9, #e5bf22);
+  width: 300px;
+  height: auto;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  box-shadow: 1px 2px 7px -3px #2d2d2d;
+
+}
+.namePetInput {
+  display: flex;
+  height: 25px;
+  padding: 5px;
+  border-radius: 5px;
+  font-family: 'Jura', sans-serif;
+  width: 250px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.petNameSubmitBtn {
+  display: flex;
+  background: linear-gradient(to right, #d5f0c1, #aad9bb);
+  background-color: #d5f0c1;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  color: #003650;
+  text-decoration: none;
+  padding: 7px 20px;
+  border: 0px solid #000;
+  border-radius: 10px;
+  box-shadow: 1px 2px 7px -3px #2d2d2d;
+  font-family: 'Jura', sans-serif;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.petNameSubmitBtn:hover {
+  background: linear-gradient(to right, #a1f8c3, #46b9c5);
+  background-color: #f9f7c9;
+}
+
+.congratsContainer {
+  display: flex;
+  flex-direction: column;
+}
+.paraText {
+  font-family: 'Jura', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #003650;
+  text-shadow: 1px 1px 1px #fff;
+  margin: 0;
+  padding-top: 25px;
+  text-align: center;
+  text-wrap: wrap;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.congratsPetBtnContainer {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
