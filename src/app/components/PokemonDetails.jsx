@@ -31,9 +31,10 @@ export default function PokemonDetails({ pokemon }) {
               src={pokemon.spriteUrl}
               alt={`${pokemon.name} sprite`}
             />
+            {pokemon.isRare && <p>Rare</p>}
             {pokemon.nickname && <p>{pokemon.nickname}</p>}
           </div>
-          <p className={styles.stageId}>STAGE #{pokemon.pokedexId}</p>{" "}
+          <p className={styles.stageId}>Pokedex #{pokemon.pokedexId}</p>{" "}
         </div>
       </div>
     </>

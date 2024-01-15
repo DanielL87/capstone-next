@@ -1,8 +1,7 @@
-
-'use client';
-import React, { useEffect, useState } from 'react';
-import styles from '../page.module.css';
-import PokemonDetails from '../components/PokemonDetails.jsx';
+"use client";
+import React, { useEffect, useState } from "react";
+import styles from "../page.module.css";
+import PokemonDetails from "../components/PokemonDetails.jsx";
 
 export default function SelectPet() {
   const [starterArray, setStarterArray] = useState([]);
@@ -30,7 +29,6 @@ export default function SelectPet() {
       starters.push(pokemonObject);
     }
     setStarterArray(starters);
-
   }
 
   useEffect(() => {
@@ -39,15 +37,15 @@ export default function SelectPet() {
 
   console.log(starterArray);
 
-
   return (
     <>
-      <p>Select a Pet!</p>;
+      <p>Select a Pet!</p>
       <div className={styles.pokedexContainer}>
         {starterArray.map((pokemon) => (
-          <PokemonDetails pokemon={pokemon} />
+          <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
         ))}
       </div>
       <button>Confirm</button>
     </>
   );
+}
