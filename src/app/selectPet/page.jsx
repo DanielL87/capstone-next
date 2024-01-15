@@ -1,7 +1,9 @@
+
 'use client';
 import React, { useEffect, useState } from 'react';
 import styles from '../page.module.css';
 import PokemonDetails from '../components/PokemonDetails.jsx';
+
 
 export default function SelectPet() {
   const [starterArray, setStarterArray] = useState([]);
@@ -41,6 +43,7 @@ export default function SelectPet() {
     setSection('namePet');
   }
 
+
   function handleSubmitName() {
     setSection('congrats');
   }
@@ -51,9 +54,10 @@ export default function SelectPet() {
     {section === 'selectPet' && (
       <>
       <p className={styles.selectPetTitle}>Select a Pet!</p>
+
       <div className={styles.pokedexContainer}>
         {starterArray.map((pokemon) => (
-          <PokemonDetails pokemon={pokemon} />
+          <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
         ))}
       </div>
       <button className={styles.confirmPetBtn} onClick={handleConfirmPet}>Confirm</button>
