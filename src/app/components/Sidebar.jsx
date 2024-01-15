@@ -1,11 +1,12 @@
-"use client";
-import React, { useState } from "react";
+'use client';
+import React, { useState } from 'react';
+import { MdCatchingPokemon } from 'react-icons/md';
 
-import Link from "next/link";
+import Link from 'next/link';
 
-import styles from "../page.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import styles from '../page.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 export default function Sidebar({ user }) {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -15,16 +16,13 @@ export default function Sidebar({ user }) {
   };
 
   return (
+    <>
     <div className={styles.sidebar}>
-      <FontAwesomeIcon
-        icon={faBars}
-        className={styles.menuicon}
-        onClick={toggleSidebar}
-      />
-
+      <MdCatchingPokemon className={styles.menuicon} onClick={toggleSidebar} />
+      </div>
       {isSidebarOpen && (
-        <div className={styles.linkContainer}>
-          <Link className={styles.loginBtn} href={"/pokedex"}>
+        <div className={styles.sidebarLinkContainer}>
+          <Link className={styles.loginBtn} href={'/pokedex'}>
             Pokedex
           </Link>
           {user.id && (
@@ -34,6 +32,7 @@ export default function Sidebar({ user }) {
           )}
         </div>
       )}
-    </div>
+    
+    </>
   );
 }
