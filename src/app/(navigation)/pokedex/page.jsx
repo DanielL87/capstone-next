@@ -3,7 +3,7 @@
 // import Link from "next/link";
 // import { useRouter } from "next/navigation.js";
 
-import PokemonList from "../components/PokemonList.jsx";
+import PokemonList from "../../components/PokemonList.jsx";
 
 export default function Pokedex() {
   console.log(Pokedex);

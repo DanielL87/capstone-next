@@ -9,6 +9,12 @@ export async function POST(request, response) {
   try {
     const cookieStore = cookies();
     const { username, password } = await request.json();
+    if (!username || !password) {
+      return NextResponse.json({
+        success: false,
+        error: "You must provide a username and password to login.",
+      });
+    }
 
     const user = await prisma.user.findFirst({ where: { username } });
 
@@ -29,8 +35,12 @@ export async function POST(request, response) {
     }
 
     delete user.password;
-
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
+    console.log(user);
+    const token = jwt.sign(
+      { userId: user.id, username: user.username },
+      process.env.JWT_SECRET
+    );
+    console.log(token);
     cookieStore.set("token", token);
     return NextResponse.json({ success: true, user, token });
   } catch (error) {
