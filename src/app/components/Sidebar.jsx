@@ -3,9 +3,10 @@ import React, { useState } from "react";
 
 import Link from "next/link";
 
-import styles from "../page.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import styles from "../page.module.css";
 
 export default function Sidebar({ user }) {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -20,6 +21,8 @@ export default function Sidebar({ user }) {
         icon={faBars}
         className={styles.menuicon}
         onClick={toggleSidebar}
+        aria-expanded={isSidebarOpen}
+        aria-controls="sidebar-links"
       />
 
       {isSidebarOpen && (
