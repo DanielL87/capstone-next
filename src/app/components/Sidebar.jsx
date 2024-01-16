@@ -16,27 +16,27 @@ export default function Sidebar({ user }) {
   };
 
   return (
-    <div className={styles.sidebar}>
-      <FontAwesomeIcon
-        icon={faBars}
-        className={styles.menuicon}
-        onClick={toggleSidebar}
-        aria-expanded={isSidebarOpen}
-        aria-controls="sidebar-links"
-      />
+    <>
+      <div className={styles.sidebar}>
+        <FontAwesomeIcon
+          icon={faBars}
+          className={styles.menuicon}
+          onClick={toggleSidebar}
+        />
 
-      {isSidebarOpen && (
-        <div className={styles.linkContainer}>
-          <Link className={styles.loginBtn} href={"/pokedex"}>
-            Pokedex
-          </Link>
-          {user.id && (
-            <Link className={styles.loginBtn} href={`/user/${user.id}`}>
-              Profile
+        {isSidebarOpen && (
+          <div className={styles.sidebarLinkContainer}>
+            <Link className={styles.loginBtn} href={"/pokedex"}>
+              Pokedex
             </Link>
-          )}
-        </div>
-      )}
-    </div>
+            {user.id && (
+              <Link className={styles.loginBtn} href={`/user/${user.id}`}>
+                Profile
+              </Link>
+            )}
+          </div>
+        )}
+      </div>
+    </>
   );
 }

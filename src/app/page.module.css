@@ -5,7 +5,8 @@
 .logo {
   border-radius: 0 0 50px 0;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-  margin-top: 50px;
+  margin-top: 60px;
+  margin-bottom: 10px;
   width: 130px;
   top: 0;
   left: 0;
@@ -19,6 +20,7 @@
   z-index: 20;
   height: 85px;
   margin-bottom: 3.5rem;
+
   width: 100%;
 }
 
@@ -39,11 +41,29 @@
   margin-top: 1rem;
 }
 
+.logoutContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  font-family: "Jura", sans-serif;
+}
+
+.username {
+  font-family: "Jura", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #003650;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
 .loginBtn {
   background: linear-gradient(to right, #f9f7c9, #e5bf22);
   background-color: #f9f7c9;
   color: #fff;
-  font-family: Arial;
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
@@ -68,7 +88,6 @@
   background: linear-gradient(to right, #f9f7c9, #e5bf22);
   background-color: #f9f7c9;
   color: #fff;
-  font-family: Arial;
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
@@ -87,6 +106,51 @@
 }
 .registerBtn:active {
   transform: scale(0.95);
+}
+
+/* Sidebar css */
+
+.logoSidebarContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+.menuicon {
+  width: 30px;
+  height: 30px;
+}
+
+.sidebarContainer {
+  display: flex;
+}
+
+.sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 30px;
+  background: linear-gradient(to right, #f9f7c9, #e5bf22);
+  background-color: #f9f7c9;
+}
+
+.sidebarLinkContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  gap: 15px;
+  background-color: white;
+  box-shadow: 1px 2px 7px -3px #2d2d2d;
+  width: 150px;
+  height: auto;
+  margin-top: 10px;
+  margin-left: 2rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
 }
 
 /* Login & Register Form */
@@ -129,9 +193,7 @@
 .loginFormBtn {
   background: linear-gradient(to right, #d5f0c1, #aad9bb);
   background-color: #faf8cf;
-
   color: #fff;
-  font-family: Arial;
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
@@ -292,16 +354,13 @@
 
 /* side bar css */
 .drop {
-  /* border-radius: 50px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2); */
-
   top: 0;
   left: 0;
 }
 
 /* menu css */
 .menuicon {
-  width: 80px;
+  width: 50px;
   color: black;
 }
 .linkContainer {
@@ -316,4 +375,78 @@
   margin: 5px;
   padding: 10px;
   gap: 5px;
+}
+
+.congratsContainer {
+  display: flex;
+  flex-direction: column;
+}
+.paraText {
+  font-family: "Jura", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #003650;
+  text-shadow: 1px 1px 1px #fff;
+  margin: 0;
+  padding-top: 25px;
+  text-align: center;
+  text-wrap: wrap;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.congratsPetBtnContainer {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* footer css */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #333333;
+
+  padding: 20px;
+  flex-wrap: wrap;
+  background-image: url("/logo.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #000;
+}
+
+.column {
+  flex: 1;
+  margin: 0 20px;
+  max-width: 300px;
+  justify-content: center;
+}
+.socialIcons {
+  display: flex;
+  gap: 40px;
+  font-size: 20px;
+}
+
+.copyright {
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+  padding-top: 20px;
+  background-color: #0e0e0e;
+  color: white;
+  align-items: center;
+  /* font-size: small; */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .column {
+    flex: 1 100%; /* Take up full width on smaller screens */
+    max-width: none; /* Remove maximum width on smaller screens */
+    margin: 10px 0; /* Adjust margin for smaller screens */
+  }
 }

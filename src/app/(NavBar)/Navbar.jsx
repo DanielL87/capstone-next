@@ -13,10 +13,17 @@ export default async function Navbar() {
   return (
     <>
       <div className={styles.navBarContainer}>
+        
+        <div className={styles.logoSidebarContainer}>
         <Link href={"/"}>
           <img className={styles.logo} src="/Logo.png" alt="Logo" />
         </Link>
-        <Sidebar user={user} />
+        
+        <div className={styles.siderbarContainer}>
+        <Sidebar user={user} /> 
+        </div>
+        </div>
+        
         <div className={styles.navBarTitle}>
           <p>Pet Taskmaster</p>
         </div>
@@ -31,8 +38,8 @@ export default async function Navbar() {
             </Link>
           </div>
         ) : (
-          <div>
-            <div>Welcome {user.username}</div>
+          <div className={styles.logoutContainer}>
+            <div className={styles.username}>Welcome {user.username}!</div>
             <Logout />
           </div>
         )}

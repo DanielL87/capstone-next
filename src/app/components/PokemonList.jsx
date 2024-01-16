@@ -20,7 +20,17 @@ export default function PokemonList({ startId, endId }) {
 
           const pokemonData = await response.json();
 
-          // Extract relevant information from the API response
+          //checks for legendary or mythical status
+          let isRare;
+          let rarityResponse = await fetch(
+            `https://pokeapi.co/api/v2/pokemon-species/${pokemonData.id}/`
+          );
+          let rarityData = await rarityResponse.json();
+
+          if (rarityData.is_legendary || rarityData.is_mythical) {
+            isRare = true;
+          }
+
           const pokemonObject = {
             pokedexId: pokemonData.id,
             name: pokemonData.name,
@@ -29,6 +39,7 @@ export default function PokemonList({ startId, endId }) {
               pokemonData.name.slice(1),
             type: pokemonData.types[0].type.name,
             spriteUrl: pokemonData.sprites.front_default,
+            isRare,
           };
 
           newArray.push(pokemonObject);
