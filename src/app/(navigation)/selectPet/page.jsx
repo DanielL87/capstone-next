@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import styles from "../page.module.css";
+import styles from "../../page.module.css";
+import pokeColor from "../../lib/pokeColor.js";
 import PokemonDetails from "../../components/PokemonDetails.jsx";
 
 export default function SelectPet() {
@@ -54,35 +55,11 @@ export default function SelectPet() {
 
           <div className={styles.pokedexContainer}>
             {starterArray.map((pokemon) => (
-              <div
-                className={styles.pokemonContainer}
-                style={{
-                  background: `url("/poke300.png"), ${gradientBackground}`,
-                }}
-                // onClick={() => {
-                //   setSelectedPokemon(pokemon);
-                //   console.log("Selected Pokemon:", pokemon);
-                // }}
-                onClick={() => console.log("wroking")}
-              >
-                <div className={styles.pokemonCard} key={pokemon.pokedexId}>
-                  <p className={styles.pokeName}>
-                    {pokemon.capitalizedName || pokemon.name}
-                  </p>
-                  <div className={styles.pokeInfoContainer}>
-                    <p className={styles.pokeType}>Type: {pokemon.type}</p>
-
-                    <img
-                      className={styles.pokemon}
-                      src={pokemon.spriteUrl}
-                      alt={`${pokemon.name} sprite`}
-                    />
-                    {pokemon.isRare && <p>Rare</p>}
-                    {pokemon.nickname && <p>{pokemon.nickname}</p>}
-                  </div>
-                  <p className={styles.stageId}>Pokedex #{pokemon.pokedexId}</p>{" "}
-                </div>
-              </div>
+              <PokemonDetails
+                key={pokemon.id}
+                pokemon={pokemon}
+                setSelectedPokemon={setSelectedPokemon}
+              />
             ))}
           </div>
           <button className={styles.confirmPetBtn} onClick={handleConfirmPet}>

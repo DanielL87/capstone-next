@@ -16,21 +16,28 @@ export default async function ProfilePage() {
   console.log(userPokemon);
 
   return (
-    <div className={styles.pokedexContainer}>
-      {userPokemon.length > 0 ? (
-        userPokemon.map((pokemon) => (
-          <div>
-            <PokemonDetails key={pokemon.id} pokemon={pokemon} />
-            <Link className={styles.registerBtn} href={`/pet/${pokemon.id}`}>
-              Pet Details Page
+    <>
+      <div className={styles.pokedexUserMainContainer}>
+        <div className={styles.pokedexContainer}>
+          {userPokemon.length > 0 ? (
+            userPokemon.map((pokemon) => (
+              <div>
+                <PokemonDetails key={pokemon.id} pokemon={pokemon} />
+                <Link
+                  className={styles.registerBtn}
+                  href={`/pet/${pokemon.id}`}
+                >
+                  Pet Details Page
+                </Link>
+              </div>
+            ))
+          ) : (
+            <Link className={styles.registerBtn} href={"/selectPet"}>
+              <div>Select a pet!</div>
             </Link>
-          </div>
-        ))
-      ) : (
-        <Link className={styles.registerBtn} href={"/selectPet"}>
-          <div>Select a pet!</div>
-        </Link>
-      )}
-    </div>
+          )}
+        </div>
+      </div>
+    </>
   );
 }

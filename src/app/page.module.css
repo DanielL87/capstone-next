@@ -690,6 +690,13 @@
 }
 
 /* pokemon page css */
+.pokedexUserMainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .pokedexMainContainer {
   display: flex;
   flex-direction: column;
@@ -944,6 +951,10 @@
   color: white;
   align-items: center;
   /* font-size: small; */
+}
+
+.singlePetContainer {
+  display: flex;
 }
 
 /* Responsive adjustments */
