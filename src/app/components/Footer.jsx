@@ -1,78 +1,85 @@
-import React from "react";
-
-import Link from "next/link";
-import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
-
-import styles from "../page.module.css";
+'use client';
+import React from 'react';
+import {
+  FaFacebook,
+  FaGithub,
+  FaInstagram,
+  FaRegCopyright,
+  FaTwitter,
+} from 'react-icons/fa';
+import { GoMoveToTop } from 'react-icons/go';
+import styles from '../page.module.css';
+import { Link as ScrollLink } from 'react-scroll';
 
 export default function Footer() {
   return (
-    <div>
-      <div className={styles.footer}>
-        <div className={styles.column}>
-          <h2>Pet Taskmaster</h2>
-          <p>
+    <div className={styles.heroFooterMainContainer}>
+      <div className={styles.heroFooterContainer}>
+        <div className={styles.heroFooterInfoContainer}>
+          <h2 className={styles.heroFooterInfoTitle}>Pet Taskmaster</h2>
+          <p className={styles.heroFooterBlurb}>
             Unleash the joy of virtual companionship.
-            <br /> Join now and make every click count.
           </p>
         </div>
 
-        <div className={styles.column}>
-          <h2>Get in touch </h2>
+        <div className={styles.heroFooterIconsContainer}>
+          <p>Follow us!</p>
 
-          <p>
-            Email:{" "}
-            <a href="mailto:pettaskmaster@gmail.com">pettaskmaster@gmail.com</a>
-          </p>
-
-          <div className={styles.socialIcons}>
+          <div className={styles.heroFooterSocialLinks}>
             <a
-              href="https://twitter.com/imdesignsllc"
-              target="_blank"
-              rel="noopener noreferrer"
+              href='https://twitter.com/imdesignsllc'
+              target='_blank'
+              rel='noopener noreferrer'
             >
-              <FaTwitter />
+              <FaTwitter className={styles.heroFooterIcon} />
             </a>
             <a
-              href="https://www.facebook.com/Pokemon"
-              target="_blank"
-              rel="noopener noreferrer"
+              href='https://www.facebook.com/Pokemon'
+              target='_blank'
+              rel='noopener noreferrer'
             >
-              <FaFacebook />
+              <FaFacebook className={styles.heroFooterIcon} />
             </a>
             <a
-              href="https://github.com/Moreen-n/Moreen-n"
-              target="_blank"
-              rel="noopener noreferrer"
+              href='https://github.com/Moreen-n/Moreen-n'
+              target='_blank'
+              rel='noopener noreferrer'
             >
-              <FaGithub />
+              <FaGithub className={styles.heroFooterIcon} />
             </a>
             <a
-              href="https://instagram.com/YourInstagramHandle"
-              target="_blank"
-              rel="noopener noreferrer"
+              href='https://instagram.com/YourInstagramHandle'
+              target='_blank'
+              rel='noopener noreferrer'
             >
-              <FaInstagram />
+              <FaInstagram className={styles.heroFooterIcon} />
             </a>
           </div>
         </div>
 
-        <div className="column">
-          <h2>Links</h2>
-          <ul>
-            <li>
-              <Link href={"/"}>Home</Link>
-            </li>
-            <li>
-              <Link href="/Footer/about">About Us</Link>
-            </li>
-          </ul>
+        <div className={styles.heroFooterMenuLinks}>
+          
+            <h2 className={styles.heroFooterLinkTitle}>Links</h2>
+            <ul>
+              <li className={styles.heroFooterHomeLink}>
+                <span href={'/'}>Home</span>
+              </li>
+              <li className={styles.heroFooterHomeLink}>
+                <ScrollLink to='aboutSection' smooth={true} duration={500}>
+                  About
+                </ScrollLink>
+              </li>
+            </ul>
+          
+        </div>
+
+        <div className={styles.heroFooterTopIcon}>
+          <GoMoveToTop onClick={() => window.scrollTo(0, 0)} />
         </div>
       </div>
-      <div className={styles.copyright}>
-        <p>
-          &copy; <small>2024 Pet Taskmaster. All rights reserved.</small>
-        </p>
+
+      <div className={styles.heroFooterCopyright}>
+        <FaRegCopyright /> 2024 Pet Taskmaster. All rights reserved.
       </div>
     </div>
   );
