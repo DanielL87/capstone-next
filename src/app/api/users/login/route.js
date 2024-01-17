@@ -1,8 +1,9 @@
-import { prisma } from '@/app/lib/prisma.js';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import { cookies } from 'next/headers';
-import { NextResponse } from 'next/server.js';
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
+import { NextResponse } from "next/server.js";
+
+import { prisma } from "@/app/lib/prisma.js";
 
 export async function POST(request, response) {
   try {
@@ -11,7 +12,7 @@ export async function POST(request, response) {
     if (!username || !password) {
       return NextResponse.json({
         success: false,
-        error: 'You must provide a username and password to login.',
+        error: "You must provide a username and password to login.",
       });
     }
 
@@ -20,7 +21,7 @@ export async function POST(request, response) {
     if (!user) {
       return NextResponse.json({
         success: false,
-        error: 'User not found. Please register',
+        error: "User not found. Please register",
       });
     }
 
@@ -29,7 +30,7 @@ export async function POST(request, response) {
     if (!isPasswordVerified) {
       return NextResponse.json({
         success: false,
-        error: 'Username and/or password is not valid.',
+        error: "Username and/or password is not valid.",
       });
     }
 
@@ -40,7 +41,7 @@ export async function POST(request, response) {
       process.env.JWT_SECRET
     );
     console.log(token);
-    cookieStore.set('token', token);
+    cookieStore.set("token", token);
     return NextResponse.json({ success: true, user, token });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message });

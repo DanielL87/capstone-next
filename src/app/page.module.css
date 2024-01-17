@@ -351,9 +351,22 @@
   margin-bottom: 22px;
   margin-top: auto;
 }
+
+/* side bar css */
 .drop {
   top: 0;
   left: 0;
+}
+
+/* menu css */
+.menuicon {
+  width: 50px;
+  color: black;
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Select a Pet */
@@ -415,9 +428,12 @@
   margin-left: auto;
   margin-right: auto;
 }
-
-.petNameSubmitBtn {
+.sidebar {
   display: flex;
+
+  flex-direction: column;
+  width: 20%;
+
   background: linear-gradient(to right, #d5f0c1, #aad9bb);
   background-color: #d5f0c1;
   color: #fff;
@@ -436,10 +452,10 @@
   margin-right: auto;
 }
 
-.petNameSubmitBtn:hover {
-  background: linear-gradient(to right, #a1f8c3, #46b9c5);
-  background-color: #f9f7c9;
-}
+/* margin: 5px;
+  padding: 10px;
+  gap: 5px;
+} */
 
 .congratsContainer {
   display: flex;
@@ -468,7 +484,54 @@
   margin-right: auto;
 }
 
+/* footer css */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #333333;
+
+  padding: 20px;
+  flex-wrap: wrap;
+  background-image: url("/logo.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #000;
+}
+
+.column {
+  flex: 1;
+  margin: 0 20px;
+  max-width: 300px;
+  justify-content: center;
+}
+.socialIcons {
+  display: flex;
+  gap: 40px;
+  font-size: 20px;
+}
+
+.copyright {
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+  padding-top: 20px;
+  background-color: #0e0e0e;
+  color: white;
+  align-items: center;
+  /* font-size: small; */
+}
+
 .singlePetContainer {
   display: flex;
   background-color: red;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .column {
+    flex: 1 100%; /* Take up full width on smaller screens */
+    max-width: none; /* Remove maximum width on smaller screens */
+    margin: 10px 0; /* Adjust margin for smaller screens */
+  }
 }
