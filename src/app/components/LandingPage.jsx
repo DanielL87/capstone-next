@@ -1,14 +1,14 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link.js';
-import styles from '../page.module.css';
-import PokemonDetails from '@/app/components/PokemonDetails.jsx';
-import { CgPokemon } from 'react-icons/cg';
-import { FaRegCopyright } from 'react-icons/fa6';
-import { GoMoveToTop } from 'react-icons/go';
-import { Link as ScrollLink } from 'react-scroll';
+"use client";
+import React, { useEffect, useState } from "react";
+import Link from "next/link.js";
+import styles from "../page.module.css";
+import PokemonDetails from "@/app/components/PokemonDetails.jsx";
+import { CgPokemon } from "react-icons/cg";
+import { FaRegCopyright } from "react-icons/fa6";
+import { GoMoveToTop } from "react-icons/go";
+import { Link as ScrollLink } from "react-scroll";
 
-export default function LandingPage() {
+export default function LandingPage({ user }) {
   const [pokemonArray, setPokemonArray] = useState([]);
 
   async function fetchPokemon() {
@@ -65,60 +65,66 @@ export default function LandingPage() {
             <p className={styles.blurb}>
               Welcome to Pet Taskmaster - Where Pet Passion Meets Play!
             </p>
-            
+
             <p className={styles.blurb}>
-              Start your journey with Pet Taskmaster and receive your first pet for free! Engage in delightful activities, earn points, and unlock a world of possibilities in our virtual store.
+              Start your journey with Pet Taskmaster and receive your first pet
+              for free! Engage in delightful activities, earn points, and unlock
+              a world of possibilities in our virtual store.
             </p>
           </div>
         </div>
       </div>
 
       {/* About Container */}
-      <div className={styles.heroAboutContainer} id='aboutSection'>
+      <div className={styles.heroAboutContainer} id="aboutSection">
         <div className={styles.aboutMainContainer}>
           <div className={styles.aboutSectionContainer}>
-          <p className={styles.aboutTitle}>ABOUT</p>
+            <p className={styles.aboutTitle}>ABOUT</p>
             <div className={styles.heroAboutInfoContainer}>
-            
-            <p className={styles.aboutSubtitle}>
-              Welcome to Pet Taskmaster, the ultimate pet adventure game that
-              brings fun and responsibility together!
-            </p>
-            <img
-            className={styles.pokemonImage}
-            src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'
-            alt=''
-          />
-          </div>
-
-          <div className={styles.heroBlurbContainer}>
-            <p className={styles.aboutBlurbSubtitle}>Your Mission</p>
-            <p className={styles.aboutBlurb}>
-              In this exciting world, you get to choose your own pet and embark
-              on a journey filled with tasks and challenges. Your mission? Keep
-              your pet happy and prevent it from running away by accomplishing
-              tasks. But that’s not all!
-            </p>
-            
-            <p className={styles.aboutBlurbSubtitle}>Earn and Spend Coins</p>
-            <p className={styles.aboutBlurb}>
-              As you progress, you’ll earn coins that open up a world of
-              possibilities. Want to add more pets to your collection? Trade in
-              your coins at our store. Fancy a different kind of pet? Use your
-              coins to evolve your current pet into a new form. Or maybe you’ve
-              always wanted a rare pet? Save up and buy one from our store!
-            </p>
-            <p className={styles.aboutBlurbSubtitle}>Join the Community</p>
-            <p className={styles.aboutBlurb}>
-              Pet Taskmaster is more than just a game - it’s a vibrant community
-              of pet lovers and taskmasters just like you. So why wait? Sign up
-              today and let the fun begin!
-            </p>
+              <p className={styles.aboutSubtitle}>
+                Welcome to Pet Taskmaster, the ultimate pet adventure game that
+                brings fun and responsibility together!
+              </p>
+              <img
+                className={styles.pokemonImage}
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+                alt=""
+              />
             </div>
-            <div><Link href={'/register'} className={styles.loginBtn}>Sign Up!</Link></div>
-          </div>
 
-          
+            <div className={styles.heroBlurbContainer}>
+              <p className={styles.aboutBlurbSubtitle}>Your Mission</p>
+              <p className={styles.aboutBlurb}>
+                In this exciting world, you get to choose your own pet and
+                embark on a journey filled with tasks and challenges. Your
+                mission? Keep your pet happy and prevent it from running away by
+                accomplishing tasks. But that’s not all!
+              </p>
+
+              <p className={styles.aboutBlurbSubtitle}>Earn and Spend Coins</p>
+              <p className={styles.aboutBlurb}>
+                As you progress, you’ll earn coins that open up a world of
+                possibilities. Want to add more pets to your collection? Trade
+                in your coins at our store. Fancy a different kind of pet? Use
+                your coins to evolve your current pet into a new form. Or maybe
+                you’ve always wanted a rare pet? Save up and buy one from our
+                store!
+              </p>
+              <p className={styles.aboutBlurbSubtitle}>Join the Community</p>
+              <p className={styles.aboutBlurb}>
+                Pet Taskmaster is more than just a game - it’s a vibrant
+                community of pet lovers and taskmasters just like you. So why
+                wait? Sign up today and let the fun begin!
+              </p>
+            </div>
+            {!user.id && (
+              <div>
+                <Link href={"/register"} className={styles.loginBtn}>
+                  Sign Up!
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -129,11 +135,11 @@ export default function LandingPage() {
           <p className={styles.heroVideoTitle}>Video Title</p>
           <div className={styles.heroVideo}>
             <iframe
-              width='800'
-              height='500'
-              src='https://www.youtube.com/embed/1roy4o4tqQM?si=09w81yFz3LRMxeef'
-              title='YouTube video player'
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+              width="800"
+              height="500"
+              src="https://www.youtube.com/embed/1roy4o4tqQM?si=09w81yFz3LRMxeef"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             ></iframe>
           </div>
         </div>
@@ -200,9 +206,7 @@ export default function LandingPage() {
       <div className={styles.heroFiveMainContainer}>
         <div>
           <p className={styles.heroFiveTitle}>5th Container Title</p>
-          <div className={styles.heroFiveContainer}>
-            Container
-          </div>
+          <div className={styles.heroFiveContainer}>Container</div>
         </div>
       </div>
 
@@ -211,10 +215,10 @@ export default function LandingPage() {
         <div className={styles.heroFooterContainer}>
           <div className={styles.heroFooterMenuLinks}>
             <div className={styles.heroFooterHomeLink}>
-              <Link href='/'>Home</Link>
+              <Link href="/">Home</Link>
             </div>
             <div className={styles.heroFooterAboutLink}>
-              <ScrollLink to='aboutSection' smooth={true} duration={500}>
+              <ScrollLink to="aboutSection" smooth={true} duration={500}>
                 About
               </ScrollLink>
             </div>

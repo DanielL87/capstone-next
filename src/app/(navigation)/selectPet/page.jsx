@@ -54,7 +54,35 @@ export default function SelectPet() {
 
           <div className={styles.pokedexContainer}>
             {starterArray.map((pokemon) => (
-              <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
+              <div
+                className={styles.pokemonContainer}
+                style={{
+                  background: `url("/poke300.png"), ${gradientBackground}`,
+                }}
+                // onClick={() => {
+                //   setSelectedPokemon(pokemon);
+                //   console.log("Selected Pokemon:", pokemon);
+                // }}
+                onClick={() => console.log("wroking")}
+              >
+                <div className={styles.pokemonCard} key={pokemon.pokedexId}>
+                  <p className={styles.pokeName}>
+                    {pokemon.capitalizedName || pokemon.name}
+                  </p>
+                  <div className={styles.pokeInfoContainer}>
+                    <p className={styles.pokeType}>Type: {pokemon.type}</p>
+
+                    <img
+                      className={styles.pokemon}
+                      src={pokemon.spriteUrl}
+                      alt={`${pokemon.name} sprite`}
+                    />
+                    {pokemon.isRare && <p>Rare</p>}
+                    {pokemon.nickname && <p>{pokemon.nickname}</p>}
+                  </div>
+                  <p className={styles.stageId}>Pokedex #{pokemon.pokedexId}</p>{" "}
+                </div>
+              </div>
             ))}
           </div>
           <button className={styles.confirmPetBtn} onClick={handleConfirmPet}>
