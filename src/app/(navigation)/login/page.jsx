@@ -1,10 +1,10 @@
+"use client";
+import { useState } from "react";
 
-'use client';
-import { useState } from 'react';
-import styles from '../../page.module.css';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation.js';
+import Link from "next/link";
+import { useRouter } from "next/navigation.js";
 
+import styles from "@/app/page.module.css";
 
 export default function Login() {
   const [username, setUsername] = useState("");

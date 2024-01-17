@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Jura:wght@300;400;500;600;700&family=Marhey:wght@300;400;500;600;700&family=Philosopher:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Sansita:wght@400;700;800;900&family=Tenor+Sans&family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gruppo&family=Jura:wght@300;400;500;600;700&family=Marhey:wght@300;400;500;600;700&family=Philosopher:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Sansita:wght@400;700;800;900&family=Tenor+Sans&family=Varela+Round&display=swap");
 
 /* Navbar styles */
 
@@ -20,12 +20,12 @@
   z-index: 20;
   height: 85px;
   margin-bottom: 3.5rem;
-  
+
   width: 100%;
 }
 
 .navBarTitle {
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 48px;
   color: #003650;
   font-weight: 600;
@@ -48,15 +48,15 @@
   gap: 20px;
   margin-right: 2rem;
   margin-top: 1rem;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 
 .username {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 18px;
   font-weight: 600;
   color: #003650;
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   margin: 0;
 }
 
@@ -74,7 +74,7 @@
   border-radius: 10px;
   display: inline-block;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 .loginBtn:hover {
   background: linear-gradient(to right, #d5f0c1, #aad9bb);
@@ -98,7 +98,7 @@
   border-radius: 10px;
   display: inline-block;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 .registerBtn:hover {
   background: linear-gradient(to right, #d5f0c1, #aad9bb);
@@ -123,7 +123,6 @@
 
 .sidebarContainer {
   display: flex;
-  
 }
 
 .sidebar {
@@ -176,14 +175,14 @@
   align-items: center;
   gap: 15px;
   padding-top: 20px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 
 .formInput {
   height: 25px;
   padding: 5px;
   border-radius: 5px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   width: 250px;
 }
 
@@ -205,7 +204,7 @@
   border-radius: 10px;
   display: inline-block;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 .loginFormBtn:hover {
   background: linear-gradient(to right, #a1f8c3, #46b9c5);
@@ -218,14 +217,14 @@
 .errorText {
   padding-top: 10px;
   background-color: red;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-weight: 600;
 }
 
 .successText {
   padding-top: 10px;
   background-color: green;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-weight: 600;
 }
 
@@ -233,7 +232,7 @@
 .bodyContainer {
   display: flex;
   /* flex-direction: column; */
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 
 .blurbContainer {
@@ -246,8 +245,8 @@
   margin-right: auto;
 }
 .blurb {
-  font-family: 'Jura', sans-serif;
-  margin-right: 20px;
+  font-family: "Jura", sans-serif;
+  margin-right: 20px; /* Adjust as needed for spacing */
 }
 
 .videoContainer {
@@ -264,7 +263,7 @@
 .pokedexTitle {
   text-align: center;
   justify-content: center;
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   letter-spacing: 0.06em;
 }
 .pokedexContainer {
@@ -295,7 +294,7 @@
 
 .pokeName {
   text-align: center;
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: #003650;
@@ -314,7 +313,7 @@
 
 .pokeType {
   text-align: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #003650;
@@ -332,7 +331,7 @@
 
 .species {
   text-align: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #003650;
@@ -343,7 +342,7 @@
 
 .stageId {
   text-align: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 20px;
   font-weight: 600;
   color: #003650;
@@ -352,16 +351,29 @@
   margin-bottom: 22px;
   margin-top: auto;
 }
+
+/* side bar css */
 .drop {
   top: 0;
   left: 0;
+}
+
+/* menu css */
+.menuicon {
+  width: 50px;
+  color: black;
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Select a Pet */
 .selectPetTitle {
   text-align: center;
   justify-content: center;
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   letter-spacing: 0.06em;
   font-size: 48px;
   color: #003650;
@@ -381,7 +393,7 @@
   border: 0px solid #000;
   border-radius: 10px;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
@@ -390,7 +402,6 @@
   background: linear-gradient(to right, #a1f8c3, #46b9c5);
   background-color: #f9f7c9;
 }
-
 
 /* Name Pet */
 .namePetContainer {
@@ -405,22 +416,24 @@
   margin-right: auto;
   border-radius: 10px;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-
 }
 .namePetInput {
   display: flex;
   height: 25px;
   padding: 5px;
   border-radius: 5px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   width: 250px;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
 }
-
-.petNameSubmitBtn {
+.sidebar {
   display: flex;
+
+  flex-direction: column;
+  width: 20%;
+
   background: linear-gradient(to right, #d5f0c1, #aad9bb);
   background-color: #d5f0c1;
   color: #fff;
@@ -433,15 +446,15 @@
   border: 0px solid #000;
   border-radius: 10px;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.petNameSubmitBtn:hover {
-  background: linear-gradient(to right, #a1f8c3, #46b9c5);
-  background-color: #f9f7c9;
+  margin: 5px;
+  padding: 10px;
+  gap: 5px;
 }
 
 .congratsContainer {
@@ -449,7 +462,7 @@
   flex-direction: column;
 }
 .paraText {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 18px;
   font-weight: 600;
   color: #003650;
@@ -469,4 +482,57 @@
   width: 300px;
   margin-left: auto;
   margin-right: auto;
+}
+
+
+/* footer css */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #333333;
+
+  padding: 20px;
+  flex-wrap: wrap;
+  background-image: url("/logo.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #000;
+}
+
+.column {
+  flex: 1;
+  margin: 0 20px;
+  max-width: 300px;
+  justify-content: center;
+}
+.socialIcons {
+  display: flex;
+  gap: 40px;
+  font-size: 20px;
+}
+
+.copyright {
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+  padding-top: 20px;
+  background-color: #0e0e0e;
+  color: white;
+  align-items: center;
+  /* font-size: small; */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .column {
+    flex: 1 100%; /* Take up full width on smaller screens */
+    max-width: none; /* Remove maximum width on smaller screens */
+    margin: 10px 0; /* Adjust margin for smaller screens */
+  }
+
+.singlePetContainer {
+  display: flex;
+  background-color: red;
+
 }
