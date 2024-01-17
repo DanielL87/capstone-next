@@ -53,18 +53,17 @@ export default function PokemonList({ startId, endId }) {
 
     fetchPokemonRange();
   }, [startId, endId]);
-  console.log(pokemonArray);
 
   return (
     <>
-    <div className={styles.pokedexMainContainer}>
-      <h1 className={styles.pokedexTitle}>Explore Our Pet Selection</h1>
-      <div className={styles.pokedexContainer}>
-        {pokemonArray.map((pokemon) => (
-          <PokemonDetails pokemon={pokemon} />
-        ))}
-      </div>
-      <p>{error}</p>
+      <div className={styles.pokedexMainContainer}>
+        <h1 className={styles.pokedexTitle}>Explore Our Pet Selection</h1>
+        <div className={styles.pokedexContainer}>
+          {pokemonArray.map((pokemon) => (
+            <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
+          ))}
+        </div>
+        <p>{error}</p>
       </div>
     </>
   );

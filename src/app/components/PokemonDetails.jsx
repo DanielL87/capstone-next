@@ -1,14 +1,32 @@
+"use client";
 import React from "react";
 import pokeColor from "../lib/pokeColor.js";
 import styles from "../page.module.css";
 
-export default function PokemonDetails({ pokemon }) {
+export default function PokemonDetails({
+  pokemon,
+  setSelectedPokemon,
+  isSelectPokemon,
+  selectedPokemon,
+}) {
+  const isSelected =
+    selectedPokemon && selectedPokemon.pokedexId === pokemon.pokedexId;
+
+  console.log(isSelected);
+
   const gradient = pokeColor[pokemon.type.toLowerCase()] || {
     start: "#ffffff",
     end: "#ffffff",
   };
 
   const gradientBackground = `linear-gradient(45deg, ${gradient.start}, ${gradient.end})`;
+
+  const handleClick = () => {
+    if (isSelectPokemon) {
+      setSelectedPokemon(pokemon);
+      console.log("Selected Pokemon:", pokemon);
+    }
+  };
 
   return (
     <>
@@ -17,6 +35,7 @@ export default function PokemonDetails({ pokemon }) {
         style={{
           background: `url("/poke300.png"), ${gradientBackground}`,
         }}
+        onClick={handleClick}
       >
         <div className={styles.pokemonCard} key={pokemon.pokedexId}>
           <p className={styles.pokeName}>

@@ -697,6 +697,14 @@
   height: 100vh;
 }
 
+.selectPetMainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .pokedexMainContainer {
   display: flex;
   flex-direction: column;
