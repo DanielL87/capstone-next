@@ -363,14 +363,94 @@
   width: 50px;
   color: black;
 }
+
 .linkContainer {
   display: flex;
   flex-direction: column;
 }
-.sidebar {
+
+/* Select a Pet */
+.selectPetTitle {
+  text-align: center;
+  justify-content: center;
+  font-family: "Sansita", sans-serif;
+  letter-spacing: 0.06em;
+  font-size: 48px;
+  color: #003650;
+}
+
+.confirmPetBtn {
+  display: flex;
+  background: linear-gradient(to right, #f9f7c9, #e5bf22);
+  background-color: #f9f7c9;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  color: #003650;
+  text-decoration: none;
+  padding: 7px 20px;
+  border: 0px solid #000;
+  border-radius: 10px;
+  box-shadow: 1px 2px 7px -3px #2d2d2d;
+  font-family: "Jura", sans-serif;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.confirmPetBtn:hover {
+  background: linear-gradient(to right, #a1f8c3, #46b9c5);
+  background-color: #f9f7c9;
+}
+
+/* Name Pet */
+.namePetContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, #f9f7c9, #e5bf22);
+  width: 300px;
+  height: auto;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  box-shadow: 1px 2px 7px -3px #2d2d2d;
+}
+.namePetInput {
+  display: flex;
+  height: 25px;
+  padding: 5px;
+  border-radius: 5px;
+  font-family: "Jura", sans-serif;
+  width: 250px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sidebar {
+  display: flex;
+
+  flex-direction: column;
   width: 20%;
+
+  background: linear-gradient(to right, #d5f0c1, #aad9bb);
+  background-color: #d5f0c1;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  color: #003650;
+  text-decoration: none;
+  padding: 7px 20px;
+  border: 0px solid #000;
+  border-radius: 10px;
+  box-shadow: 1px 2px 7px -3px #2d2d2d;
+  font-family: "Jura", sans-serif;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
   margin: 5px;
   padding: 10px;
@@ -403,6 +483,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 
 /* footer css */
 .footer {
@@ -449,4 +530,9 @@
     max-width: none; /* Remove maximum width on smaller screens */
     margin: 10px 0; /* Adjust margin for smaller screens */
   }
+
+.singlePetContainer {
+  display: flex;
+  background-color: red;
+
 }
