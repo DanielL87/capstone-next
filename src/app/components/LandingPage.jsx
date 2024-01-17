@@ -209,33 +209,6 @@ export default function LandingPage({ user }) {
           <div className={styles.heroFiveContainer}>Container</div>
         </div>
       </div>
-
-      {/* Footer Container */}
-      <div className={styles.heroFooterMainContainer}>
-        <div className={styles.heroFooterContainer}>
-          <div className={styles.heroFooterMenuLinks}>
-            <div className={styles.heroFooterHomeLink}>
-              <Link href="/">Home</Link>
-            </div>
-            <div className={styles.heroFooterAboutLink}>
-              <ScrollLink to="aboutSection" smooth={true} duration={500}>
-                About
-              </ScrollLink>
-            </div>
-          </div>
-          <div className={styles.heroFooterCopyright}>
-            <FaRegCopyright /> 2024 Copyright
-          </div>
-          <div className={styles.heroFooterIconsContainer}>
-            <div className={styles.heroFooterSocialLinks}>
-              Social Media links
-            </div>
-            <div className={styles.heroFooterTopIcon}>
-              <GoMoveToTop onClick={() => window.scrollTo(0, 0)} />
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 }

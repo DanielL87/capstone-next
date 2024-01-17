@@ -9,7 +9,6 @@ export default async function Home() {
   return (
     <div className={styles.body}>
       <LandingPage user={user} />
-      <Footer />
     </div>
   );
 }
