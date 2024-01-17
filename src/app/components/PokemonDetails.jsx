@@ -1,5 +1,4 @@
 import React from "react";
-
 import pokeColor from "../lib/pokeColor.js";
 import styles from "../page.module.css";
 
