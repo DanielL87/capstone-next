@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import styles from "../page.module.css";
-import PokemonDetails from "../components/PokemonDetails.jsx";
+import PokemonDetails from "../../components/PokemonDetails.jsx";
 
 export default function SelectPet() {
   const [starterArray, setStarterArray] = useState([]);

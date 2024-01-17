@@ -57,6 +57,7 @@ export default function PokemonList({ startId, endId }) {
 
   return (
     <>
+    <div className={styles.pokedexMainContainer}>
       <h1 className={styles.pokedexTitle}>Explore Our Pet Selection</h1>
       <div className={styles.pokedexContainer}>
         {pokemonArray.map((pokemon) => (
@@ -64,6 +65,7 @@ export default function PokemonList({ startId, endId }) {
         ))}
       </div>
       <p>{error}</p>
+      </div>
     </>
   );
 }

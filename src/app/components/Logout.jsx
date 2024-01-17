@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link.js";
 import { useRouter } from "next/navigation.js";
+import styles from '../page.module.css';
 
 export default function Logout() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function Logout() {
   }
 
   return (
-    <Link onClick={handleLogout} href={"/"}>
+    <Link onClick={handleLogout} href={"/"} className={styles.loginBtn}>
       Logout
     </Link>
   );
