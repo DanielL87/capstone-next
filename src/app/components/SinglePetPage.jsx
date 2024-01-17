@@ -1,5 +1,6 @@
 import styles from "../page.module.css";
 import DisplayTasks from "./DisplayTasks.jsx";
+
 export default function SinglePetInfo({ pokemonData, pet }) {
   return (
     <div className={styles.singlePetContainer}>
