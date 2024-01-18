@@ -19,7 +19,7 @@ model User {
   email    String
   pets     Pet[]
   wallet   Wallet?
-  Task     Task[]
+  task     Task[]
 }
 
 model Wallet {
@@ -34,16 +34,15 @@ model Pet {
   name      String //species
   nickname  String //user given name
   type      String
-  evoId     Int
   pokedexId Int
   user      User     @relation(fields: [userId], references: [id])
   userId    String
-  spriteUrl String
+  spriteUrl String?
   cost      Int
   hearts    Int
   task      Task[]
   createdAt DateTime @default(now())
-  isRare    Boolean
+  isRare    Boolean?
   ranAway   Boolean  @default(false)
   isActive  Boolean  @default(true)
 }
