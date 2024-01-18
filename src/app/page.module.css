@@ -694,7 +694,8 @@
   justify-content: center;
   font-family: 'Sansita', sans-serif;
   letter-spacing: 0.06em;
-  margin-top: 50px;
+  font-size: 48px;
+  color: #003650;
 }
 
 .pokedexCardMainContainer {
