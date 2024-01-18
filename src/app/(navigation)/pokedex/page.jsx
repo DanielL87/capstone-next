@@ -15,7 +15,7 @@ export default function Pokedex() {
   }
 
   return (
-    <div className={styles.pokedexMainContainer}>
+    <div className={styles.pokedexCardMainContainer}>
       <PokemonList startId={1} endId={endId} />
       <button className={styles.loginBtn} onClick={handleShowMore} disabled={isLoading}>
         {isLoading ? 'Loading...' : 'Show More'}

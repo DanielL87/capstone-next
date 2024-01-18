@@ -199,8 +199,8 @@
   display: flex;
   width: 100%;
   background-color: #d2fef46c;
-  padding-top: 12rem;
-  padding-bottom: 6rem;
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
 
 .heroMainContainer {
@@ -639,26 +639,54 @@
   font-weight: 600;
 }
 
-/* pokemon page css */
+/* Single Pet CSS */
+.pokedexSinglePetMainContainer {
+  display: flex;
+  align-items: center;
+}
+
+/* User page css */
 .pokedexUserMainContainer {
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
 }
 
+.pokedexUserContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokedexUserTitle {
+  text-align: center;
+  justify-content: center;
+  font-family: 'Sansita', sans-serif;
+  letter-spacing: 0.06em;
+  font-size: 48px;
+  color: #003650;
+}
+
+.pokedexContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+/* Pokedex Page CSS */
 .selectPetMainContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
 }
-
 .pokedexMainContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 .pokedexTitle {
@@ -666,14 +694,15 @@
   justify-content: center;
   font-family: 'Sansita', sans-serif;
   letter-spacing: 0.06em;
-  margin-top: 8rem;
+  margin-top: 50px;
 }
-.pokedexContainer {
+
+.pokedexCardMainContainer {
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  margin-top: 2rem;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 0 4rem 0;
 }
 
 .pokemonContainer {
@@ -853,10 +882,12 @@
 .congratsContainer {
   display: flex;
   flex-direction: column;
+  background-color: #d2fef46c;
+  height: 100%;
 }
 .paraText {
   font-family: 'Jura', sans-serif;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
@@ -885,6 +916,7 @@
   width: 100%;
   background-color: #06234aec;
   margin: 0;
+  margin-top: auto;
 }
 
 .heroFooterContainer {
@@ -1032,13 +1064,7 @@
 }
 
 /* Pokedex page */
-.pokedexMainContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin: 0 0 4rem 0;
-}
+
 
 .singlePetContainer {
   display: flex;

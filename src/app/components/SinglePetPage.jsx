@@ -4,7 +4,7 @@ import DisplayTasks from "./DisplayTasks.jsx";
 export default function SinglePetInfo({ pokemonData, pet }) {
   return (
     <>
-      <div className={styles.pokedexUserMainContainer}>
+      <div className={styles.pokedexSinglePetMainContainer}>
         <div className={styles.singlePetContainer}>
           <img
             src={pokemonData.sprites.other["official-artwork"].front_default}
