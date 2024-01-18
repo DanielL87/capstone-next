@@ -819,6 +819,10 @@
   color: #003650;
 }
 
+.selectedPokemon {
+  background-color: yellow; /* You can adjust the color to your preference */
+}
+
 .confirmPetBtn {
   display: flex;
   background: linear-gradient(to right, #f9f7c9, #e5bf22);

@@ -26,7 +26,7 @@ export default function SinglePetInfo({ pokemonData, pet }) {
                 </span>
               ))}
             </p>
-            <p>
+            <div>
               Base Stats:
               <ul>
                 <li>HP: {pokemonData.stats[0].base_stat}</li>
@@ -36,7 +36,7 @@ export default function SinglePetInfo({ pokemonData, pet }) {
                 <li>Special Defense: {pokemonData.stats[4].base_stat}</li>
                 <li>Speed: {pokemonData.stats[5].base_stat}</li>
               </ul>
-            </p>
+            </div>
           </div>
           <DisplayTasks />
         </div>

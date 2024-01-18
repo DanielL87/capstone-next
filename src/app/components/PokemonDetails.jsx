@@ -12,8 +12,6 @@ export default function PokemonDetails({
   const isSelected =
     selectedPokemon && selectedPokemon.pokedexId === pokemon.pokedexId;
 
-  console.log(isSelected);
-
   const gradient = pokeColor[pokemon.type.toLowerCase()] || {
     start: "#ffffff",
     end: "#ffffff",
@@ -24,7 +22,6 @@ export default function PokemonDetails({
   const handleClick = () => {
     if (isSelectPokemon) {
       setSelectedPokemon(pokemon);
-      console.log("Selected Pokemon:", pokemon);
     }
   };
 
@@ -45,7 +42,9 @@ export default function PokemonDetails({
             <p className={styles.pokeType}>Type: {pokemon.type}</p>
 
             <img
-              className={styles.pokemon}
+              className={`${styles.pokemon} ${
+                isSelected ? styles.selectedPokemon : ""
+              }`}
               src={pokemon.spriteUrl}
               alt={`${pokemon.name} sprite`}
             />
