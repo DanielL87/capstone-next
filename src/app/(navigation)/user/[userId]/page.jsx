@@ -8,12 +8,17 @@ import { prisma } from "@/app/lib/prisma.js";
 export default async function ProfilePage() {
   const user = await fetchUser();
 
+  // const userPokemon = await prisma.pet.findMany({
+  //   where: {
+  //     userId: user.id,
+  //   },
+  // });
+
   const userPokemon = await prisma.pet.findMany({
     where: {
       userId: user.id,
     },
   });
-  console.log(userPokemon);
 
   return (
     <>
