@@ -976,6 +976,18 @@
   padding-bottom: 1rem;
 }
 
+/* Pokedex page */
+.pokedexMainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 0 4rem 0;
+}
+
+
+
+
 .singlePetContainer {
   display: flex;
 }
