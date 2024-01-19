@@ -202,11 +202,23 @@ export default function LandingPage({ user }) {
         </div>
       </div>
 
-      {/*  5th Container */}
-      <div className={styles.heroFiveMainContainer}>
-        <div>
-          <p className={styles.heroFiveTitle}>5th Container Title</p>
-          <div className={styles.heroFiveContainer}>Container</div>
+      {/*  Task Container */}
+      <div className={styles.heroTaskMainContainer}>
+        <div className={styles.heroTaskContainer}>
+          <p className={styles.heroTaskTitle}>Complete Tasks!</p>
+          <div className={styles.heroTaskInfoContainer}>
+            <p className={styles.heroBlurb}>
+            Welcome to Pet Taskmaster, the fun and engaging app that turns your daily tasks into an exciting adventure! </p>
+            
+            <p className={styles.heroBlurb}>Here, every task you complete earns you coins, and these coins are key to keeping your adorable pet from running away. Remember, your pet thrives on your productivity! </p> 
+
+            <img className={styles.heroTaskImage} src='/tasks.png' alt='tasks'/>
+            
+            <p className={styles.heroBlurb}>The more tasks you complete, the happier your pet stays. So, let’s get those tasks done and keep your pet by your side. After all, a task completed is a coin earned, and a happy pet in return. </p>
+            
+            <p className={styles.heroBlurb}> Start your journey with Pet Taskmaster today and transform your everyday tasks into a thrilling quest!
+            </p>
+          </div>
         </div>
       </div>
     </>
