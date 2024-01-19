@@ -7,7 +7,9 @@ import PokemonDetails from "../../components/PokemonDetails.jsx";
 export default function SelectPet() {
   const [starterArray, setStarterArray] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [nickname, setNickname] = useState("");
   const [section, setSection] = useState("selectPet");
+  const [error, setError] = useState("");
 
   async function fetchPokemon() {
     const starters = [];
@@ -38,12 +40,16 @@ export default function SelectPet() {
   }, []);
 
   function handleConfirmPet() {
+    if (!selectedPokemon) {
+      return setError("Please select a starter pokemon!");
+    }
+    setError("");
     setSection("namePet");
-    console.log(selectedPokemon);
   }
 
-  function handleSubmitName() {
+  function handleSubmit() {
     setSection("congrats");
+    console.log(nickname);
   }
 
   return (
@@ -68,6 +74,7 @@ export default function SelectPet() {
             <button className={styles.confirmPetBtn} onClick={handleConfirmPet}>
               Confirm
             </button>
+            <p>{error}</p>
           </>
         )}
 
@@ -80,13 +87,15 @@ export default function SelectPet() {
 
             <div className={styles.namePetContainer}>
               <input
+                value={nickname}
                 className={styles.namePetInput}
                 type="text"
                 placeholder="Enter a pet name.."
-              />{" "}
+                onChange={(e) => setNickname(e.target.value)}
+              />
               <button
                 className={styles.petNameSubmitBtn}
-                onClick={handleSubmitName}
+                onClick={handleSubmit}
               >
                 Submit
               </button>
@@ -96,40 +105,44 @@ export default function SelectPet() {
 
         {/* Congrats section */}
         {section === "congrats" && (
-          <div className={styles.congratsContainer}>
-            <p className={styles.selectPetTitle}>Congratulations!</p>
-            <div className={styles.pokedexContainer}>
-              {starterArray.map((pokemon) => (
-                <PokemonDetails pokemon={pokemon} />
-              ))}
+          <>
+            <div className={styles.congratsMainContainer}>
+              <div className={styles.congratsContainer}>
+                <p className={styles.selectPetTitle}>Congratulations!</p>
+                <div className={styles.pokedexContainer}>
+                  {starterArray.map((pokemon) => (
+                    <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
+                  ))}
+                </div>
+                <p className={styles.paraText}>
+                  You've successfully chosen your pet. This is a big step in
+                  your journey. Your pet is eager to grow and evolve, and it's
+                  all up to you now.
+                </p>{" "}
+                <br />
+                <p className={styles.paraText}>
+                  Remember, every task you complete will help your pet. The more
+                  tasks you do, the faster your pet will evolve. It's not just
+                  about helping your pet grow, it's about growing yourself too.
+                </p>{" "}
+                <br />
+                <p className={styles.paraText}>
+                  So, let's get started! Your pet is excited to see what you can
+                  achieve together.
+                </p>
+                <br />
+                <p className={styles.paraText}>
+                  Click on your pet for more details or go to your tasks to get
+                  started!
+                </p>
+                <br />
+                <div className={styles.congratsPetBtnContainer}>
+                  <button className={styles.confirmPetBtn}>Go to Tasks</button>
+                  <button className={styles.confirmPetBtn}>Profile</button>
+                </div>
+              </div>
             </div>
-            <p className={styles.paraText}>
-              You've successfully chosen your pet. This is a big step in your
-              journey. Your pet is eager to grow and evolve, and it's all up to
-              you now.
-            </p>{" "}
-            <br />
-            <p className={styles.paraText}>
-              Remember, every task you complete will help your pet. The more
-              tasks you do, the faster your pet will evolve. It's not just about
-              helping your pet grow, it's about growing yourself too.
-            </p>{" "}
-            <br />
-            <p className={styles.paraText}>
-              So, let's get started! Your pet is excited to see what you can
-              achieve together.
-            </p>
-            <br />
-            <p className={styles.paraText}>
-              Click on your pet for more details or go to your tasks to get
-              started!
-            </p>
-            <br />
-            <div className={styles.congratsPetBtnContainer}>
-              <button className={styles.confirmPetBtn}>Go to Tasks</button>
-              <button className={styles.confirmPetBtn}>Profile</button>
-            </div>
-          </div>
+          </>
         )}
       </div>
     </>
