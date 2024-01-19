@@ -47,9 +47,24 @@ export default function SelectPet() {
     setSection("namePet");
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    const response = await fetch("/api/pets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nickname,
+        name: selectedPokemon.capitalizedName,
+        type: selectedPokemon.type,
+        pokedexId: selectedPokemon.pokedexId,
+        spriteUrl: selectedPokemon.spriteUrl,
+      }),
+    });
+    const info = await response.json();
+    console.log(info);
+
     setSection("congrats");
-    console.log(nickname);
+    setSelectedPokemon(null);
+    setNickname("");
   }
 
   return (

@@ -38,8 +38,8 @@ model Pet {
   user      User     @relation(fields: [userId], references: [id])
   userId    String
   spriteUrl String?
-  cost      Int
-  hearts    Int
+  cost      Int      @default(0)
+  hearts    Int      @default(0)
   task      Task[]
   createdAt DateTime @default(now())
   isRare    Boolean?
@@ -50,13 +50,13 @@ model Pet {
 model Task {
   id          String   @id @default(uuid())
   name        String
-  category    String
+  category    String?
   isCompleted Boolean
   user        User     @relation(fields: [userId], references: [id])
   userId      String
   pet         Pet      @relation(fields: [petId], references: [id])
   petId       String
-  worth       Int
+  worth       Int      @default(0)
   dueDate     DateTime @default(now())
   createdAt   DateTime @default(now())
 }
