@@ -21,6 +21,8 @@ export default async function Navbar() {
           </div>
         </div>
 
+        <p className={styles.navbarSiteTitle}>Pet Taskmaster</p>
+
         {!user.id ? (
           <div className={styles.userSignInContainer}>
             <Link className={styles.loginBtn} href={'/login'}>
