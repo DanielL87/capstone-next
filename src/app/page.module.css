@@ -923,6 +923,7 @@
   background-color: #06234aec;
   margin: 0;
   margin-top: auto;
+  position: absolute;
 }
 
 .heroFooterContainer {

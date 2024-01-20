@@ -22,6 +22,8 @@ export async function POST(req) {
         type,
         spriteUrl,
         pokedexId,
+        cost: 0,
+        hearts: 0,
       },
     });
 
