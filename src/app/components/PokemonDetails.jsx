@@ -24,7 +24,7 @@ export default function PokemonDetails({
       setSelectedPokemon(pokemon);
     }
   };
-
+  console.log(pokemon);
   return (
     <>
       <div
