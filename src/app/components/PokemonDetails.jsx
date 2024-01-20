@@ -24,9 +24,10 @@ export default function PokemonDetails({
       setSelectedPokemon(pokemon);
     }
   };
-
+console.log(pokemon)
   return (
     <>
+    <div className={styles.pokemonMainContainer}>
       <div
         className={styles.pokemonContainer}
         style={{
@@ -48,11 +49,13 @@ export default function PokemonDetails({
               src={pokemon.spriteUrl}
               alt={`${pokemon.name} sprite`}
             />
-            {pokemon.isRare && <p>Rare</p>}
-            {pokemon.nickname && <p>{pokemon.nickname}</p>}
+            {pokemon.isRare && <p className={styles.rarePokemon}>🌟 Rare</p>}
+            {pokemon.isShiny && <p className={styles.shinyPokemon}>💫 Shiny</p>}
+            {pokemon.nickname && <p className={styles.pokemonNickname}>{pokemon.nickname}</p>}
           </div>
           <p className={styles.stageId}>Pokedex #{pokemon.pokedexId}</p>{" "}
         </div>
+      </div>
       </div>
     </>
   );
