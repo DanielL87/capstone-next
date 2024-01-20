@@ -30,3 +30,10 @@ export async function POST(req) {
     return NextResponse.json({ success: false, error: error.message });
   }
 }
+
+//Get Pet by ID
+
+export async function GET(req) {
+  const { petId } = await req.json();
+  return NextResponse.json({ success: true, message: "Get Route", petId });
+}

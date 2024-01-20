@@ -1,8 +1,18 @@
+import { prisma } from "@/app/lib/prisma.js";
 import { NextResponse } from "next/server.js";
 
-export async function GET(req) {
-  return NextResponse.json({
-    success: true,
-    message: "Pet Router",
-  });
+//Get Pet by ID
+
+export async function GET(req, res) {
+  try {
+    const { petId } = res.params;
+
+    const pet = await prisma.pet.findFirst({
+      where: { id: petId },
+    });
+
+    return NextResponse.json({ success: true, pet });
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error.message });
+  }
 }

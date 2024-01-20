@@ -8,6 +8,7 @@ export default function SelectPet() {
   const [starterArray, setStarterArray] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [nickname, setNickname] = useState("");
+  const [starterPokemon, setStarterPokemon] = useState(null);
   const [section, setSection] = useState("selectPet");
   const [error, setError] = useState("");
 
@@ -60,11 +61,23 @@ export default function SelectPet() {
       }),
     });
     const info = await response.json();
-    console.log(info);
+
+    getStarter(info.pet.id);
 
     setSection("congrats");
     setSelectedPokemon(null);
     setNickname("");
+  }
+
+  async function getStarter(petId) {
+    const response = await fetch(`/api/pets/${petId}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const info = await response.json();
+    console.log(info.pet);
+    setStarterPokemon(info.pet);
   }
 
   return (
@@ -125,9 +138,10 @@ export default function SelectPet() {
               <div className={styles.congratsContainer}>
                 <p className={styles.selectPetTitle}>Congratulations!</p>
                 <div className={styles.pokedexContainer}>
-                  {starterArray.map((pokemon) => (
-                    <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
-                  ))}
+                  {/* <PokemonDetails pokemon={starterPokemon} /> */}
+                  {starterPokemon && (
+                    <PokemonDetails pokemon={starterPokemon} />
+                  )}
                 </div>
                 <p className={styles.paraText}>
                   You've successfully chosen your pet. This is a big step in

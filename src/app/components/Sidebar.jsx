@@ -1,8 +1,8 @@
-'use client';
-import React, { useState, useEffect, useRef } from 'react';
-import { MdCatchingPokemon } from 'react-icons/md';
-import Link from 'next/link';
-import styles from '../page.module.css';
+"use client";
+import React, { useState, useEffect, useRef } from "react";
+import { MdCatchingPokemon } from "react-icons/md";
+import Link from "next/link";
+import styles from "../page.module.css";
 
 export default function Sidebar({ user }) {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -29,12 +29,12 @@ export default function Sidebar({ user }) {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    window.addEventListener('scroll', handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [isSidebarOpen]);
 
@@ -57,11 +57,19 @@ export default function Sidebar({ user }) {
           <div className={styles.sidebarLinkContainer}>
             <Link
               className={styles.loginBtn}
-              href={'/pokedex'}
+              href={"/pokedex"}
               onClick={handleLinkClick}
             >
               Pokedex
             </Link>
+            <Link
+              className={styles.loginBtn}
+              href={"/store"}
+              onClick={handleLinkClick}
+            >
+              Store
+            </Link>
+
             {user.id && (
               <Link
                 className={styles.loginBtn}
