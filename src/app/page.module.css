@@ -675,6 +675,15 @@
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
+  margin-top: 30px;
+}
+
+.heroUserBlurb {
+  font-family: "Jura", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  color: red;
 }
 
 /* Pokedex Page CSS */
@@ -706,9 +715,16 @@
   margin: 0 0 4rem 0;
 }
 
+/* Pokemon Details page  */
+.pokemonMainContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .pokemonContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 20px;
   width: 207px;
   height: 300px;
   border-radius: 5px;
@@ -762,7 +778,18 @@
   width: 60%;
 }
 
-.species {
+/* .species {
+  text-align: center;
+  font-family: "Jura", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #003650;
+  text-shadow: 1px 1px 1px #fff;
+  text-transform: capitalize;
+  margin: 0;
+} */
+
+.rarePokemon {
   text-align: center;
   font-family: "Jura", sans-serif;
   font-size: 14px;
@@ -772,7 +799,17 @@
   text-transform: capitalize;
   margin: 0;
 }
-
+.pokemonNickname {
+  text-align: center;
+  font-family: "Jura", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #003650;
+  text-shadow: 1px 1px 1px #fff;
+  text-transform: capitalize;
+  margin: 0;
+  padding-top: 3px;
+}
 .stageId {
   text-align: center;
   font-family: "Jura", sans-serif;
@@ -923,6 +960,7 @@
   background-color: #06234aec;
   margin: 0;
   margin-top: auto;
+  position: absolute;
 }
 
 .heroFooterContainer {

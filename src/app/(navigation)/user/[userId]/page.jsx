@@ -23,10 +23,10 @@ export default async function ProfilePage() {
               Welcome {user.username}!
             </h1>
 
-            <div className={styles.pokedexContainer}>
+            <div className={styles.pokemonContainer}>
               {userPokemon.length > 0 ? (
                 userPokemon.map((pokemon) => (
-                  <div>
+                  <div className={styles.pokedexContainer}>
                     <PokemonDetails key={pokemon.id} pokemon={pokemon} />
                     <Link
                       className={styles.registerBtn}
@@ -55,8 +55,8 @@ export default async function ProfilePage() {
           </div>
         </div>
       ) : (
-        <div className={styles.pokedexContainer}>
-          <p>Please Log in/Register to View your Profile</p>
+        <div className={styles.pokedexUserMainContainer}>
+          <p className={styles.heroUserBlurb}>Please Log in/Register to View your Profile</p>
         </div>
       )}
     </>
