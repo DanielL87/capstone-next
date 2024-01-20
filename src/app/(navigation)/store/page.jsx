@@ -1,3 +1,10 @@
+import styles from "../../page.module.css";
 export default function Store() {
-  return <div>Store Component</div>;
+  return (
+    <>
+      <div className={styles.storeMainContainer}>
+        <div>Store Component</div>
+      </div>
+    </>
+  );
 }
