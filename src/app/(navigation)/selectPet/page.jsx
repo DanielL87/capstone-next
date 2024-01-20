@@ -61,7 +61,7 @@ export default function SelectPet() {
       }),
     });
     const info = await response.json();
-console.log(info)
+
     getStarter(info.pet.id);
 
     setSection("congrats");
