@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// prisma/schema.prisma
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id       String  @id @default(uuid())
+  username String  @unique
+  password String
+  email    String
+  pets     Pet[]
+  wallet   Wallet?
+  task     Task[]
+}
+
+model Wallet {
+  id     String @id @default(uuid())
+  coin   Int
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Pet {
+  id        String   @id @default(uuid())
+  name      String //species
+  nickname  String //user given name
+  type      String
+  pokedexId Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  spriteUrl String?
+  cost      Int      @default(0)
+  hearts    Int      @default(0)
+  task      Task[]
+  createdAt DateTime @default(now())
+  isRare    Boolean  @default(false)
+  isShiny   Boolean  @default(false)
+  ranAway   Boolean  @default(false)
+  isActive  Boolean  @default(true)
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  name        String
+  category    String?
+  isCompleted Boolean
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  pet         Pet      @relation(fields: [petId], references: [id], onDelete: Cascade)
+  petId       String
+  worth       Int      @default(0)
+  dueDate     DateTime @default(now())
+  createdAt   DateTime @default(now())
+}
