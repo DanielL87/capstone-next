@@ -16,37 +16,49 @@ export default async function ProfilePage() {
 
   return (
     <>
-      <div className={styles.pokedexUserMainContainer}>
-        <div className={styles.pokedexUserContainer}>
-          <h1 className={styles.pokedexUserTitle}>Welcome {user.username}!</h1>
+      {user.id ? (
+        <div className={styles.pokedexUserMainContainer}>
+          <div className={styles.pokedexUserContainer}>
+            <h1 className={styles.pokedexUserTitle}>
+              Welcome {user.username}!
+            </h1>
 
-          <div className={styles.pokedexContainer}>
-            {userPokemon.length > 0 ? (
-              userPokemon.map((pokemon) => (
+            <div className={styles.pokedexContainer}>
+              {userPokemon.length > 0 ? (
+                userPokemon.map((pokemon) => (
+                  <div>
+                    <PokemonDetails key={pokemon.id} pokemon={pokemon} />
+                    <Link
+                      className={styles.registerBtn}
+                      href={`/pet/${pokemon.id}`}
+                    >
+                      Pet Details Page
+                    </Link>
+                  </div>
+                ))
+              ) : (
                 <div>
-                  <PokemonDetails key={pokemon.id} pokemon={pokemon} />
-                  <Link
-                    className={styles.registerBtn}
-                    href={`/pet/${pokemon.id}`}
-                  >
-                    Pet Details Page
+                  <p className={styles.heroBlurb}>
+                    Looks like you need to select your 1st pet!{" "}
+                  </p>
+                  <p className={styles.heroBlurb}>
+                    Select a pet to get started!
+                  </p>
+                  <Link href={"/selectPet"}>
+                    <button className={styles.registerBtn}>
+                      Select a pet!
+                    </button>
                   </Link>
                 </div>
-              ))
-            ) : (
-              <div>
-                <p className={styles.heroBlurb}>
-                  Looks like you need to select your 1st pet!{" "}
-                </p>
-                <p className={styles.heroBlurb}>Select a pet to get started!</p>
-                <Link href={"/selectPet"}>
-                  <button className={styles.registerBtn}>Select a pet!</button>
-                </Link>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className={styles.pokedexContainer}>
+          <p>Please Log in/Register to View your Profile</p>
+        </div>
+      )}
     </>
   );
 }

@@ -22,6 +22,8 @@ export async function POST(req) {
         type,
         spriteUrl,
         pokedexId,
+        cost: 0,
+        hearts: 0,
       },
     });
 
@@ -30,4 +32,3 @@ export async function POST(req) {
     return NextResponse.json({ success: false, error: error.message });
   }
 }
-
