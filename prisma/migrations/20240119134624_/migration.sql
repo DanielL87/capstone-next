@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE "Task" ALTER COLUMN "category" DROP NOT NULL,
-ALTER COLUMN "worth" SET DEFAULT 0;
