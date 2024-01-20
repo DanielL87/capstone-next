@@ -31,9 +31,3 @@ export async function POST(req) {
   }
 }
 
-//Get Pet by ID
-
-export async function GET(req) {
-  const { petId } = await req.json();
-  return NextResponse.json({ success: true, message: "Get Route", petId });
-}

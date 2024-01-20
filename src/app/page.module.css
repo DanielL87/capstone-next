@@ -1075,6 +1075,16 @@
   display: flex;
 }
 
+/* 
+store */
+.storeMainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
   .column {
