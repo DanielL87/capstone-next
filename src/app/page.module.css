@@ -674,7 +674,6 @@
   flex-direction: column;
   align-items: center;
   width: 800px;
- 
 }
 
 .userBlurb {
@@ -703,14 +702,23 @@
   color: red;
 }
 
-
 /* Pokemon Details page  */
 @keyframes glitter {
-  0% { border-color: #46b9c5; }
-  25% { border-color: #aad9bb; }
-  50% { border-color: #a1f8c3; }
-  75% { border-color: #d5f0c1; }
-  100% { border-color: #f9f7c9; }
+  0% {
+    border-color: #46b9c5;
+  }
+  25% {
+    border-color: #aad9bb;
+  }
+  50% {
+    border-color: #a1f8c3;
+  }
+  75% {
+    border-color: #d5f0c1;
+  }
+  100% {
+    border-color: #f9f7c9;
+  }
 }
 
 .selectedPokemonContainer {
@@ -747,7 +755,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0;  
+  padding: 0;
 }
 
 .pokeName {
@@ -907,8 +915,6 @@
   font-size: 48px;
   color: #003650;
 }
-
-
 
 .confirmPetBtn {
   display: flex;
@@ -1178,7 +1184,7 @@
 }
 
 /* Pet Id page */
-.pokedexSinglePetMainContainer{
+.pokedexSinglePetMainContainer {
   display: flex;
   flex-direction: column;
   margin-top: 5px;
@@ -1190,17 +1196,16 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 2rem;
-  
 }
 
-.pokemonStatsMainContainer{
+.pokemonStatsMainContainer {
   margin-top: 3rem;
 }
 .pokemonStatsContainer {
   position: relative;
   z-index: 2; /* Move the content to the front */
   margin-left: 2rem;
-  background-image: url('/border.png');
+  background-image: url("/border.png");
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 10px;
@@ -1217,15 +1222,15 @@
   right: 0;
   bottom: 0;
   background-color: #d5f0c1;
-  opacity: 0.95; 
-  z-index: 1; 
+  opacity: 0.95;
+  z-index: 1;
   border-radius: 10px;
   border: 10px solid #003550d3;
 }
 
 .content {
   position: relative;
-  z-index: 2; 
+  z-index: 2;
   margin-left: 4rem;
 }
 .petNameSpan {
@@ -1255,7 +1260,7 @@
   letter-spacing: 0.05em;
 }
 
-.species{
+.species {
   font-family: "Jura", sans-serif;
   font-size: 24px;
   color: #003650;
@@ -1318,7 +1323,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .taskContainer {
@@ -1349,12 +1354,11 @@ margin-bottom: 2rem;
   width: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 18px;
   color: #003650;
   font-weight: 600;
   letter-spacing: 0.05em;
-
 }
 
 /* 
@@ -1374,4 +1378,9 @@ store */
     max-width: none; /* Remove maximum width on smaller screens */
     margin: 10px 0; /* Adjust margin for smaller screens */
   }
+}
+
+.StoreInventoryPets {
+  display: flex;
+  flex-direction: row;
 }

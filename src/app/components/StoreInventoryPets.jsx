@@ -1,6 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import { randomDataArray } from "../lib/randomStorePets.js";
+import styles from "../page.module.css";
+import PokemonDetails from "./PokemonDetails.jsx";
 
 export default function StoreInventoryPets() {
   const [randomArray, setRandomArray] = useState(randomDataArray);
@@ -39,11 +42,26 @@ export default function StoreInventoryPets() {
   useEffect(() => {
     fetchInventory();
   }, []);
+
   useEffect(() => {
     console.log(inventoryArray);
   }, [inventoryArray]);
 
   console.log(randomArray);
 
-  return <div>Inventory</div>;
+  return (
+    <div>
+      <h2>Inventory</h2>
+      {inventoryArray && (
+        <div className={styles.StoreInventoryPets}>
+          {inventoryArray.map((pokemon) => (
+            <div>
+              <PokemonDetails pokemon={pokemon} />
+              <button>Buy Pet</button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
