@@ -21,7 +21,7 @@ export default function PokemonList({ startId, endId }) {
           const pokemonData = await response.json();
 
           //checks for legendary or mythical status
-          let isRare;
+          let isRare = false;
           let rarityResponse = await fetch(
             `https://pokeapi.co/api/v2/pokemon-species/${pokemonData.id}/`
           );
