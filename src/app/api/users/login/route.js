@@ -35,12 +35,12 @@ export async function POST(request, response) {
     }
 
     delete user.password;
-    console.log(user);
+   
     const token = jwt.sign(
       { userId: user.id, username: user.username },
       process.env.JWT_SECRET
     );
-    console.log(token);
+  
     cookieStore.set("token", token);
     return NextResponse.json({ success: true, user, token });
   } catch (error) {

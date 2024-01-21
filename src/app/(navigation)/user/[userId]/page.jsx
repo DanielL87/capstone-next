@@ -37,11 +37,11 @@ export default async function ProfilePage() {
                   </div>
                 ))
               ) : (
-                <div>
-                  <p className={styles.heroBlurb}>
+                <div className={styles.userBlurbContainer}>
+                  <p className={styles.userBlurb}>
                     Looks like you need to select your 1st pet!{" "}
                   </p>
-                  <p className={styles.heroBlurb}>
+                  <p className={styles.userBlurb}>
                     Select a pet to get started!
                   </p>
                   <Link href={"/selectPet"}>
