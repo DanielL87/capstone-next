@@ -1,16 +1,15 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import styles from "../../page.module.css";
-import pokeColor from "../../lib/pokeColor.js";
-import PokemonDetails from "../../components/PokemonDetails.jsx";
+'use client';
+import React, { useEffect, useState } from 'react';
+import styles from '../../page.module.css';
+import PokemonDetails from '../../components/PokemonDetails.jsx';
 
-export default function SelectPet() {
+export default function SelectPet({user}) {
   const [starterArray, setStarterArray] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
-  const [nickname, setNickname] = useState("");
+  const [nickname, setNickname] = useState('');
   const [starterPokemon, setStarterPokemon] = useState(null);
-  const [section, setSection] = useState("selectPet");
-  const [error, setError] = useState("");
+  const [section, setSection] = useState('selectPet');
+  const [error, setError] = useState('');
 
   async function fetchPokemon() {
     const starters = [];
@@ -42,16 +41,16 @@ export default function SelectPet() {
 
   function handleConfirmPet() {
     if (!selectedPokemon) {
-      return setError("Please select a starter pokemon!");
+      return setError('Please select a starter pokemon!');
     }
-    setError("");
-    setSection("namePet");
+    setError('');
+    setSection('namePet');
   }
 
   async function handleSubmit() {
-    const response = await fetch("/api/pets", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    const response = await fetch('/api/pets', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         nickname,
         name: selectedPokemon.capitalizedName,
@@ -64,19 +63,19 @@ export default function SelectPet() {
 
     getStarter(info.pet.id);
 
-    setSection("congrats");
+    setSection('congrats');
     setSelectedPokemon(null);
-    setNickname("");
+    setNickname('');
   }
 
   async function getStarter(petId) {
     const response = await fetch(`/api/pets/${petId}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
     });
 
     const info = await response.json();
-    console.log(info.pet);
+   
     setStarterPokemon(info.pet);
   }
 
@@ -84,7 +83,7 @@ export default function SelectPet() {
     <>
       <div className={styles.selectPetMainContainer}>
         {/* Select a pet section */}
-        {section === "selectPet" && (
+        {section === 'selectPet' && (
           <>
             <p className={styles.selectPetTitle}>Select a Pet!</p>
 
@@ -107,7 +106,7 @@ export default function SelectPet() {
         )}
 
         {/* Name your pet section */}
-        {section === "namePet" && (
+        {section === 'namePet' && (
           <>
             <div>
               <p className={styles.selectPetTitle}>Name your Pet!</p>
@@ -117,8 +116,8 @@ export default function SelectPet() {
               <input
                 value={nickname}
                 className={styles.namePetInput}
-                type="text"
-                placeholder="Enter a pet name.."
+                type='text'
+                placeholder='Enter a pet name..'
                 onChange={(e) => setNickname(e.target.value)}
               />
               <button
@@ -132,7 +131,7 @@ export default function SelectPet() {
         )}
 
         {/* Congrats section */}
-        {section === "congrats" && (
+        {section === 'congrats' && (
           <>
             <div className={styles.congratsMainContainer}>
               <div className={styles.congratsContainer}>
@@ -147,13 +146,13 @@ export default function SelectPet() {
                   You've successfully chosen your pet. This is a big step in
                   your journey. Your pet is eager to grow and evolve, and it's
                   all up to you now.
-                </p>{" "}
+                </p>{' '}
                 <br />
                 <p className={styles.paraText}>
                   Remember, every task you complete will help your pet. The more
                   tasks you do, the faster your pet will evolve. It's not just
                   about helping your pet grow, it's about growing yourself too.
-                </p>{" "}
+                </p>{' '}
                 <br />
                 <p className={styles.paraText}>
                   So, let's get started! Your pet is excited to see what you can
@@ -167,7 +166,11 @@ export default function SelectPet() {
                 <br />
                 <div className={styles.congratsPetBtnContainer}>
                   <button className={styles.confirmPetBtn}>Go to Tasks</button>
-                  <button className={styles.confirmPetBtn}>Profile</button>
+                  <button
+                    className={styles.confirmPetBtn}
+                  >
+                    Profile
+                  </button>
                 </div>
               </div>
             </div>
