@@ -1,15 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-import { fetchUser } from "../lib/fetchUser";
-
-export default function Wallet() {
+export default function Wallet(user) {
   const [coins, setCoins] = useState(0);
 
   useEffect(() => {
     const fetchCoins = async () => {
-      const user = await fetchUser();
-      setCoins(user.coins || 0);
+      setCoins(user.coin);
     };
 
     fetchCoins();

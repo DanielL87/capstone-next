@@ -1,6 +1,7 @@
 import Link from "next/link.js";
 
 import PokemonDetails from "@/app/components/PokemonDetails.jsx";
+import Wallet from "@/app/components/Wallet";
 import { fetchUser } from "@/app/lib/fetchUser.js";
 import { prisma } from "@/app/lib/prisma.js";
 import styles from "@/app/page.module.css";
@@ -22,7 +23,7 @@ export default async function ProfilePage() {
             <h1 className={styles.pokedexUserTitle}>
               Welcome {user.username}!
             </h1>
-
+            <Wallet user={user} />
             <div className={styles.pokedexContainer}>
               {userPokemon.length > 0 ? (
                 userPokemon.map((pokemon) => (
