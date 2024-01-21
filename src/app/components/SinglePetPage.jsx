@@ -5,16 +5,19 @@ export default function SinglePetInfo({ pokemonData, pet }) {
   return (
     <>
       <div className={styles.pokedexSinglePetMainContainer}>
-        <div className={styles.singlePetContainer}>
+        <div className={styles.singlePetMainContainer}>
+          <div className={styles.singlePetContainer}>
           <img
             src={pokemonData.sprites.other["official-artwork"].front_default}
             alt={`${pokemonData.name} sprite`}
           />
+          <p className={styles.singlePetHearts}>❤️ ❤️ ❤️ ❤️ ❤️</p>
+          </div>
           <div className={styles.pokemonStatsMainContainer}>
             <div className={styles.pokemonStatsContainer}>
               <div className={styles.content}>
                 <p className={styles.petName}>
-                  <span className={styles.petNameSpan}>Name: </span>{" "}
+                  <span className={styles.petNameSpan}>Name: </span>{" "} 
                   {pet.nickname}
                 </p>
                 <p className={styles.species}>
