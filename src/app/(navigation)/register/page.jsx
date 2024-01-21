@@ -30,7 +30,7 @@ export default function SignUp() {
     });
 
     const info = await response.json();
-    console.log(info);
+
     if (info.error) {
       setError(info.error);
       setSuccessMessage("");

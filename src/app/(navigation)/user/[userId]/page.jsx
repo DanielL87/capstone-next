@@ -14,7 +14,11 @@ export default async function ProfilePage() {
       userId: user.id,
     },
   });
-
+  const userWallet = await prisma.wallet.findFirst({
+    where: {
+      userId: user.id,
+    },
+  });
   return (
     <>
       {user.id ? (
@@ -23,7 +27,7 @@ export default async function ProfilePage() {
             <h1 className={styles.pokedexUserTitle}>
               Welcome {user.username}!
             </h1>
-            <Wallet user={user} />
+            <Wallet user={user} userWallet={userWallet} />
             <div className={styles.pokedexContainer}>
               {userPokemon.length > 0 ? (
                 userPokemon.map((pokemon) => (

@@ -1,21 +1,17 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-export default function Wallet(user) {
-  const [coins, setCoins] = useState(0);
+import { fetchUser } from "../lib/fetchUser";
+import { prisma } from "../lib/prisma";
 
-  useEffect(() => {
-    const fetchCoins = async () => {
-      setCoins(user.coin);
-    };
-
-    fetchCoins();
-  }, []);
-
+export default async function Wallet({}) {
+  const user = await fetchUser();
+  const userWallet = await prisma.wallet.findFirst({
+    where: { userId: user.id },
+  });
   return (
     <div>
       <h2>Your Wallet</h2>
-      <p>Coins: {coins}</p>
+      <p>Coins: {userWallet.coin}</p>
     </div>
   );
 }
