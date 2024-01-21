@@ -1,9 +1,10 @@
-import PokemonDetails from "@/app/components/PokemonDetails.jsx";
-import { fetchUser } from "@/app/lib/fetchUser.js";
-
-import styles from "@/app/page.module.css";
 import Link from "next/link.js";
+
+import PokemonDetails from "@/app/components/PokemonDetails.jsx";
+import Wallet from "@/app/components/Wallet";
+import { fetchUser } from "@/app/lib/fetchUser.js";
 import { prisma } from "@/app/lib/prisma.js";
+import styles from "@/app/page.module.css";
 
 export default async function ProfilePage() {
   const user = await fetchUser();
@@ -13,7 +14,11 @@ export default async function ProfilePage() {
       userId: user.id,
     },
   });
-
+  const userWallet = await prisma.wallet.findFirst({
+    where: {
+      userId: user.id,
+    },
+  });
   return (
     <>
       {user.id ? (
@@ -22,8 +27,8 @@ export default async function ProfilePage() {
             <h1 className={styles.pokedexUserTitle}>
               Welcome {user.username}!
             </h1>
-
-            <div className={styles.pokemonContainer}>
+            <Wallet user={user} userWallet={userWallet} />
+            <div className={styles.pokedexContainer}>
               {userPokemon.length > 0 ? (
                 userPokemon.map((pokemon) => (
                   <div className={styles.pokedexContainer}>
@@ -56,7 +61,9 @@ export default async function ProfilePage() {
         </div>
       ) : (
         <div className={styles.pokedexUserMainContainer}>
-          <p className={styles.heroUserBlurb}>Please Log in/Register to View your Profile</p>
+          <p className={styles.heroUserBlurb}>
+            Please Log in/Register to View your Profile
+          </p>
         </div>
       )}
     </>
