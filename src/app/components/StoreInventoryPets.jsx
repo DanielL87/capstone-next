@@ -32,18 +32,13 @@ export default function StoreInventoryPets() {
       inventory.push(pokemonObject);
     }
 
-    // Now, 'inventory' contains the data for your random Pokémon
     setInventoryArray(inventory);
   }
 
   useEffect(() => {
     fetchInventory();
   }, []);
-  useEffect(() => {
-    console.log(inventoryArray);
-  }, [inventoryArray]);
-
-  console.log(randomArray);
+  useEffect(() => {}, [inventoryArray]);
 
   return <div>Inventory</div>;
 }
