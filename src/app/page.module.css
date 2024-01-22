@@ -57,7 +57,7 @@
   font-family: "Jura", sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: #003650;
+  color: #a1f8c3;
   letter-spacing: 0.05em;
   margin: 0;
 }
@@ -649,15 +649,18 @@
 .pokedexUserMainContainer {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   flex-direction: column;
   height: 100vh;
 }
 
 .pokedexUserContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin: 0;
+  gap: 30px;
 }
 
 .pokedexUserTitle {
@@ -687,6 +690,7 @@
 
 .pokedexContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   gap: 30px;
@@ -701,6 +705,16 @@
   text-align: center;
   color: red;
 }
+
+
+.pokedexUserWalletContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
 
 /* Pokemon Details page  */
 @keyframes glitter {
@@ -728,7 +742,7 @@
 
 .pokemonMainContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 .pokemonContainer {
@@ -822,7 +836,7 @@
   padding: 0;
   position: relative;
   z-index: 1;
-  height: 170px;
+  height: 160px;
 }
 
 .pokeTypeContainer {
@@ -837,6 +851,7 @@
   font-weight: 600;
   color: #003650;
   text-transform: capitalize;
+  margin: 5px 0 15px 0;
 }
 
 .pokemon {
@@ -853,14 +868,13 @@
 
 .pokemonNickname {
   text-align: center;
-  font-family: "Jura", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
+  font-family: "pokemon", sans-serif;
+  font-size: 20px;
+  letter-spacing: .09em;
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
   text-transform: capitalize;
-  margin: 0;
-  padding-bottom: 22px;
+  margin: 0 0 5px 0;
 }
 .stageId {
   text-align: center;
@@ -870,7 +884,7 @@
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
   text-transform: capitalize;
-  margin: 0;
+  
 }
 
 .drop {
@@ -1192,10 +1206,22 @@
   min-height: 100vh;
 }
 
-.singlePetContainer {
+.singlePetMainContainer {
   display: flex;
   flex-direction: row;
   margin-bottom: 2rem;
+
+}
+
+.singlePetContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.singlePetHearts {
+  font-size: 40px;
+  margin-right: 5rem;
 }
 
 .pokemonStatsMainContainer {
@@ -1243,12 +1269,14 @@
   margin: 0;
 }
 .petName {
-  font-family: "Jura", sans-serif;
-  font-size: 48px;
+  font-family: "pokemon", sans-serif;
+  font-size: 50px;
   color: #003650;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.07em;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .speciesName {
@@ -1359,6 +1387,54 @@
   color: #003650;
   font-weight: 600;
   letter-spacing: 0.05em;
+}
+
+/* User wallet Page */
+.userWalletMainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d5f0c1;
+  border-radius: 10px;
+  border: 10px solid #003550d3;
+  padding: 10px 20px 10px 20px;
+  margin: 0;
+  width: auto;
+}
+
+.userWalletTitle {
+  text-align: center;
+  justify-content: center;
+  font-family: "Jura", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-size: 36px;
+  color: #003650;
+  margin: 0;
+}
+
+.userCoins {
+  text-align: center;
+  justify-content: center;
+  font-family: "Jura", sans-serif;
+  
+  letter-spacing: 0.06em;
+  font-size: 28px;
+  color: #003650;
+  text-shadow: none;
+  margin: 0;
+}
+
+.userCoinName {
+  text-align: center;
+  justify-content: center;
+  font-family: "Jura", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-size: 28px;
+  color: #003650;
+  text-shadow: 1px 1px 1px #fff;
+  margin: 0;
 }
 
 /* 

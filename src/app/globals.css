@@ -27,3 +27,10 @@ body::after {
   background-attachment: fixed;
   background-position: top;
 }
+
+@font-face { 
+  font-family: "pokemon"; 
+  src: url('../app/fonts/pokemon/Pokemon.ttf'); 
+  font-weight: normal; 
+  font-style: normal; 
+} 

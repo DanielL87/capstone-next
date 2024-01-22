@@ -38,9 +38,11 @@ export async function POST(req) {
         password: hashedPassword,
       },
     });
+
     const userWallet = await prisma.wallet.create({
       data: { userId: user.id },
     });
+
     const token = jwt.sign(
       { userId: user.id, username, email },
       process.env.JWT_SECRET
