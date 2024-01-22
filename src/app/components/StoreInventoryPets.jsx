@@ -1,9 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import { randomDataArray } from "../lib/randomStorePets.js";
+import styles from "../page.module.css";
 import PokemonDetails from "./PokemonDetails.jsx";
 
-export default function StoreInventoryPets() {
+export default function StoreInventoryPets({ isStore }) {
   const [randomArray, setRandomArray] = useState(randomDataArray);
   const [inventoryArray, setInventoryArray] = useState(null);
 
@@ -29,6 +31,18 @@ export default function StoreInventoryPets() {
         isRare = true;
       }
 
+      let cost = 20; // Standard cost
+
+      if (boolean) {
+        // Shiny + 10
+        cost += 10;
+      }
+
+      if (isRare) {
+        // Rare x 2
+        cost *= 2;
+      }
+
       const pokemonObject = {
         pokedexId: pokemonData.id,
         name: pokemonData.name,
@@ -40,6 +54,7 @@ export default function StoreInventoryPets() {
           : pokemonData.sprites.front_default,
         isShiny: boolean,
         isRare,
+        cost,
       };
 
       inventory.push(pokemonObject);
@@ -56,5 +71,19 @@ export default function StoreInventoryPets() {
     console.log(inventoryArray);
   }, [inventoryArray]);
 
-  return <div>Inventory</div>;
+  return (
+    <div>
+      <h2>Inventory</h2>
+      {inventoryArray && (
+        <div className={styles.StoreInventoryPets}>
+          {inventoryArray.map((pokemon) => (
+            <div>
+              <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
+              {isStore && <button>Buy Pet: Cost : {pokemon.cost}</button>}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
