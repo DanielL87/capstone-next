@@ -1,12 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
+
 import Link from "next/link.js";
-import styles from "../page.module.css";
-import PokemonDetails from "@/app/components/PokemonDetails.jsx";
 import { CgPokemon } from "react-icons/cg";
-import { FaRegCopyright } from "react-icons/fa6";
-import { GoMoveToTop } from "react-icons/go";
-import { Link as ScrollLink } from "react-scroll";
+
+import PokemonDetails from "@/app/components/PokemonDetails.jsx";
+
+import styles from "../page.module.css";
+import StoreInventoryPets from "./StoreInventoryPets";
 
 export default function LandingPage({ user }) {
   const [pokemonArray, setPokemonArray] = useState([]);
@@ -147,61 +148,13 @@ export default function LandingPage({ user }) {
 
       {/* Store Container */}
       <div className={styles.heroStoreMainContainer}>
-        <div className={styles.heroStoreContainer}>
-          <p className={styles.heroStoreTitle}>STORE TITLE</p>
-          <p className={styles.heroStoreSubtitle}>STORE SUBTITLE</p>
-
-          <div className={styles.heroStoreCardMainContainer}>
-            <div className={styles.heroStoreCardContainer}>
-              <div className={styles.heroStoreCard}>Pokemon Card</div>
-              <p className={styles.heroStoreCardTitle}>Store Card Title</p>
-              <p className={styles.heroStoreCardSubtitle}>
-                Store Card Subtitle
-              </p>
-              <p className={styles.heroStoreCardPrice}>Store Card Price</p>
-            </div>
-
-            <div className={styles.heroStoreCardContainer}>
-              <div className={styles.heroStoreCard}>Pokemon Card</div>
-              <p className={styles.heroStoreCardTitle}>Store Card Title</p>
-              <p className={styles.heroStoreCardSubtitle}>
-                Store Card Subtitle
-              </p>
-              <p className={styles.heroStoreCardPrice}>Store Card Price</p>
-            </div>
-
-            <div className={styles.heroStoreCardContainer}>
-              <div className={styles.heroStoreCard}>Pokemon Card</div>
-              <p className={styles.heroStoreCardTitle}>Store Card Title</p>
-              <p className={styles.heroStoreCardSubtitle}>
-                Store Card Subtitle
-              </p>
-              <p className={styles.heroStoreCardPrice}>Store Card Price</p>
-            </div>
-
-            <div className={styles.heroStoreCardContainer}>
-              <div className={styles.heroStoreCard}>Pokemon Card</div>
-              <p className={styles.heroStoreCardTitle}>Store Card Title</p>
-              <p className={styles.heroStoreCardSubtitle}>
-                Store Card Subtitle
-              </p>
-              <p className={styles.heroStoreCardPrice}>Store Card Price</p>
-            </div>
-
-            <div className={styles.heroStoreCardContainer}>
-              <div className={styles.heroStoreCard}>Pokemon Card</div>
-              <p className={styles.heroStoreCardTitle}>Store Card Title</p>
-              <p className={styles.heroStoreCardSubtitle}>
-                Store Card Subtitle
-              </p>
-              <p className={styles.heroStoreCardPrice}>Store Card Price</p>
-            </div>
-          </div>
-
-          <button className={styles.loginBtn}>See Store! </button>
+        <div className={styles.heroStoreCardContainer}>
+          <StoreInventoryPets />
+          <p className={styles.heroStoreCardPrice}>Store Card Price</p>
         </div>
-      </div>
 
+        <button className={styles.loginBtn}>See Store! </button>
+      </div>
       {/*  Task Container */}
       <div className={styles.heroTaskMainContainer}>
         <div className={styles.heroTaskContainer}>
