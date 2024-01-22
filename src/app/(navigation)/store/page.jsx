@@ -1,13 +1,11 @@
-import StoreInventoryPets from "@/app/components/StoreInventoryPets.jsx";
+import { fetchUser } from "../../lib/fetchUser";
+import Store from "@/app/components/Store.jsx";
+export default async function StorePage() {
+  const user = await fetchUser();
 
-import styles from "../../page.module.css";
-
-export default function Store() {
   return (
     <>
-      <div className={styles.storeMainContainer}>
-        <StoreInventoryPets isStore={true} />
-      </div>
+      <Store user={user} />
     </>
   );
 }

@@ -1,9 +1,19 @@
-import { Link } from "react-scroll";
+import Link from "next/link.js";
 import styles from "../page.module.css";
-export default function BacktoProfile() {
+export default function BacktoProfile({ user }) {
   return (
-    <Link href={"/"}>
-      <div className={styles.pageRerouteContainer}>Back to Home</div>
-    </Link>
+    <>
+      <div className={styles.pageRerouteContainer}>
+        {user.id ? (
+          <Link className={styles.loginBtn} href={`/user/${user.id}`}>
+            Profile
+          </Link>
+        ) : (
+          <Link className={styles.loginBtn} href={"/login"}>
+            Login
+          </Link>
+        )}
+      </div>
+    </>
   );
 }
