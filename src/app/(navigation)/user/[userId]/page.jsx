@@ -1,10 +1,10 @@
-import Link from "next/link.js";
+import Link from 'next/link.js';
 
-import PokemonDetails from "@/app/components/PokemonDetails.jsx";
-import Wallet from "@/app/components/Wallet";
-import { fetchUser } from "@/app/lib/fetchUser.js";
-import { prisma } from "@/app/lib/prisma.js";
-import styles from "@/app/page.module.css";
+import PokemonDetails from '@/app/components/PokemonDetails.jsx';
+import Wallet from '@/app/components/Wallet';
+import { fetchUser } from '@/app/lib/fetchUser.js';
+import { prisma } from '@/app/lib/prisma.js';
+import styles from '@/app/page.module.css';
 
 export default async function ProfilePage() {
   const user = await fetchUser();
@@ -23,11 +23,11 @@ export default async function ProfilePage() {
     <>
       {user.id ? (
         <div className={styles.pokedexUserMainContainer}>
-          <div className={styles.pokedexUserContainer}>
-            <h1 className={styles.pokedexUserTitle}>
-              Welcome {user.username}!
-            </h1>
+          <h1 className={styles.pokedexUserTitle}>Welcome {user.username}!</h1>
+          <div className={styles.pokedexUserWalletContainer}>
             <Wallet user={user} userWallet={userWallet} />
+          </div>
+          <div className={styles.pokedexUserContainer}>
             <div className={styles.pokedexContainer}>
               {userPokemon.length > 0 ? (
                 userPokemon.map((pokemon) => (
@@ -44,12 +44,12 @@ export default async function ProfilePage() {
               ) : (
                 <div className={styles.userBlurbContainer}>
                   <p className={styles.userBlurb}>
-                    Looks like you need to select your 1st pet!{" "}
+                    Looks like you need to select your 1st pet!{' '}
                   </p>
                   <p className={styles.userBlurb}>
                     Select a pet to get started!
                   </p>
-                  <Link href={"/selectPet"}>
+                  <Link href={'/selectPet'}>
                     <button className={styles.registerBtn}>
                       Select a pet!
                     </button>

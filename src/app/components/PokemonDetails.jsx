@@ -28,6 +28,7 @@ export default function PokemonDetails({
   return (
     <>
       <div className={styles.pokemonMainContainer}>
+      <p>❤️ ❤️ ❤️ ❤️ ❤️</p>
         <div
           className={`${styles.pokemonContainer} ${isSelected ? styles.selectedPokemonContainer : ''}`}
           style={{
@@ -35,6 +36,7 @@ export default function PokemonDetails({
           }}
           onClick={handleClick}
         >
+          
           <div className={styles.pokemonCard} key={pokemon.pokedexId}>
             <div className={styles.pokeCardTopContainer}>
               <p className={styles.pokeName}>
@@ -67,12 +69,14 @@ export default function PokemonDetails({
               {pokemon.nickname ? (
                 <p className={styles.pokemonNickname}>{pokemon.nickname}</p>
               ) : (
-                <p className={styles.pokemonNickname}>Name me!</p>
+                <p className={styles.pokemonNickname}>Name Me!</p>
               )}
             </div>
             <p className={styles.stageId}>Pokedex #{pokemon.pokedexId}</p>{' '}
           </div>
+          
         </div>
+        
       </div>
     </>
   );
