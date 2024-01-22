@@ -2,9 +2,12 @@
 import StoreInventoryPets from "@/app/components/StoreInventoryPets.jsx";
 import styles from "../page.module.css";
 import { useState } from "react";
+import PokemonDetails from "./PokemonDetails.jsx";
 export default function Store({ user }) {
   const [section, setSection] = useState("selectPet");
   const [nickname, setNickname] = useState("");
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+
   function handleSubmit() {
     setSection("congrats");
   }
@@ -17,12 +20,15 @@ export default function Store({ user }) {
             isStore={true}
             setSection={setSection}
             user={user}
+            setSelectedPokemon={setSelectedPokemon}
+            selectedPokemon={selectedPokemon}
           />
         )}
 
         {/* Name your pet section */}
         {section === "namePet" && (
           <>
+            {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} />}
             <div>
               <p className={styles.selectPetTitle}>Name your Pet!</p>
             </div>
@@ -39,7 +45,7 @@ export default function Store({ user }) {
                 className={styles.petNameSubmitBtn}
                 onClick={handleSubmit}
               >
-                Submit
+                Purchase Pokemon
               </button>
             </div>
           </>
