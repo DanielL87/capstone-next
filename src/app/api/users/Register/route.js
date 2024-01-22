@@ -38,7 +38,9 @@ export async function POST(req) {
         password: hashedPassword,
       },
     });
-
+    const userWallet = await prisma.wallet.create({
+      data: { userId: user.id },
+    });
     const token = jwt.sign(
       { userId: user.id, username, email },
       process.env.JWT_SECRET
@@ -46,7 +48,7 @@ export async function POST(req) {
 
     cookieStore.set("token", token);
 
-    return NextResponse.json({ success: true, user });
+    return NextResponse.json({ success: true, user, userWallet });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message });
   }
