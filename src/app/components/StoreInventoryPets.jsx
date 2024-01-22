@@ -70,6 +70,7 @@ export default function StoreInventoryPets({ isStore }) {
   useEffect(() => {
     console.log(inventoryArray);
   }, [inventoryArray]);
+  function handlePurchase(cost) {}
 
   return (
     <div>
@@ -79,7 +80,11 @@ export default function StoreInventoryPets({ isStore }) {
           {inventoryArray.map((pokemon) => (
             <div>
               <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
-              {isStore && <button>Buy Pet: Cost : {pokemon.cost}</button>}
+              {isStore && (
+                <button onClick={handlePurchase}>
+                  Buy Pet: Cost : {pokemon.cost}
+                </button>
+              )}
             </div>
           ))}
         </div>
