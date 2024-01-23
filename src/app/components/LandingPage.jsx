@@ -1,13 +1,13 @@
-"use client";
-import React, { useEffect, useState } from "react";
+'use client';
+import React, { useEffect, useState } from 'react';
 
-import Link from "next/link.js";
-import { CgPokemon } from "react-icons/cg";
+import Link from 'next/link.js';
+import { CgPokemon } from 'react-icons/cg';
 
-import PokemonDetails from "@/app/components/PokemonDetails.jsx";
+import PokemonDetails from '@/app/components/PokemonDetails.jsx';
 
-import styles from "../page.module.css";
-import StoreInventoryPets from "./StoreInventoryPets";
+import styles from '../page.module.css';
+import StoreInventoryPets from './StoreInventoryPets';
 
 export default function LandingPage({ user }) {
   const [pokemonArray, setPokemonArray] = useState([]);
@@ -77,7 +77,7 @@ export default function LandingPage({ user }) {
       </div>
 
       {/* About Container */}
-      <div className={styles.heroAboutContainer} id="aboutSection">
+      <div className={styles.heroAboutContainer} id='aboutSection'>
         <div className={styles.aboutMainContainer}>
           <div className={styles.aboutSectionContainer}>
             <p className={styles.aboutTitle}>ABOUT</p>
@@ -88,8 +88,8 @@ export default function LandingPage({ user }) {
               </p>
               <img
                 className={styles.pokemonImage}
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-                alt=""
+                src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'
+                alt=''
               />
             </div>
 
@@ -120,7 +120,7 @@ export default function LandingPage({ user }) {
             </div>
             {!user.id && (
               <div>
-                <Link href={"/register"} className={styles.loginBtn}>
+                <Link href={'/register'} className={styles.loginBtn}>
                   Sign Up!
                 </Link>
               </div>
@@ -136,11 +136,11 @@ export default function LandingPage({ user }) {
           <p className={styles.heroVideoTitle}>Video Title</p>
           <div className={styles.heroVideo}>
             <iframe
-              width="800"
-              height="500"
-              src="https://www.youtube.com/embed/1roy4o4tqQM?si=09w81yFz3LRMxeef"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              width='800'
+              height='500'
+              src='https://www.youtube.com/embed/1roy4o4tqQM?si=09w81yFz3LRMxeef'
+              title='YouTube video player'
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
             ></iframe>
           </div>
         </div>
@@ -149,11 +149,13 @@ export default function LandingPage({ user }) {
       {/* Store Container */}
       <div className={styles.heroStoreMainContainer}>
         <div className={styles.heroStoreCardContainer}>
-          <StoreInventoryPets />
-          <p className={styles.heroStoreCardPrice}>Store Card Price</p>
+          <StoreInventoryPets showHearts={false} />
         </div>
-
-        <button className={styles.loginBtn}>See Store! </button>
+        <div className={styles.heroStoreButton}>
+          <Link className={styles.registerBtn} href={`/store`}>
+            See Store!
+          </Link>
+        </div>
       </div>
       {/*  Task Container */}
       <div className={styles.heroTaskMainContainer}>
@@ -162,29 +164,29 @@ export default function LandingPage({ user }) {
           <div className={styles.heroTaskInfoContainer}>
             <p className={styles.heroBlurb}>
               Welcome to Pet Taskmaster, the fun and engaging app that turns
-              your daily tasks into an exciting adventure!{" "}
+              your daily tasks into an exciting adventure!{' '}
             </p>
 
             <p className={styles.heroBlurb}>
               Here, every task you complete earns you coins, and these coins are
               key to keeping your adorable pet from running away. Remember, your
-              pet thrives on your productivity!{" "}
+              pet thrives on your productivity!{' '}
             </p>
 
             <img
               className={styles.heroTaskImage}
-              src="/tasks.png"
-              alt="tasks"
+              src='/tasks.png'
+              alt='tasks'
             />
 
             <p className={styles.heroBlurb}>
               The more tasks you complete, the happier your pet stays. So, let’s
               get those tasks done and keep your pet by your side. After all, a
-              task completed is a coin earned, and a happy pet in return.{" "}
+              task completed is a coin earned, and a happy pet in return.{' '}
             </p>
 
             <p className={styles.heroBlurb}>
-              {" "}
+              {' '}
               Start your journey with Pet Taskmaster today and transform your
               everyday tasks into a thrilling quest!
             </p>

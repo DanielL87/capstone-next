@@ -412,7 +412,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 2rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -430,8 +429,6 @@
   text-align: center;
 }
 
-
-
 .heroStoreCardMainContainer {
   display: flex;
   flex-direction: row;
@@ -442,9 +439,13 @@
   margin-right: auto;
 }
 
+.heroStoreCardContainer {
+  display: flex;
+  flex-direction: column;
+}
 .heroStoreButton {
   display: flex;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 
@@ -1412,6 +1413,51 @@ store */
   flex-direction: row;
   gap: 20px;
 }
+
+/* Tasks */
+.taskFormMainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formTitle {
+  text-align: center;
+  justify-content: center;
+  font-family: "Sansita", sans-serif;
+  text-shadow: 1px 1px 1px #fff;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-size: 42px;
+  color: #003650;
+  margin: 0;
+}
+.taskForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, #f9f7c9, #e5bf22);
+  width: 500px;
+  height: auto;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 1px 2px 7px -3px #2d2d2d;
+}
+
+.taskInput {
+  display: flex;
+  height: 25px;
+  padding: 5px;
+  border-radius: 5px;
+  font-family: "Jura", sans-serif;
+  width: 100%;
+  margin-top: 20px;
+}
+
 
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {

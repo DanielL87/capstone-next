@@ -32,7 +32,7 @@ export default async function ProfilePage() {
               {userPokemon.length > 0 ? (
                 userPokemon.map((pokemon) => (
                   <div className={styles.pokedexCardContainer}>
-                    <PokemonDetails key={pokemon.id} pokemon={pokemon} />
+                    <PokemonDetails key={pokemon.id} pokemon={pokemon} showHearts={true} />
                     <Link
                       className={styles.registerBtn}
                       href={`/pet/${pokemon.id}`}

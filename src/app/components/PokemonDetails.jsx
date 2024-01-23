@@ -2,12 +2,14 @@
 import React from 'react';
 import pokeColor from '../lib/pokeColor.js';
 import styles from '../page.module.css';
+import PetHearts from './PetHearts.jsx';
 
 export default function PokemonDetails({
   pokemon,
   setSelectedPokemon,
   isSelectPokemon,
   selectedPokemon,
+  showHearts,
 }) {
   const isSelected =
     selectedPokemon && selectedPokemon.pokedexId === pokemon.pokedexId;
@@ -28,7 +30,7 @@ export default function PokemonDetails({
   return (
     <>
       <div className={styles.pokemonMainContainer}>
-      <p>❤️ ❤️ ❤️ ❤️ ❤️</p>
+      {showHearts && <PetHearts showHearts={true} />}
         <div className={styles.pokemonMainCardContainer}>
           
           <div

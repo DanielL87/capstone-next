@@ -1,3 +1,4 @@
+import DisplayTasks from '@/app/components/DisplayTasks.jsx';
 import React from 'react';
 
 export default function UserTasks() {
@@ -5,7 +6,7 @@ export default function UserTasks() {
     <>
       <div>
         <div>
-          <p>Tasks</p>
+          <DisplayTasks />
         </div>
       </div>
     </>

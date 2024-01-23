@@ -1,21 +1,31 @@
+'use client';
+import React, { useState, useEffect } from 'react';
 import styles from "@/app/page.module.css";
 
+export default function DisplayTasks({ userId }) {
+  const [tasks, setTasks] = useState([]);
 
-export default function DisplayTasks() {
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const response = await fetch(`api/user/${userId}`);
+      const data = await response.json();
 
+      setTasks(data.tasks);
+    };
+
+    fetchTasks();
+  }, [userId]);
 
   return (
-  <>
-  <div className={styles.taskMainContainer}>
-  <p className={styles.taskPageTitle}>Tasks</p>
-    <div className={styles.taskContainer}>
-      <ul className={styles.taskList}>
-        <li>Task 1</li>
-        <li>Task 2</li>
-        <li>Task 3</li>
-      </ul>
-    </div>
-  </div>
-  </>
-  )
+    <>
+      <div className={styles.taskMainContainer}>
+        <p className={styles.taskPageTitle}>Tasks</p>
+        <div className={styles.taskContainer}>
+          {tasks.map((task, index) => (
+            <p key={index}>{task}</p>
+          ))}
+        </div>
+      </div>
+    </>
+  );
 }
