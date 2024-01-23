@@ -5,7 +5,13 @@ import { randomDataArray } from "../lib/randomStorePets.js";
 import styles from "../page.module.css";
 import PokemonDetails from "./PokemonDetails.jsx";
 
-export default function StoreInventoryPets({ isStore }) {
+export default function StoreInventoryPets({
+  isStore,
+  setSection,
+  user,
+  setSelectedPokemon,
+  selectedPokemon,
+}) {
   const [randomArray, setRandomArray] = useState(randomDataArray);
   const [inventoryArray, setInventoryArray] = useState(null);
 
@@ -67,24 +73,24 @@ export default function StoreInventoryPets({ isStore }) {
     fetchInventory();
   }, []);
 
-  useEffect(() => {
-    console.log(inventoryArray);
-  }, [inventoryArray]);
+  // useEffect(() => {
+  //   console.log(inventoryArray);
+  // }, [inventoryArray]);
+
+  function handleSelectPurchase(pokemon) {
+    setSection("namePet");
+    setSelectedPokemon(pokemon);
+  }
   function handlePurchase(cost) {}
 
   return (
     <div>
-      <h2>Inventory</h2>
       {inventoryArray && (
         <div className={styles.StoreInventoryPets}>
           {inventoryArray.map((pokemon) => (
             <div>
               <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
-              {isStore && (
-                <button onClick={handlePurchase}>
-                  Buy Pet: Cost : {pokemon.cost}
-                </button>
-              )}
+              {isStore && <button>Buy Pet: Cost : {pokemon.cost}</button>}
             </div>
           ))}
         </div>
