@@ -10,6 +10,7 @@ export default function StoreInventoryPets({
   setSection,
   user,
   setSelectedPokemon,
+  selectedPokemon,
 }) {
   const [randomArray, setRandomArray] = useState(randomDataArray);
   const [inventoryArray, setInventoryArray] = useState(null);
@@ -76,6 +77,7 @@ export default function StoreInventoryPets({
   function handleSelectPurchase(pokemon) {
     setSection("namePet");
     setSelectedPokemon(pokemon);
+    setCost(pokemon.cost);
   }
 
   async function handlePurchase(cost) {
