@@ -10,11 +10,10 @@ export default function StoreInventoryPets({
   setSection,
   user,
   setSelectedPokemon,
-  selectedPokemon,
+  setCost,
 }) {
   const [randomArray, setRandomArray] = useState(randomDataArray);
   const [inventoryArray, setInventoryArray] = useState(null);
-  const [purchaseMessage, setPurchaseMessage] = useState(null);
 
   async function fetchInventory() {
     const inventory = [];
@@ -27,7 +26,6 @@ export default function StoreInventoryPets({
       );
       const pokemonData = await request.json();
 
-      // checks for legendary or mythical status
       let isRare = false;
       let rarityResponse = await fetch(
         `https://pokeapi.co/api/v2/pokemon-species/${pokemonData.id}/`
@@ -38,15 +36,13 @@ export default function StoreInventoryPets({
         isRare = true;
       }
 
-      let cost = 20; // Standard cost
+      let cost = 20;
 
       if (boolean) {
-        // Shiny + 10
         cost += 10;
       }
 
       if (isRare) {
-        // Rare x 2
         cost *= 2;
       }
 
@@ -80,55 +76,24 @@ export default function StoreInventoryPets({
     setCost(pokemon.cost);
   }
 
-  async function handlePurchase(cost) {
-    try {
-      const response = await fetch(`/api/wallet`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch wallet balance");
-      }
-
-      const walletData = await response.json();
-      const walletBalance = walletData?.wallet?.coin;
-
-      if (walletBalance < cost) {
-        setPurchaseMessage(
-          "Insufficient funds. Please add more coins to your wallet."
-        );
-        // return;
-      }
-
-      setPurchaseMessage("Purchase successful!");
-    } catch (error) {
-      console.error("Error handling purchase:", error.message);
-      setPurchaseMessage("Failed to handle purchase. Please try again.");
-    }
-  }
-
   return (
-    <>
-      <p className={styles.heroStoreTitle}>Featured Pets of the Day!</p>
-      <div className={styles.heroStoreContainer}>
-        {inventoryArray && (
-          <div className={styles.StoreInventoryPets}>
-            {inventoryArray.map((pokemon) => (
-              <div className={styles.heroStoreButton}>
-                <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
-                {isStore && user.id && (
+    <div>
+      {inventoryArray && (
+        <div className={styles.StoreInventoryPets}>
+          {inventoryArray.map((pokemon) => (
+            <div key={pokemon.pokedexId}>
+              <PokemonDetails pokemon={pokemon} />
+              {isStore && (
+                <div>
                   <button onClick={() => handleSelectPurchase(pokemon)}>
-                    Buy Pet: Cost : {pokemon.cost}
+                    Buy Pet: Cost: {pokemon.cost}
                   </button>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

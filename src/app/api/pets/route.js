@@ -1,6 +1,7 @@
+import { NextResponse } from "next/server.js";
+
 import { fetchUser } from "@/app/lib/fetchUser.js";
 import { prisma } from "@/app/lib/prisma.js";
-import { NextResponse } from "next/server.js";
 
 export async function GET() {
   try {
@@ -51,7 +52,6 @@ export async function POST(req) {
         pokedexId,
         isShiny,
         isRare,
-        task,
       },
     });
 
