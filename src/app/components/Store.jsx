@@ -8,6 +8,7 @@ export default function Store({ user }) {
   const [nickname, setNickname] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [purchasedPet, setPurchasedPet] = useState(null);
+  const [cost, setCost] = useState(0);
   const [error, setError] = useState("");
 
   async function handleSubmit() {
@@ -48,13 +49,15 @@ export default function Store({ user }) {
 
   function handleCancel() {
     setSection("selectPet");
+    setCost(0);
     setSelectedPokemon(null);
   }
 
-  //   useEffect(() => {
-  //     console.log(selectedPokemon);
-  //     console.log(nickname);
-  //   }, [selectedPokemon, nickname]);
+  useEffect(() => {
+    console.log(selectedPokemon);
+    console.log(nickname);
+    console.log(cost);
+  }, [selectedPokemon, nickname, cost]);
 
   return (
     <>
@@ -66,6 +69,7 @@ export default function Store({ user }) {
             user={user}
             setSelectedPokemon={setSelectedPokemon}
             selectedPokemon={selectedPokemon}
+            setCost={setCost}
           />
         )}
 
