@@ -10,10 +10,10 @@ export default function StoreInventoryPets({
   setSection,
   user,
   setSelectedPokemon,
-  selectedPokemon,
 }) {
   const [randomArray, setRandomArray] = useState(randomDataArray);
   const [inventoryArray, setInventoryArray] = useState(null);
+  const [purchaseMessage, setPurchaseMessage] = useState(null);
 
   async function fetchInventory() {
     const inventory = [];
@@ -26,7 +26,7 @@ export default function StoreInventoryPets({
       );
       const pokemonData = await request.json();
 
-      //checks for legendary or mythical status
+      // checks for legendary or mythical status
       let isRare = false;
       let rarityResponse = await fetch(
         `https://pokeapi.co/api/v2/pokemon-species/${pokemonData.id}/`
@@ -73,24 +73,56 @@ export default function StoreInventoryPets({
     fetchInventory();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(inventoryArray);
-  // }, [inventoryArray]);
-
   function handleSelectPurchase(pokemon) {
     setSection("namePet");
     setSelectedPokemon(pokemon);
   }
-  function handlePurchase(cost) {}
+
+  async function handlePurchase(cost) {
+    try {
+      const response = await fetch(`/api/wallet`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch wallet balance");
+      }
+
+      const walletData = await response.json();
+      const walletBalance = walletData?.wallet?.coin;
+
+      if (walletBalance < cost) {
+        setPurchaseMessage(
+          "Insufficient funds. Please add more coins to your wallet."
+        );
+        // return;
+      }
+
+      setPurchaseMessage("Purchase successful!");
+    } catch (error) {
+      console.error("Error handling purchase:", error.message);
+      setPurchaseMessage("Failed to handle purchase. Please try again.");
+    }
+  }
 
   return (
     <div>
       {inventoryArray && (
         <div className={styles.StoreInventoryPets}>
           {inventoryArray.map((pokemon) => (
-            <div>
-              <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
-              {isStore && <button>Buy Pet: Cost : {pokemon.cost}</button>}
+            <div key={pokemon.pokedexId}>
+              <PokemonDetails pokemon={pokemon} />
+              {isStore && (
+                <div>
+                  <button onClick={() => handlePurchase(pokemon.cost)}>
+                    Buy Pet: Cost: {pokemon.cost}
+                  </button>
+                  {purchaseMessage && <p>{purchaseMessage}</p>}
+                </div>
+              )}
             </div>
           ))}
         </div>
