@@ -1,9 +1,9 @@
-"use client";
-import React, { useEffect, useState } from "react";
+'use client';
+import React, { useEffect, useState } from 'react';
 
-import { randomDataArray } from "../lib/randomStorePets.js";
-import styles from "../page.module.css";
-import PokemonDetails from "./PokemonDetails.jsx";
+import { randomDataArray } from '../lib/randomStorePets.js';
+import styles from '../page.module.css';
+import PokemonDetails from './PokemonDetails.jsx';
 
 export default function StoreInventoryPets({
   isStore,
@@ -79,21 +79,26 @@ export default function StoreInventoryPets({
   }
 
   return (
-    <div>
-      {inventoryArray && (
-        <div className={styles.StoreInventoryPets}>
-          {inventoryArray.map((pokemon) => (
-            <div>
-              <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
-              {isStore && user.id && (
+
+    <>
+      <p className={styles.heroStoreTitle}>Featured Pets of the Day!</p>
+      <div className={styles.heroStoreContainer}>
+        {inventoryArray && (
+          <div className={styles.StoreInventoryPets}>
+            {inventoryArray.map((pokemon) => (
+              <div className={styles.heroStoreButton}>
+                <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
+               {isStore && user.id && (
                 <button onClick={() => handleSelectPurchase(pokemon)}>
                   Buy Pet: Cost : {pokemon.cost}
                 </button>
               )}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </>
+
   );
 }
