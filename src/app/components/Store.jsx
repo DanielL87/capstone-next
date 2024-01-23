@@ -7,9 +7,43 @@ export default function Store({ user }) {
   const [section, setSection] = useState("selectPet");
   const [nickname, setNickname] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [purchasedPet, setPurchasedPet] = useState(null);
+  const [error, setError] = useState("");
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    if (!nickname) {
+      return setError("Please provide a nickname for your Pet!");
+    }
+
+    const response = await fetch("/api/pets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nickname,
+        name: selectedPokemon.capitalizedName,
+        type: selectedPokemon.type,
+        pokedexId: selectedPokemon.pokedexId,
+        spriteUrl: selectedPokemon.spriteUrl,
+        isRare: selectedPokemon.isRare,
+        isShiny: selectedPokemon.isShiny,
+      }),
+    });
+    const info = await response.json();
+    getPurchasedPet(info.pet.id);
+
+    setError("");
     setSection("congrats");
+  }
+
+  async function getPurchasedPet(petId) {
+    const response = await fetch(`/api/pets/${petId}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const info = await response.json();
+
+    setPurchasedPet(info.pet);
   }
 
   function handleCancel() {
@@ -17,10 +51,10 @@ export default function Store({ user }) {
     setSelectedPokemon(null);
   }
 
-  useEffect(() => {
-    console.log(selectedPokemon);
-    console.log(nickname);
-  }, [selectedPokemon, nickname]);
+  //   useEffect(() => {
+  //     console.log(selectedPokemon);
+  //     console.log(nickname);
+  //   }, [selectedPokemon, nickname]);
 
   return (
     <>
@@ -59,6 +93,7 @@ export default function Store({ user }) {
               </button>
               <button onClick={handleCancel}>Cancel</button>
             </div>
+            <p>{error}</p>
           </>
         )}
 
@@ -69,10 +104,7 @@ export default function Store({ user }) {
               <div className={styles.congratsContainer}>
                 <p className={styles.selectPetTitle}>Congratulations!</p>
                 <div className={styles.pokedexContainer}>
-                  {/* <PokemonDetails pokemon={starterPokemon} /> */}
-                  {/* {starterPokemon && (
-                      <PokemonDetails pokemon={starterPokemon} />
-                    )} */}
+                  {purchasedPet && <PokemonDetails pokemon={purchasedPet} />}
                 </div>
                 <p className={styles.paraText}>
                   You've successfully bought your pet. This is a big step in

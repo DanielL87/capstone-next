@@ -72,7 +72,6 @@ export default function SelectPet({ user }) {
       }),
     });
     const info = await response.json();
-    console.log(info);
 
     getStarter(info.pet.id);
 
