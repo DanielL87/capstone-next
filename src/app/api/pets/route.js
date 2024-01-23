@@ -51,7 +51,6 @@ export async function POST(req) {
         pokedexId,
         isShiny,
         isRare,
-        task,
       },
     });
 
