@@ -109,24 +109,24 @@ export default function StoreInventoryPets({
   }
 
   return (
-    <div>
-      {inventoryArray && (
-        <div className={styles.StoreInventoryPets}>
-          {inventoryArray.map((pokemon) => (
-            <div key={pokemon.pokedexId}>
-              <PokemonDetails pokemon={pokemon} />
-              {isStore && (
-                <div>
-                  <button onClick={() => handlePurchase(pokemon.cost)}>
-                    Buy Pet: Cost: {pokemon.cost}
+    <>
+      <p className={styles.heroStoreTitle}>Featured Pets of the Day!</p>
+      <div className={styles.heroStoreContainer}>
+        {inventoryArray && (
+          <div className={styles.StoreInventoryPets}>
+            {inventoryArray.map((pokemon) => (
+              <div className={styles.heroStoreButton}>
+                <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
+                {isStore && user.id && (
+                  <button onClick={() => handleSelectPurchase(pokemon)}>
+                    Buy Pet: Cost : {pokemon.cost}
                   </button>
-                  {purchaseMessage && <p>{purchaseMessage}</p>}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </>
   );
 }

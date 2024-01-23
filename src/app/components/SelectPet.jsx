@@ -20,7 +20,6 @@ export default function SelectPet({ user }) {
 
     const info = await response.json();
     setUserPokemon(info.pets);
-    console.log(info.pets);
   }
 
   async function fetchPokemon() {

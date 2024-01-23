@@ -1,16 +1,60 @@
 "use client";
 import StoreInventoryPets from "@/app/components/StoreInventoryPets.jsx";
 import styles from "../page.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PokemonDetails from "./PokemonDetails.jsx";
 export default function Store({ user }) {
   const [section, setSection] = useState("selectPet");
   const [nickname, setNickname] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [purchasedPet, setPurchasedPet] = useState(null);
+  const [error, setError] = useState("");
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    if (!nickname) {
+      return setError("Please provide a nickname for your Pet!");
+    }
+
+    const response = await fetch("/api/pets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nickname,
+        name: selectedPokemon.capitalizedName,
+        type: selectedPokemon.type,
+        pokedexId: selectedPokemon.pokedexId,
+        spriteUrl: selectedPokemon.spriteUrl,
+        isRare: selectedPokemon.isRare,
+        isShiny: selectedPokemon.isShiny,
+      }),
+    });
+    const info = await response.json();
+    getPurchasedPet(info.pet.id);
+
+    setError("");
     setSection("congrats");
   }
+
+  async function getPurchasedPet(petId) {
+    const response = await fetch(`/api/pets/${petId}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const info = await response.json();
+
+    setPurchasedPet(info.pet);
+  }
+
+  function handleCancel() {
+    setSection("selectPet");
+    setSelectedPokemon(null);
+  }
+
+  //   useEffect(() => {
+  //     console.log(selectedPokemon);
+  //     console.log(nickname);
+  //   }, [selectedPokemon, nickname]);
 
   return (
     <>
@@ -45,9 +89,11 @@ export default function Store({ user }) {
                 className={styles.petNameSubmitBtn}
                 onClick={handleSubmit}
               >
-                Purchase Pokemon
+                Complete Purchase({selectedPokemon.cost} Coins)
               </button>
+              <button onClick={handleCancel}>Cancel</button>
             </div>
+            <p>{error}</p>
           </>
         )}
 
@@ -58,22 +104,19 @@ export default function Store({ user }) {
               <div className={styles.congratsContainer}>
                 <p className={styles.selectPetTitle}>Congratulations!</p>
                 <div className={styles.pokedexContainer}>
-                  {/* <PokemonDetails pokemon={starterPokemon} /> */}
-                  {/* {starterPokemon && (
-                      <PokemonDetails pokemon={starterPokemon} />
-                    )} */}
+                  {purchasedPet && <PokemonDetails pokemon={purchasedPet} />}
                 </div>
                 <p className={styles.paraText}>
-                  You've successfully chosen your pet. This is a big step in
+                  You've successfully bought your pet. This is a big step in
                   your journey. Your pet is eager to grow and evolve, and it's
                   all up to you now.
-                </p>{" "}
+                </p>
                 <br />
                 <p className={styles.paraText}>
                   Remember, every task you complete will help your pet. The more
                   tasks you do, the faster your pet will evolve. It's not just
                   about helping your pet grow, it's about growing yourself too.
-                </p>{" "}
+                </p>
                 <br />
                 <p className={styles.paraText}>
                   So, let's get started! Your pet is excited to see what you can
