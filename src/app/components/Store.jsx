@@ -1,7 +1,7 @@
 "use client";
 import StoreInventoryPets from "@/app/components/StoreInventoryPets.jsx";
 import styles from "../page.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PokemonDetails from "./PokemonDetails.jsx";
 export default function Store({ user }) {
   const [section, setSection] = useState("selectPet");
@@ -11,6 +11,16 @@ export default function Store({ user }) {
   function handleSubmit() {
     setSection("congrats");
   }
+
+  function handleCancel() {
+    setSection("selectPet");
+    setSelectedPokemon(null);
+  }
+
+  useEffect(() => {
+    console.log(selectedPokemon);
+    console.log(nickname);
+  }, [selectedPokemon, nickname]);
 
   return (
     <>
@@ -45,8 +55,9 @@ export default function Store({ user }) {
                 className={styles.petNameSubmitBtn}
                 onClick={handleSubmit}
               >
-                Purchase Pokemon
+                Complete Purchase({selectedPokemon.cost} Coins)
               </button>
+              <button onClick={handleCancel}>Cancel</button>
             </div>
           </>
         )}
@@ -64,16 +75,16 @@ export default function Store({ user }) {
                     )} */}
                 </div>
                 <p className={styles.paraText}>
-                  You've successfully chosen your pet. This is a big step in
+                  You've successfully bought your pet. This is a big step in
                   your journey. Your pet is eager to grow and evolve, and it's
                   all up to you now.
-                </p>{" "}
+                </p>
                 <br />
                 <p className={styles.paraText}>
                   Remember, every task you complete will help your pet. The more
                   tasks you do, the faster your pet will evolve. It's not just
                   about helping your pet grow, it's about growing yourself too.
-                </p>{" "}
+                </p>
                 <br />
                 <p className={styles.paraText}>
                   So, let's get started! Your pet is excited to see what you can

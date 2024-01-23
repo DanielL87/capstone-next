@@ -73,10 +73,6 @@ export default function StoreInventoryPets({
     fetchInventory();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(inventoryArray);
-  // }, [inventoryArray]);
-
   function handleSelectPurchase(pokemon) {
     setSection("namePet");
     setSelectedPokemon(pokemon);

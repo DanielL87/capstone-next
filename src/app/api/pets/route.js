@@ -30,7 +30,8 @@ export async function GET() {
 
 export async function POST(req) {
   try {
-    const { nickname, type, spriteUrl, name, pokedexId } = await req.json();
+    const { nickname, type, spriteUrl, name, pokedexId, isShiny, isRare } =
+      await req.json();
     const user = await fetchUser();
 
     if (!user) {
@@ -48,6 +49,8 @@ export async function POST(req) {
         type,
         spriteUrl,
         pokedexId,
+        isShiny,
+        isRare,
       },
     });
 
