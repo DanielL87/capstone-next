@@ -1460,6 +1460,36 @@ store */
   box-shadow: 1px 2px 7px -3px #2d2d2d;
 }
 
+.taskCategoryContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.categoryTitle {
+  font-family: "Jura", sans-serif;
+  font-size: 16px;
+  color: #003650;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: auto;
+  
+}
+.categoryInput {
+  display: flex;
+  height: 25px;
+  padding: 5px;
+  border-radius: 5px;
+  font-family: "Jura", sans-serif;
+  width: auto;
+}
+
 .taskInput {
   display: flex;
   height: 25px;

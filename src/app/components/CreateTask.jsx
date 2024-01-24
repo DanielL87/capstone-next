@@ -32,24 +32,32 @@ export default function CreateTask({ userId }) {
   return (
     <>
       <div className={styles.taskFormMainContainer}>
-        
-          <form id="taskForm" className={styles.taskForm} onSubmit={handleSubmit}>
+        <form id='taskForm' className={styles.taskForm} onSubmit={handleSubmit}>
           <p className={styles.formTitle}>Create a Task</p>
+          <div className={styles.taskCategoryContainer}>
+            <label className={styles.categoryTitle}>Task Category</label>
             <input
-              className={styles.taskInput}
+              className={styles.categoryInput}
               type='text'
               value={task}
-              onChange={(e) => setTask(e.target.value)}
-              placeholder='Enter a Task..'
+              placeholder='Enter a Category..'
               required
             />
-          </form>
-          <button form="taskForm" className={styles.registerBtn} type='submit'>
-            Submit
-          </button>
-          {message && <p className={styles.successText}>{message}</p>}{' '}
-          {/* Display the message */}
-        
+          </div>
+          <input
+            className={styles.taskInput}
+            type='text'
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
+            placeholder='Enter a Task..'
+            required
+          />
+        </form>
+        <button form='taskForm' className={styles.registerBtn} type='submit'>
+          Submit
+        </button>
+        {message && <p className={styles.successText}>{message}</p>}{' '}
+        {/* Display the message */}
       </div>
     </>
   );

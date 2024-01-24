@@ -7,7 +7,7 @@ export default function DisplayTasks({ userId }) {
 
   useEffect(() => {
     const fetchTasks = async () => {
-      const response = await fetch(`api/user/${userId}`);
+      const response = await fetch(`api/tasks/${userId}`);
       const data = await response.json();
 
       setTasks(data.tasks);

@@ -29,7 +29,6 @@ export default function StoreInventoryPets({
       );
       const pokemonData = await request.json();
 
-      //checks for legendary or mythical status
       let isRare = false;
       let rarityResponse = await fetch(
         `https://pokeapi.co/api/v2/pokemon-species/${pokemonData.id}/`
@@ -40,15 +39,13 @@ export default function StoreInventoryPets({
         isRare = true;
       }
 
-      let cost = 20; // Standard cost
+      let cost = 20;
 
       if (boolean) {
-        // Shiny + 10
         cost += 10;
       }
 
       if (isRare) {
-        // Rare x 2
         cost *= 2;
       }
 

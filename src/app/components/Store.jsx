@@ -1,8 +1,11 @@
 "use client";
-import StoreInventoryPets from "@/app/components/StoreInventoryPets.jsx";
-import styles from "../page.module.css";
 import { useEffect, useState } from "react";
+
+import StoreInventoryPets from "@/app/components/StoreInventoryPets.jsx";
+
+import styles from "../page.module.css";
 import PokemonDetails from "./PokemonDetails.jsx";
+
 export default function Store({ user, wallet }) {
   const [section, setSection] = useState("selectPet");
   const [nickname, setNickname] = useState("");
@@ -10,6 +13,7 @@ export default function Store({ user, wallet }) {
   const [purchasedPet, setPurchasedPet] = useState(null);
   const [cost, setCost] = useState(0);
   const [error, setError] = useState("");
+  const [purchaseMessage, setPurchaseMessage] = useState(""); // Fixed this line
 
   async function handleSubmit() {
     if (!nickname) {
@@ -29,12 +33,17 @@ export default function Store({ user, wallet }) {
         isShiny: selectedPokemon.isShiny,
       }),
     });
-    const info = await response.json();
-    console.log(info);
-    getPurchasedPet(info.pet.id);
 
-    setError("");
-    setSection("congrats");
+    const info = await response.json();
+
+    if (info.pet) {
+      getPurchasedPet(info.pet.id);
+      handlePurchase(info.pet.cost);
+      setError("");
+      setSection("congrats");
+    } else {
+      setError("Failed to create pet. Please try again.");
+    }
   }
 
   async function getPurchasedPet(petId) {
@@ -60,6 +69,51 @@ export default function Store({ user, wallet }) {
     console.log(cost);
     console.log(wallet);
   }, [selectedPokemon, nickname, cost]);
+
+  async function handlePurchase(cost) {
+    try {
+      const response = await fetch(`/api/wallet`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch wallet balance");
+      }
+
+      const walletData = await response.json();
+      const walletBalance = walletData?.wallet?.coin;
+
+      if (walletBalance < cost) {
+        setPurchaseMessage(
+          "Insufficient funds. Please add more coins to your wallet."
+        );
+      } else {
+        // Make an API call to update the wallet balance
+        const updateResponse = await fetch(`/api/wallet`, {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ coin: walletBalance - cost }),
+        });
+
+        if (!updateResponse.ok) {
+          throw new Error("Failed to update wallet balance");
+        }
+
+        setPurchaseMessage("Purchase successful!");
+
+        // Further logic after a successful purchase (if needed)
+      }
+    } catch (error) {
+      console.error("Error handling purchase:", error.message);
+      setPurchaseMessage("Failed to handle purchase. Please try again.");
+    }
+  }
 
   return (
     <>
@@ -108,8 +162,6 @@ export default function Store({ user, wallet }) {
             <p>{error}</p>
           </>
         )}
-
-        {/* Congrats section */}
         {section === "congrats" && (
           <>
             <div className={styles.congratsMainContainer}>
