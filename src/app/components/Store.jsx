@@ -13,7 +13,7 @@ export default function Store({ user, wallet }) {
   const [purchasedPet, setPurchasedPet] = useState(null);
   const [cost, setCost] = useState(0);
   const [error, setError] = useState("");
-  const [purchaseMessage, setPurchaseMessage] = useState(""); // Fixed this line
+  const [purchaseMessage, setPurchaseMessage] = useState("");
 
   async function handleSubmit() {
     if (!nickname) {
@@ -64,63 +64,57 @@ export default function Store({ user, wallet }) {
   }
 
   useEffect(() => {
-    console.log(selectedPokemon);
-    console.log(nickname);
-    console.log(cost);
-    console.log(wallet);
+    // console.log(selectedPokemon);
+    // console.log(nickname);
+    // console.log(cost);
+    // console.log(wallet);
   }, [selectedPokemon, nickname, cost]);
-
-  async function handlePurchase(cost) {
+  async function handlePurchase() {
     try {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        console.error("Token not found. User may not be authenticated.");
+        setPurchaseMessage(
+          "Failed to handle purchase. Please log in and try again."
+        );
+        return;
+      }
+
+      const coinChange = wallet.coin - cost;
+
       const response = await fetch(`/api/wallet`, {
-        method: "GET",
+        method: "PUT",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: token,
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify({ coinChange: -cost }),
       });
 
+      console.log("Wallet Update Response:", response);
+
       if (!response.ok) {
-        throw new Error("Failed to fetch wallet balance");
+        console.error("Failed to update wallet balance:", response.status);
+        setPurchaseMessage("Failed to handle purchase. Please try again.");
+        return;
       }
 
-      const walletData = await response.json();
-      const walletBalance = walletData?.wallet?.coin;
+      const result = await response.json();
+      console.log("Wallet Update Result:", result);
 
-      if (walletBalance < cost) {
-        setPurchaseMessage(
-          "Insufficient funds. Please add more coins to your wallet."
-        );
-      } else {
-        // Make an API call to update the wallet balance
-        const updateResponse = await fetch(`/api/wallet`, {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ coin: walletBalance - cost }),
-        });
-
-        if (!updateResponse.ok) {
-          throw new Error("Failed to update wallet balance");
-        }
-
-        setPurchaseMessage("Purchase successful!");
-
-        // Further logic after a successful purchase (if needed)
-      }
+      setPurchaseMessage("Purchase successful!");
+      setSection("congrats");
     } catch (error) {
       console.error("Error handling purchase:", error.message);
       setPurchaseMessage("Failed to handle purchase. Please try again.");
     }
   }
-
   return (
     <>
       <div className={styles.storeMainContainer}>
         {section === "selectPet" && (
           <div>
-            {" "}
             <StoreInventoryPets
               isStore={true}
               setSection={setSection}
@@ -135,7 +129,6 @@ export default function Store({ user, wallet }) {
           </div>
         )}
 
-        {/* Name your pet section */}
         {section === "namePet" && (
           <>
             {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} />}
