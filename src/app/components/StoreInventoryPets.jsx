@@ -10,7 +10,6 @@ export default function StoreInventoryPets({
   setSection,
   user,
   setSelectedPokemon,
-  selectedPokemon,
   setCost,
 }) {
   const [randomArray, setRandomArray] = useState(randomDataArray);
@@ -27,7 +26,6 @@ export default function StoreInventoryPets({
       );
       const pokemonData = await request.json();
 
-      //checks for legendary or mythical status
       let isRare = false;
       let rarityResponse = await fetch(
         `https://pokeapi.co/api/v2/pokemon-species/${pokemonData.id}/`
@@ -38,15 +36,13 @@ export default function StoreInventoryPets({
         isRare = true;
       }
 
-      let cost = 20; // Standard cost
+      let cost = 20;
 
       if (boolean) {
-        // Shiny + 10
         cost += 10;
       }
 
       if (isRare) {
-        // Rare x 2
         cost *= 2;
       }
 
@@ -81,24 +77,23 @@ export default function StoreInventoryPets({
   }
 
   return (
-    <>
-      <p className={styles.heroStoreTitle}>Featured Pets of the Day!</p>
-      <div className={styles.heroStoreContainer}>
-        {inventoryArray && (
-          <div className={styles.StoreInventoryPets}>
-            {inventoryArray.map((pokemon) => (
-              <div className={styles.heroStoreButton}>
-                <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
-                {isStore && user.id && (
+    <div>
+      {inventoryArray && (
+        <div className={styles.StoreInventoryPets}>
+          {inventoryArray.map((pokemon) => (
+            <div key={pokemon.pokedexId}>
+              <PokemonDetails pokemon={pokemon} />
+              {isStore && (
+                <div>
                   <button onClick={() => handleSelectPurchase(pokemon)}>
-                    Buy Pet: Cost : {pokemon.cost}
+                    Buy Pet: Cost: {pokemon.cost}
                   </button>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
