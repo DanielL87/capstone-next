@@ -10,8 +10,10 @@ export default function StoreInventoryPets({
   setSection,
   user,
   setSelectedPokemon,
+  setError,
   selectedPokemon,
   setCost,
+  wallet,
 }) {
   const [randomArray, setRandomArray] = useState(randomDataArray);
   const [inventoryArray, setInventoryArray] = useState(null);
@@ -75,9 +77,14 @@ export default function StoreInventoryPets({
   }, []);
 
   function handleSelectPurchase(pokemon) {
+    if (wallet.coin < pokemon.cost) {
+      return setError("You dont have enough coins to make this purchase!");
+    }
+
     setSection("namePet");
     setSelectedPokemon(pokemon);
     setCost(pokemon.cost);
+    setError("");
   }
 
   return (
@@ -90,9 +97,11 @@ export default function StoreInventoryPets({
               <div className={styles.heroStoreButton}>
                 <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
                 {isStore && user.id && (
-                  <button onClick={() => handleSelectPurchase(pokemon)}>
-                    Buy Pet: Cost : {pokemon.cost}
-                  </button>
+                  <div>
+                    <button onClick={() => handleSelectPurchase(pokemon)}>
+                      Buy Pet: Cost : {pokemon.cost}
+                    </button>
+                  </div>
                 )}
               </div>
             ))}

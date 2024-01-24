@@ -3,7 +3,7 @@ import StoreInventoryPets from "@/app/components/StoreInventoryPets.jsx";
 import styles from "../page.module.css";
 import { useEffect, useState } from "react";
 import PokemonDetails from "./PokemonDetails.jsx";
-export default function Store({ user }) {
+export default function Store({ user, wallet }) {
   const [section, setSection] = useState("selectPet");
   const [nickname, setNickname] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
@@ -30,6 +30,7 @@ export default function Store({ user }) {
       }),
     });
     const info = await response.json();
+    console.log(info);
     getPurchasedPet(info.pet.id);
 
     setError("");
@@ -57,20 +58,27 @@ export default function Store({ user }) {
     console.log(selectedPokemon);
     console.log(nickname);
     console.log(cost);
+    console.log(wallet);
   }, [selectedPokemon, nickname, cost]);
 
   return (
     <>
       <div className={styles.storeMainContainer}>
         {section === "selectPet" && (
-          <StoreInventoryPets
-            isStore={true}
-            setSection={setSection}
-            user={user}
-            setSelectedPokemon={setSelectedPokemon}
-            selectedPokemon={selectedPokemon}
-            setCost={setCost}
-          />
+          <div>
+            {" "}
+            <StoreInventoryPets
+              isStore={true}
+              setSection={setSection}
+              user={user}
+              setSelectedPokemon={setSelectedPokemon}
+              selectedPokemon={selectedPokemon}
+              setCost={setCost}
+              wallet={wallet}
+              setError={setError}
+            />
+            <p className={styles.errorStoreTitle}>{error}</p>
+          </div>
         )}
 
         {/* Name your pet section */}
