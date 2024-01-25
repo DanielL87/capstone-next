@@ -69,7 +69,7 @@ export async function POST(req) {
 
 export async function PUT(req) {
   try {
-    const { coinIncrease } = await req.json();
+    const { coinChange } = await req.json();
     const user = await fetchUser();
 
     if (!user) {
@@ -94,36 +94,12 @@ export async function PUT(req) {
       where: { userId: user.id },
       data: {
         coin: {
-          increment: coinIncrease,
+          increment: coinChange,
         },
       },
     });
 
     return NextResponse.json({ success: true, wallet: updatedWallet });
-  } catch (error) {
-    return NextResponse.json({ success: false, error: error.message });
-  }
-}
-
-export async function DELETE() {
-  try {
-    const user = await fetchUser();
-
-    if (!user.id) {
-      return NextResponse.json({
-        success: false,
-        message: "Please login to delete the wallet!",
-      });
-    }
-
-    await prisma.wallet.delete({
-      where: { userId: user.id },
-    });
-
-    return NextResponse.json({
-      success: true,
-      message: "Wallet deleted successfully",
-    });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message });
   }
