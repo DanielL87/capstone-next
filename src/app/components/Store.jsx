@@ -89,10 +89,12 @@ export default function Store({ user, wallet }) {
           Authorization: token,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ coinChange: -cost }),
+        body: JSON.stringify({ coinChange }),
       });
-
       console.log("Wallet Update Response:", response);
+      console.log("Wallet Balance:", wallet.coin);
+      console.log("Cost of Pet:", cost);
+      console.log("Coin Change:", coinChange);
 
       if (!response.ok) {
         console.error("Failed to update wallet balance:", response.status);
