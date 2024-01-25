@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
+import { RiCoinsFill } from "react-icons/ri";
 import { randomDataArray } from "../lib/randomStorePets.js";
 import styles from "../page.module.css";
 import PokemonDetails from "./PokemonDetails.jsx";
@@ -91,14 +91,12 @@ export default function StoreInventoryPets({
         {inventoryArray && (
           <div className={styles.StoreInventoryPets}>
             {inventoryArray.map((pokemon) => (
-              <div className={styles.heroStoreButton}>
+              <div className={styles.storeInventoryPetsContainer}>
                 <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
                 {isStore && user.id && (
-                  <div>
-                    <button onClick={() => handleSelectPurchase(pokemon)}>
-                      Buy Pet: Cost : {pokemon.cost}
+                    <button className={styles.buyPetBtn} onClick={() => handleSelectPurchase(pokemon)}>
+                      Buy Pet for <RiCoinsFill className={styles.coin} />{pokemon.cost}
                     </button>
-                  </div>
                 )}
               </div>
             ))}
