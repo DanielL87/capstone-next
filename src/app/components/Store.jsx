@@ -1,8 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-
 import StoreInventoryPets from "@/app/components/StoreInventoryPets.jsx";
-
 import styles from "../page.module.css";
 import PokemonDetails from "./PokemonDetails.jsx";
 
@@ -14,8 +12,10 @@ export default function Store({ user, wallet }) {
   const [cost, setCost] = useState(0);
   const [error, setError] = useState("");
   const [purchaseMessage, setPurchaseMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit() {
+    setLoading(true);
     if (!nickname) {
       return setError("Please provide a nickname for your Pet!");
     }
@@ -38,12 +38,13 @@ export default function Store({ user, wallet }) {
 
     if (info.pet) {
       getPurchasedPet(info.pet.id);
-      handlePurchase(info.pet.cost);
+      handlePurchase();
       setError("");
       setSection("congrats");
     } else {
       setError("Failed to create pet. Please try again.");
     }
+    setLoading(false);
   }
 
   async function getPurchasedPet(petId) {
@@ -63,13 +64,16 @@ export default function Store({ user, wallet }) {
     setSelectedPokemon(null);
   }
 
-  useEffect(() => {
-    // console.log(selectedPokemon);
-    // console.log(nickname);
-    // console.log(cost);
-    // console.log(wallet);
-  }, [selectedPokemon, nickname, cost]);
+  //   useEffect(() => {
+  //     console.log(selectedPokemon);
+  //     console.log(nickname);
+  //     console.log(cost);
+  //     console.log(wallet);
+  //   }, [selectedPokemon, nickname, cost]);
+
   async function handlePurchase() {
+    const coinChange = wallet.coin - cost;
+
     try {
       const token = localStorage.getItem("token");
 
@@ -105,8 +109,29 @@ export default function Store({ user, wallet }) {
       const result = await response.json();
       console.log("Wallet Update Result:", result);
 
-      setPurchaseMessage("Purchase successful!");
-      setSection("congrats");
+      if (walletBalance < cost) {
+        setPurchaseMessage(
+          "Insufficient funds. Please add more coins to your wallet."
+        );
+      } else {
+        // Make an API call to update the wallet balance
+        const updateResponse = await fetch(`/api/wallet`, {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ coin: coinChange }),
+        });
+
+        if (!updateResponse.ok) {
+          throw new Error("Failed to update wallet balance");
+        }
+
+        setPurchaseMessage("Purchase successful!");
+
+        // Further logic after a successful purchase (if needed)
+      }
     } catch (error) {
       console.error("Error handling purchase:", error.message);
       setPurchaseMessage("Failed to handle purchase. Please try again.");
@@ -117,17 +142,19 @@ export default function Store({ user, wallet }) {
       <div className={styles.storeMainContainer}>
         {section === "selectPet" && (
           <div>
-            <StoreInventoryPets
-              isStore={true}
-              setSection={setSection}
-              user={user}
-              setSelectedPokemon={setSelectedPokemon}
-              selectedPokemon={selectedPokemon}
-              setCost={setCost}
-              wallet={wallet}
-              setError={setError}
-            />
-            <p className={styles.errorStoreTitle}>{error}</p>
+            <div className={styles.storeInventoryContainer}>
+              <StoreInventoryPets
+                isStore={true}
+                setSection={setSection}
+                user={user}
+                setSelectedPokemon={setSelectedPokemon}
+                selectedPokemon={selectedPokemon}
+                setCost={setCost}
+                wallet={wallet}
+                setError={setError}
+              />
+              <p className={styles.errorStoreTitle}>{error}</p>
+            </div>
           </div>
         )}
 
@@ -137,7 +164,6 @@ export default function Store({ user, wallet }) {
             <div>
               <p className={styles.selectPetTitle}>Name your Pet!</p>
             </div>
-
             <div className={styles.namePetContainer}>
               <input
                 value={nickname}
@@ -149,18 +175,24 @@ export default function Store({ user, wallet }) {
               <button
                 className={styles.petNameSubmitBtn}
                 onClick={handleSubmit}
+                disabled={loading}
               >
-                Complete Purchase({selectedPokemon.cost} Coins)
+                {loading
+                  ? "Completing Purchase..."
+                  : `Complete Purchase (${selectedPokemon.cost} Coins)`}
               </button>
-              <button onClick={handleCancel}>Cancel</button>
+              <button className={styles.cancelBtn} onClick={handleCancel}>
+                Cancel
+              </button>
             </div>
             <p>{error}</p>
           </>
         )}
+
         {section === "congrats" && (
           <>
-            <div className={styles.congratsMainContainer}>
-              <div className={styles.congratsContainer}>
+            <div className={styles.congratsStoreMainContainer}>
+              <div className={styles.congratsStoreContainer}>
                 <p className={styles.selectPetTitle}>Congratulations!</p>
                 <div className={styles.pokedexContainer}>
                   {purchasedPet && <PokemonDetails pokemon={purchasedPet} />}

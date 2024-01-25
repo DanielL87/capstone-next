@@ -1,31 +1,40 @@
 'use client';
 import React, { useState } from 'react';
 import styles from '../page.module.css';
-export default function CreateTask({ userId }) {
-  const [task, setTask] = useState('');
+
+export default function CreateTask() {
+  const [name, setName] = useState('');
+  const [pet, setPet] = useState('');
+  const [worth, setWorth] = useState(1);
+  const [category, setCategory] = useState('');
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (task.trim() === '') {
-      setMessage('Input may not be blank.'); // Set the error message
-      return;
-    }
+    try {
+      const response = await fetch(`api/tasks/${'userId'}/${'petId'}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ pet, worth: 1, category, name }),
+      });
 
-    const response = await fetch(`api/user/${userId}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ task }),
-    });
+      if (response.ok) {
+        const data = await response.json(); // If you need to use the response data
 
-    if (response.ok) {
-      setTask('');
-      setMessage('Task creation successful!'); // Set the success message
-    } else {
-      // Handle error here
+        setName('');
+        setPet('');
+        setCategory('');
+        setMessage('Task creation successful!'); // Set the success message
+      } else {
+        const errorData = await response.json(); // Get more info about the error
+        console.log(errorData); // Log the error data
+        setMessage('Failed to create task'); // Set the error message
+      }
+    } catch (error) {
+      console.log(error); // Log any errors that occur during the fetch
     }
   };
 
@@ -39,7 +48,8 @@ export default function CreateTask({ userId }) {
             <input
               className={styles.categoryInput}
               type='text'
-              value={task}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
               placeholder='Enter a Category..'
               required
             />
@@ -47,8 +57,8 @@ export default function CreateTask({ userId }) {
           <input
             className={styles.taskInput}
             type='text'
-            value={task}
-            onChange={(e) => setTask(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             placeholder='Enter a Task..'
             required
           />
