@@ -159,7 +159,7 @@ export default function Store({ user, wallet }) {
         {section === "namePet" && (
           <>
             {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} />}
-            <div>
+            <div className={styles.storeNamePetMainContainer}>
               <p className={styles.selectPetTitle}>Name your Pet!</p>
             </div>
             <div className={styles.namePetContainer}>

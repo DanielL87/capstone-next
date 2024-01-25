@@ -24,15 +24,17 @@ export default async function ProfilePage() {
       {user.id ? (
         <div className={styles.pokedexUserMainContainer}>
           <h1 className={styles.pokedexUserTitle}>Welcome {user.username}!</h1>
-          <div className={styles.pokedexUserWalletContainer}>
-            <Wallet user={user} userWallet={userWallet} />
-          </div>
+
           <div className={styles.pokedexUserContainer}>
             <div className={styles.pokedexContainer}>
               {userPokemon.length > 0 ? (
                 userPokemon.map((pokemon) => (
                   <div className={styles.pokedexCardContainer}>
-                    <PokemonDetails key={pokemon.id} pokemon={pokemon} showHearts={true} />
+                    <PokemonDetails
+                      key={pokemon.id}
+                      pokemon={pokemon}
+                      showHearts={true}
+                    />
                     <Link
                       className={styles.registerBtn}
                       href={`/pet/${pokemon.id}`}
