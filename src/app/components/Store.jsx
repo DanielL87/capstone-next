@@ -75,19 +75,37 @@ export default function Store({ user, wallet }) {
     const coinChange = wallet.coin - cost;
 
     try {
-      const response = await fetch(`/api/wallet`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const token = localStorage.getItem("token");
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch wallet balance");
+      if (!token) {
+        console.error("Token not found. User may not be authenticated.");
+        setPurchaseMessage(
+          "Failed to handle purchase. Please log in and try again."
+        );
+        return;
       }
 
-      const walletData = await response.json();
-      const walletBalance = walletData?.wallet?.coin;
+      const coinChange = wallet.coin - cost;
+
+      const response = await fetch(`/api/wallet`, {
+        method: "PUT",
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ coinChange: -cost }),
+      });
+
+      console.log("Wallet Update Response:", response);
+
+      if (!response.ok) {
+        console.error("Failed to update wallet balance:", response.status);
+        setPurchaseMessage("Failed to handle purchase. Please try again.");
+        return;
+      }
+
+      const result = await response.json();
+      console.log("Wallet Update Result:", result);
 
       if (walletBalance < cost) {
         setPurchaseMessage(
@@ -117,35 +135,33 @@ export default function Store({ user, wallet }) {
       setPurchaseMessage("Failed to handle purchase. Please try again.");
     }
   }
-
   return (
     <>
       <div className={styles.storeMainContainer}>
         {section === "selectPet" && (
           <div>
-            {" "}
-            <StoreInventoryPets
-              isStore={true}
-              setSection={setSection}
-              user={user}
-              setSelectedPokemon={setSelectedPokemon}
-              selectedPokemon={selectedPokemon}
-              setCost={setCost}
-              wallet={wallet}
-              setError={setError}
-            />
-            <p className={styles.errorStoreTitle}>{error}</p>
+            <div className={styles.storeInventoryContainer}>
+              <StoreInventoryPets
+                isStore={true}
+                setSection={setSection}
+                user={user}
+                setSelectedPokemon={setSelectedPokemon}
+                selectedPokemon={selectedPokemon}
+                setCost={setCost}
+                wallet={wallet}
+                setError={setError}
+              />
+              <p className={styles.errorStoreTitle}>{error}</p>
+            </div>
           </div>
         )}
 
-        {/* Name your pet section */}
         {section === "namePet" && (
           <>
             {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} />}
             <div>
               <p className={styles.selectPetTitle}>Name your Pet!</p>
             </div>
-
             <div className={styles.namePetContainer}>
               <input
                 value={nickname}
@@ -163,15 +179,18 @@ export default function Store({ user, wallet }) {
                   ? "Completing Purchase..."
                   : `Complete Purchase (${selectedPokemon.cost} Coins)`}
               </button>
-              <button onClick={handleCancel}>Cancel</button>
+              <button className={styles.cancelBtn} onClick={handleCancel}>
+                Cancel
+              </button>
             </div>
             <p>{error}</p>
           </>
         )}
+
         {section === "congrats" && (
           <>
-            <div className={styles.congratsMainContainer}>
-              <div className={styles.congratsContainer}>
+            <div className={styles.congratsStoreMainContainer}>
+              <div className={styles.congratsStoreContainer}>
                 <p className={styles.selectPetTitle}>Congratulations!</p>
                 <div className={styles.pokedexContainer}>
                   {purchasedPet && <PokemonDetails pokemon={purchasedPet} />}
