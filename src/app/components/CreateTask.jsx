@@ -30,7 +30,10 @@ export default function CreateTask({user}) {
     try {
       const response = await fetch('/api/tasks', {
         method: 'POST',
-        body: JSON.stringify({ name: taskName, category: category, worth: worth}),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: taskName, category: category, worth: worth, petId: petId }),
       });
       const data = await response.json();
       if (data.error) {
