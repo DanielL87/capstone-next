@@ -776,6 +776,7 @@
   color: #003650;
   text-transform: capitalize;
   margin: 0;
+  height: 23px;
   padding-top: 3px;
 }
 .rarePokemon {
@@ -786,7 +787,16 @@
   color: #003650;
   text-transform: capitalize;
   margin: 0;
-  padding-top: 3px;
+  padding-bottom: 2px;
+}
+
+.rarityContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
 }
 
 .rareIcon {
@@ -801,7 +811,7 @@
   color: #003650;
   text-transform: capitalize;
   margin: 0;
-  padding-top: 3px;
+  padding-bottom: 2px;
 }
 
 .shinyIcon {
@@ -834,7 +844,7 @@
   font-weight: 600;
   color: #003650;
   text-transform: capitalize;
-  margin: 5px 0 15px 0;
+  margin: 2px 0 15px 0;
 }
 
 .pokemon {
@@ -857,7 +867,7 @@
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
   text-transform: capitalize;
-  margin: 0 0 5px 0;
+  margin: 6px 0 5px 0;
 }
 .stageId {
   text-align: center;
