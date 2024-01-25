@@ -2,39 +2,46 @@
 import React, { useState } from 'react';
 import styles from '../page.module.css';
 
-export default function CreateTask() {
+export default function CreateTask({user}) {
   const [name, setName] = useState('');
   const [pet, setPet] = useState('');
   const [worth, setWorth] = useState(1);
   const [category, setCategory] = useState('');
   const [message, setMessage] = useState('');
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(user.id);
+  const [submitClicked, setSubmitClicked] = useState(false);
+  const [taskName, setTaskName] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setSubmitClicked(true);
+
+    if (!isLoggedIn) {
+      setError('You must be logged in to submit.');
+      return;
+    }
+    
+    if (!taskName) {
+      setError('Fields must be filled before submitting.');
+      return;
+    }
 
     try {
-      const response = await fetch(`api/tasks/${'userId'}/${'petId'}`, {
+      const response = await fetch('/api/tasks', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ pet, worth: 1, category, name }),
+        body: JSON.stringify({ name: taskName, category: category, worth: worth}),
       });
-
-      if (response.ok) {
-        const data = await response.json(); // If you need to use the response data
-
-        setName('');
-        setPet('');
-        setCategory('');
-        setMessage('Task creation successful!'); // Set the success message
+      const data = await response.json();
+      if (data.error) {
+        setError(data.error);
       } else {
-        const errorData = await response.json(); // Get more info about the error
-        console.log(errorData); // Log the error data
-        setMessage('Failed to create task'); // Set the error message
+        setTaskName('');
+        router.refresh();
+        
       }
     } catch (error) {
-      console.log(error); // Log any errors that occur during the fetch
+      console.error(error);
     }
   };
 
@@ -67,7 +74,6 @@ export default function CreateTask() {
           Submit
         </button>
         {message && <p className={styles.successText}>{message}</p>}{' '}
-        {/* Display the message */}
       </div>
     </>
   );
