@@ -4,14 +4,16 @@ import Sidebar from '../components/Sidebar.jsx';
 import { fetchUser } from '../lib/fetchUser.js';
 import styles from '../page.module.css';
 import Logout from '../components/Logout.jsx';
+import { prisma } from '../lib/prisma.js';
+import { RiCoinsFill } from 'react-icons/ri';
 
 export default async function Navbar() {
   const user = await fetchUser();
+  const wallet = await prisma.wallet.findFirst({ where: { userId: user.id } });
 
   return (
     <>
       <div className={styles.navBarContainer}>
-        
         <div className={styles.logoSidebarContainer}>
           <Link href={'/'}>
             <img className={styles.logo} src='/Logo.png' alt='Logo' />
@@ -34,7 +36,13 @@ export default async function Navbar() {
           </div>
         ) : (
           <div className={styles.logoutContainer}>
-            <div className={styles.username}>Welcome {user.username}!</div>
+            <div className={styles.username}>
+              Welcome {user.username}!
+              <p className={styles.userNavCoins}>
+                Coins: <RiCoinsFill className={styles.navCoin} />{' '}
+                <span className={styles.spanCoin}>{wallet.coin}</span>{' '}
+              </p>
+            </div>
             <Logout />
           </div>
         )}

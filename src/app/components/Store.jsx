@@ -114,7 +114,11 @@ export default function Store({ user, wallet }) {
     <>
       <div className={styles.storeMainContainer}>
         {section === "selectPet" && (
+
           <div>
+
+          <div className={styles.storeInventoryContainer}>
+
             <StoreInventoryPets
               isStore={true}
               setSection={setSection}
@@ -148,17 +152,17 @@ export default function Store({ user, wallet }) {
                 className={styles.petNameSubmitBtn}
                 onClick={handleSubmit}
               >
-                Complete Purchase({selectedPokemon.cost} Coins)
+                Complete Purchase ({selectedPokemon.cost} Coins)
               </button>
-              <button onClick={handleCancel}>Cancel</button>
+              <button className={styles.cancelBtn} onClick={handleCancel}>Cancel</button>
             </div>
             <p>{error}</p>
           </>
         )}
         {section === "congrats" && (
           <>
-            <div className={styles.congratsMainContainer}>
-              <div className={styles.congratsContainer}>
+            <div className={styles.congratsStoreMainContainer}>
+              <div className={styles.congratsStoreContainer}>
                 <p className={styles.selectPetTitle}>Congratulations!</p>
                 <div className={styles.pokedexContainer}>
                   {purchasedPet && <PokemonDetails pokemon={purchasedPet} />}

@@ -1,12 +1,15 @@
 import DisplayTasks from '@/app/components/DisplayTasks.jsx';
 import React from 'react';
 
-export default function UserTasks() {
+export default async function UserTasks() {
+
+  
+
   return (
     <>
       <div>
         <div>
-          <DisplayTasks />
+          <DisplayTasks userId={userId} petId={petId}/>
         </div>
       </div>
     </>
