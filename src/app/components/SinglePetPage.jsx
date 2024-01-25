@@ -1,31 +1,34 @@
-import styles from '../page.module.css';
-import CreateTask from './CreateTask.jsx';
-import DisplayTasks from './DisplayTasks.jsx';
-import PetHearts from './PetHearts.jsx';
+import styles from "../page.module.css";
+import CreateTask from "./CreateTask.jsx";
+import DisplayTasks from "./DisplayTasks.jsx";
+import EvolvePet from "./EvolvePet.jsx";
+import PetHearts from "./PetHearts.jsx";
 
 export default function SinglePetInfo({ pokemonData, pet }) {
+  const imageSrc = pet.isShiny
+    ? pokemonData.sprites.other["official-artwork"].front_shiny
+    : pokemonData.sprites.other["official-artwork"].front_default;
+
   return (
     <>
       <div className={styles.pokedexSinglePetMainContainer}>
         <div className={styles.singlePetMainContainer}>
           <div className={styles.singlePetContainer}>
-            <img
-              src={pokemonData.sprites.other['official-artwork'].front_default}
-              alt={`${pokemonData.name} sprite`}
-            />
+            <img src={imageSrc} alt={`${pokemonData.name} sprite`} />
+            <EvolvePet pet={pet} />
             <div className={styles.singlePetHearts}>
-              <PetHearts showHearts={true}/>
+              <PetHearts showHearts={true} />
             </div>
           </div>
           <div className={styles.pokemonStatsMainContainer}>
             <div className={styles.pokemonStatsContainer}>
               <div className={styles.content}>
                 <p className={styles.petName}>
-                  <span className={styles.petNameSpan}>Name: </span>{' '}
+                  <span className={styles.petNameSpan}>Name: </span>{" "}
                   {pet.nickname}
                 </p>
                 <p className={styles.species}>
-                  <span className={styles.speciesName}>Species:</span>{' '}
+                  <span className={styles.speciesName}>Species:</span>{" "}
                   {pet.name}
                 </p>
 
@@ -41,12 +44,12 @@ export default function SinglePetInfo({ pokemonData, pet }) {
                           <span className={styles.speciesInfo}>
                             <br />
                             Hidden:
-                            <br />{' '}
+                            <br />{" "}
                           </span>
                         )}
                         {ability.ability.name.charAt(0).toUpperCase() +
                           ability.ability.name.slice(1)}
-                        {ability.is_hidden && ' '}
+                        {ability.is_hidden && " "}
                       </p>
                     ))}
                   </div>
