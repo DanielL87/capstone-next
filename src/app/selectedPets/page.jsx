@@ -85,7 +85,7 @@ export default function SelectPet() {
         <p className={styles.selectPetTitle}>Congratulations!</p>
         <div className={styles.pokedexContainer}>
           {starterArray.map((pokemon) => (
-            <PokemonDetails pokemon={pokemon} />
+            <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
           ))}
         </div>
         <p className={styles.paraText}>
