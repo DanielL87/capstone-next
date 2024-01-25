@@ -228,6 +228,7 @@
   background-color: #d2fef46c;
   padding-top: 70px;
   padding-bottom: 70px;
+  margin-top: 2rem;
 }
 
 .heroMainContainer {
@@ -621,6 +622,7 @@
   justify-content: flex-start;
   flex-direction: column;
   min-height: 100vh;
+  margin-top: 2rem;
 }
 
 .pokedexUserContainer {
@@ -883,6 +885,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2rem;
 }
 .pokedexTitle {
   text-align: center;
@@ -1415,6 +1418,15 @@
   min-height: 100vh;
 }
 
+.storeTitle {
+  text-align: center;
+  justify-content: center;
+  font-family: 'Sansita', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-size: 48px;
+  color: #003650;
+}
 .storeInventoryContainer {
   display: flex;
   flex-direction: column;
@@ -1514,8 +1526,6 @@
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding-top: 20px;
-  padding-bottom: 20px;
 }
 .paraText {
   font-family: 'Jura', sans-serif;

@@ -137,7 +137,9 @@ export default function Store({ user, wallet }) {
   }
   return (
     <>
+    
       <div className={styles.storeMainContainer}>
+      <p className={styles.storeTitle}>Featured Pets of the Day!</p>
         {section === "selectPet" && (
           <div>
             <div className={styles.storeInventoryContainer}>
