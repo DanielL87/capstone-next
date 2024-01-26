@@ -88,7 +88,7 @@ export default function StoreInventoryPets({
 
   return (
     <>
-      <p className={styles.heroStoreTitle}>Featured Pets of the Day!</p>
+      
       <div className={styles.heroStoreContainer}>
         {inventoryArray && (
           <div className={styles.StoreInventoryPets}>

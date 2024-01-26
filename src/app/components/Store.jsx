@@ -94,7 +94,9 @@ export default function Store({ user, wallet }) {
 
   return (
     <>
+    
       <div className={styles.storeMainContainer}>
+      <p className={styles.storeTitle}>Featured Pets of the Day!</p>
         {section === "selectPet" && (
           <div>
             <div className={styles.storeInventoryContainer}>
@@ -116,7 +118,7 @@ export default function Store({ user, wallet }) {
         {section === "namePet" && (
           <>
             {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} />}
-            <div>
+            <div className={styles.storeNamePetMainContainer}>
               <p className={styles.selectPetTitle}>Name your Pet!</p>
             </div>
             <div className={styles.namePetContainer}>

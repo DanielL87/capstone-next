@@ -148,6 +148,7 @@ export default function LandingPage({ user }) {
 
       {/* Store Container */}
       <div className={styles.heroStoreMainContainer}>
+      <p className={styles.heroStoreTitle}>Featured Pets of the Day!</p>
         <div className={styles.heroStoreCardContainer}>
           <StoreInventoryPets showHearts={false} />
         </div>

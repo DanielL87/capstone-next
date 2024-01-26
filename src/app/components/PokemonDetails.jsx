@@ -30,9 +30,8 @@ export default function PokemonDetails({
   return (
     <>
       <div className={styles.pokemonMainContainer}>
-      {showHearts && <PetHearts showHearts={true} />}
+        {showHearts && <PetHearts showHearts={true} />}
         <div className={styles.pokemonMainCardContainer}>
-          
           <div
             className={`${styles.pokemonContainer} ${
               isSelected ? styles.selectedPokemonContainer : ''
@@ -48,20 +47,22 @@ export default function PokemonDetails({
                   {pokemon.capitalizedName || pokemon.name}
                 </p>
                 <div className={styles.pokeInfoContainer}>
-                  {pokemon.isRare && (
-                    <p className={styles.rarePokemon}>
-                      <span className={styles.rareIcon}>🌟</span> Rare
-                    </p>
-                  )}
-                  {pokemon.isShiny && (
-                    <p className={styles.shinyPokemon}>
-                      <span className={styles.shinyIcon}>✨</span> Shiny
-                    </p>
-                  )}
-                  {!pokemon.isRare && !pokemon.isShiny && (
-                    <p className={styles.commonPokemon}>Common</p>
-                  )}
+                  <div className={styles.rarityContainer}>
+                    {pokemon.isRare && (
+                      <p className={styles.rarePokemon}>
+                        <span className={styles.rareIcon}>🌟</span> Rare
+                      </p>
+                    )}
 
+                    {pokemon.isShiny && (
+                      <p className={styles.shinyPokemon}>
+                        <span className={styles.shinyIcon}>✨</span> Shiny
+                      </p>
+                    )}
+                    {!pokemon.isRare && !pokemon.isShiny && (
+                      <p className={styles.commonPokemon}>Common</p>
+                    )}
+                  </div>
                   <p className={styles.pokeType}>Type: {pokemon.type}</p>
                   <img
                     className={`${styles.pokemon} ${
