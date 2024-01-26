@@ -71,7 +71,7 @@ export default function SinglePetInfo({ pokemonData, pet, user }) {
             </div>
           </div>
         </div>
-        <CreateTask user={user} />
+        <CreateTask user={user} pet={pet} />
         <DisplayTasks />
       </div>
     </>

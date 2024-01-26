@@ -3,9 +3,8 @@ import React, { useState } from "react";
 import styles from "../page.module.css";
 import { useRouter } from "next/navigation.js";
 
-export default function CreateTask({ user }) {
+export default function CreateTask({ user, pet }) {
   const [name, setName] = useState("");
-  const [pet, setPet] = useState("");
   const [worth, setWorth] = useState(1);
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
@@ -38,7 +37,7 @@ export default function CreateTask({ user }) {
           name: taskName,
           category: category,
           worth: worth,
-          petId: petId,
+          petId: pet.id,
         }),
       });
       const data = await response.json();
