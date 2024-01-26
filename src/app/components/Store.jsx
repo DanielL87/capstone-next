@@ -1,10 +1,16 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 import StoreInventoryPets from "@/app/components/StoreInventoryPets.jsx";
+
 import styles from "../page.module.css";
 import PokemonDetails from "./PokemonDetails.jsx";
 
 export default function Store({ user, wallet }) {
+  const router = useRouter();
   const [section, setSection] = useState("selectPet");
   const [nickname, setNickname] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
@@ -17,7 +23,13 @@ export default function Store({ user, wallet }) {
   async function handleSubmit() {
     setLoading(true);
     if (!nickname) {
+      setLoading(false);
       return setError("Please provide a nickname for your Pet!");
+    }
+
+    if (cost > wallet.coin) {
+      setLoading(false);
+      setError("Insufficient funds. Please add more coins to your wallet.");
     }
 
     const response = await fetch("/api/pets", {
@@ -64,25 +76,7 @@ export default function Store({ user, wallet }) {
     setSelectedPokemon(null);
   }
 
-  //   useEffect(() => {
-  //     console.log(selectedPokemon);
-  //     console.log(nickname);
-  //     console.log(cost);
-  //     console.log(wallet);
-  //   }, [selectedPokemon, nickname, cost]);
-
   async function handlePurchase() {
-    // try {
-    //   const token = localStorage.getItem("token");
-
-    //   if (!token) {
-    //     console.error("Token not found. User may not be authenticated.");
-    //     setPurchaseMessage(
-    //       "Failed to handle purchase. Please log in and try again."
-    //     );
-    //     return;
-    //   }
-
     const coinChange = wallet.coin - cost;
 
     const response = await fetch(`/api/wallet`, {
@@ -95,51 +89,7 @@ export default function Store({ user, wallet }) {
 
     const info = await response.json();
     console.log(info);
-
-    // if (!info.success) {
-    //   console.error("Failed to update wallet balance:", response.status);
-    //   setPurchaseMessage("Failed to handle purchase. Please try again.");
-    //   return;
-    // }
-
-    //   console.log("Wallet Update Response:", response);
-
-    //   if (!response.ok) {
-    //     console.error("Failed to update wallet balance:", response.status);
-    //     setPurchaseMessage("Failed to handle purchase. Please try again.");
-    //     return;
-    //   }
-
-    //   const result = await response.json();
-    //   console.log("Wallet Update Result:", result);
-
-    //   if (walletBalance < cost) {
-    //     setPurchaseMessage(
-    //       "Insufficient funds. Please add more coins to your wallet."
-    //     );
-    //   } else {
-    //     // Make an API call to update the wallet balance
-    //     const updateResponse = await fetch(`/api/wallet`, {
-    //       method: "PUT",
-    //       headers: {
-    //         Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({ coin: coinChange }),
-    //     });
-
-    //     if (!updateResponse.ok) {
-    //       throw new Error("Failed to update wallet balance");
-    //     }
-
-    //     setPurchaseMessage("Purchase successful!");
-
-    //     // Further logic after a successful purchase (if needed)
-    //   }
-    // } catch (error) {
-    //   console.error("Error handling purchase:", error.message);
-    //   setPurchaseMessage("Failed to handle purchase. Please try again.");
-    // }
+    router.refresh();
   }
 
   return (
@@ -228,7 +178,9 @@ export default function Store({ user, wallet }) {
                 <br />
                 <div className={styles.congratsPetBtnContainer}>
                   <button className={styles.confirmPetBtn}>Go to Tasks</button>
-                  <button className={styles.confirmPetBtn}>Profile</button>
+                  <Link href="user/userId" className={styles.confirmPetBtn}>
+                    Profile
+                  </Link>
                 </div>
               </div>
             </div>

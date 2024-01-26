@@ -31,6 +31,11 @@ export default function SignUp() {
 
     const info = await response.json();
 
+    if (info.token) {
+      // Set the token in localStorage
+      localStorage.setItem("token", info.token);
+    }
+
     if (info.error) {
       setError(info.error);
       setSuccessMessage("");
