@@ -72,69 +72,76 @@ export default function Store({ user, wallet }) {
   //   }, [selectedPokemon, nickname, cost]);
 
   async function handlePurchase() {
+    // try {
+    //   const token = localStorage.getItem("token");
+
+    //   if (!token) {
+    //     console.error("Token not found. User may not be authenticated.");
+    //     setPurchaseMessage(
+    //       "Failed to handle purchase. Please log in and try again."
+    //     );
+    //     return;
+    //   }
+
     const coinChange = wallet.coin - cost;
 
-    try {
-      const token = localStorage.getItem("token");
+    const response = await fetch(`/api/wallet`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ coinChange }),
+    });
 
-      if (!token) {
-        console.error("Token not found. User may not be authenticated.");
-        setPurchaseMessage(
-          "Failed to handle purchase. Please log in and try again."
-        );
-        return;
-      }
+    const info = await response.json();
+    console.log(info);
 
-      const coinChange = wallet.coin - cost;
+    // if (!info.success) {
+    //   console.error("Failed to update wallet balance:", response.status);
+    //   setPurchaseMessage("Failed to handle purchase. Please try again.");
+    //   return;
+    // }
 
-      const response = await fetch(`/api/wallet`, {
-        method: "PUT",
-        headers: {
-          Authorization: token,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ coinChange: -cost }),
-      });
+    //   console.log("Wallet Update Response:", response);
 
-      console.log("Wallet Update Response:", response);
+    //   if (!response.ok) {
+    //     console.error("Failed to update wallet balance:", response.status);
+    //     setPurchaseMessage("Failed to handle purchase. Please try again.");
+    //     return;
+    //   }
 
-      if (!response.ok) {
-        console.error("Failed to update wallet balance:", response.status);
-        setPurchaseMessage("Failed to handle purchase. Please try again.");
-        return;
-      }
+    //   const result = await response.json();
+    //   console.log("Wallet Update Result:", result);
 
-      const result = await response.json();
-      console.log("Wallet Update Result:", result);
+    //   if (walletBalance < cost) {
+    //     setPurchaseMessage(
+    //       "Insufficient funds. Please add more coins to your wallet."
+    //     );
+    //   } else {
+    //     // Make an API call to update the wallet balance
+    //     const updateResponse = await fetch(`/api/wallet`, {
+    //       method: "PUT",
+    //       headers: {
+    //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({ coin: coinChange }),
+    //     });
 
-      if (walletBalance < cost) {
-        setPurchaseMessage(
-          "Insufficient funds. Please add more coins to your wallet."
-        );
-      } else {
-        // Make an API call to update the wallet balance
-        const updateResponse = await fetch(`/api/wallet`, {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ coin: coinChange }),
-        });
+    //     if (!updateResponse.ok) {
+    //       throw new Error("Failed to update wallet balance");
+    //     }
 
-        if (!updateResponse.ok) {
-          throw new Error("Failed to update wallet balance");
-        }
+    //     setPurchaseMessage("Purchase successful!");
 
-        setPurchaseMessage("Purchase successful!");
-
-        // Further logic after a successful purchase (if needed)
-      }
-    } catch (error) {
-      console.error("Error handling purchase:", error.message);
-      setPurchaseMessage("Failed to handle purchase. Please try again.");
-    }
+    //     // Further logic after a successful purchase (if needed)
+    //   }
+    // } catch (error) {
+    //   console.error("Error handling purchase:", error.message);
+    //   setPurchaseMessage("Failed to handle purchase. Please try again.");
+    // }
   }
+
   return (
     <>
     

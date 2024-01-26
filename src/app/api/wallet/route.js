@@ -93,13 +93,11 @@ export async function PUT(req) {
     const updatedWallet = await prisma.wallet.update({
       where: { userId: user.id },
       data: {
-        coin: {
-          increment: coinChange,
-        },
+        coin: coinChange,
       },
     });
 
-    return NextResponse.json({ success: true, wallet: updatedWallet });
+    return NextResponse.json({ success: true, updatedWallet });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message });
   }
