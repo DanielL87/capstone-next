@@ -1,40 +1,40 @@
-"use client";
-import { useState } from "react";
+'use client';
+import { useState } from 'react';
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-import StoreInventoryPets from "@/app/components/StoreInventoryPets.jsx";
+import StoreInventoryPets from '@/app/components/StoreInventoryPets.jsx';
 
-import styles from "../page.module.css";
-import PokemonDetails from "./PokemonDetails.jsx";
+import styles from '../page.module.css';
+import PokemonDetails from './PokemonDetails.jsx';
 
 export default function Store({ user, wallet }) {
   const router = useRouter();
-  const [section, setSection] = useState("selectPet");
-  const [nickname, setNickname] = useState("");
+  const [section, setSection] = useState('selectPet');
+  const [nickname, setNickname] = useState('');
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [purchasedPet, setPurchasedPet] = useState(null);
   const [cost, setCost] = useState(0);
-  const [error, setError] = useState("");
-  const [purchaseMessage, setPurchaseMessage] = useState("");
+  const [error, setError] = useState('');
+  const [purchaseMessage, setPurchaseMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit() {
     setLoading(true);
     if (!nickname) {
       setLoading(false);
-      return setError("Please provide a nickname for your Pet!");
+      return setError('Please provide a nickname for your Pet!');
     }
 
     if (cost > wallet.coin) {
       setLoading(false);
-      setError("Insufficient funds. Please add more coins to your wallet.");
+      setError('Insufficient funds. Please add more coins to your wallet.');
     }
 
-    const response = await fetch("/api/pets", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    const response = await fetch('/api/pets', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         nickname,
         name: selectedPokemon.capitalizedName,
@@ -51,18 +51,18 @@ export default function Store({ user, wallet }) {
     if (info.pet) {
       getPurchasedPet(info.pet.id);
       handlePurchase();
-      setError("");
-      setSection("congrats");
+      setError('');
+      setSection('congrats');
     } else {
-      setError("Failed to create pet. Please try again.");
+      setError('Failed to create pet. Please try again.');
     }
     setLoading(false);
   }
 
   async function getPurchasedPet(petId) {
     const response = await fetch(`/api/pets/${petId}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
     });
 
     const info = await response.json();
@@ -71,7 +71,7 @@ export default function Store({ user, wallet }) {
   }
 
   function handleCancel() {
-    setSection("selectPet");
+    setSection('selectPet');
     setCost(0);
     setSelectedPokemon(null);
   }
@@ -80,9 +80,9 @@ export default function Store({ user, wallet }) {
     const coinChange = wallet.coin - cost;
 
     const response = await fetch(`/api/wallet`, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ coinChange }),
     });
@@ -95,9 +95,9 @@ export default function Store({ user, wallet }) {
   return (
     <>
       <div className={styles.storeMainContainer}>
-        <p className={styles.storeTitle}>Featured Pets of the Day!</p>
-        {section === "selectPet" && (
+        {section === 'selectPet' && (
           <div>
+            <p className={styles.storeTitle}>Featured Pets of the Day!</p>
             <div className={styles.storeInventoryContainer}>
               <StoreInventoryPets
                 isStore={true}
@@ -114,18 +114,19 @@ export default function Store({ user, wallet }) {
           </div>
         )}
 
-        {section === "namePet" && (
+        {section === 'namePet' && (
           <>
-            {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} />}
             <div className={styles.storeNamePetMainContainer}>
+              {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} />}
+
               <p className={styles.selectPetTitle}>Name your Pet!</p>
             </div>
             <div className={styles.namePetContainer}>
               <input
                 value={nickname}
                 className={styles.namePetInput}
-                type="text"
-                placeholder="Enter a pet name.."
+                type='text'
+                placeholder='Enter a pet name..'
                 onChange={(e) => setNickname(e.target.value)}
               />
               <button
@@ -134,7 +135,7 @@ export default function Store({ user, wallet }) {
                 disabled={loading}
               >
                 {loading
-                  ? "Completing Purchase..."
+                  ? 'Completing Purchase...'
                   : `Complete Purchase (${selectedPokemon.cost} Coins)`}
               </button>
               <button className={styles.cancelBtn} onClick={handleCancel}>
@@ -145,7 +146,7 @@ export default function Store({ user, wallet }) {
           </>
         )}
 
-        {section === "congrats" && (
+        {section === 'congrats' && (
           <>
             <div className={styles.congratsStoreMainContainer}>
               <div className={styles.congratsStoreContainer}>
@@ -177,7 +178,7 @@ export default function Store({ user, wallet }) {
                 <br />
                 <div className={styles.congratsPetBtnContainer}>
                   <button className={styles.confirmPetBtn}>Go to Tasks</button>
-                  <Link href="user/userId" className={styles.confirmPetBtn}>
+                  <Link href='user/userId' className={styles.confirmPetBtn}>
                     Profile
                   </Link>
                 </div>
