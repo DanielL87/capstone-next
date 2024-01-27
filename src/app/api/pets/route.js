@@ -42,6 +42,19 @@ export async function POST(req) {
       });
     }
 
+    // const existingId = await prisma.user.findFirst({
+    //   where: {
+    //     id: user.id,
+    //     collectedPets: {
+    //       some: {
+    //         equals: pokedexId,
+    //       },
+    //     },
+    //   },
+    // });
+
+    // console.log(existingId);
+
     const pet = await prisma.pet.create({
       data: {
         userId: user.id,
@@ -54,6 +67,19 @@ export async function POST(req) {
         isRare,
       },
     });
+
+    let _user;
+
+    // if (!existingId) {
+    _user = await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        collectedPets: {
+          push: pokedexId,
+        },
+      },
+    });
+    // }
 
     return NextResponse.json({ success: true, pet });
   } catch (error) {
