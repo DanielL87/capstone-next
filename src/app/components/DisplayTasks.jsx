@@ -1,19 +1,20 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import styles from '@/app/page.module.css';
+"use client";
+import React, { useState, useEffect } from "react";
+import styles from "@/app/page.module.css";
 
-export default function DisplayTasks({ user, userId, petId }) {
-  const [tasks, setTasks] = useState([]);
+export default function DisplayTasks({ user, userId, petId, tasks }) {
+  // const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    const fetchTasks = async () => {
-      const response = await fetch('api/tasks');
-      const data = await response.json();
+    // const fetchTasks = async () => {
+    //   const response = await fetch('api/tasks');
+    //   const data = await response.json();
 
-      setTasks(data.tasks);
-    };
+    //   setTasks(data.tasks);
+    // };
 
-    fetchTasks();
+    // fetchTasks();
+    console.log(tasks);
   }, [userId, petId]);
 
   return (
