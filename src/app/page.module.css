@@ -1203,12 +1203,20 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .singlePetContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.singlePetEvolve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 4rem;
 }
 
 .singlePetHearts {
