@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
+import { MdCatchingPokemon } from "react-icons/md";
 import styles from "../page.module.css";
 import PokemonDetails from "./PokemonDetails";
 
@@ -65,6 +65,11 @@ export default function PokemonList({ startId, endId, collection }) {
     <>
       <div className={styles.pokedexMainContainer}>
         <h1 className={styles.pokedexTitle}>Explore Our Pet Selection</h1>
+        <div className={styles.collectedPetsMainContainer}>
+          <p className={styles.totalPetsTitle}>Total Collected Pets</p>
+          <div>
+          {collection && <p className={styles.totalCollectedPets}><MdCatchingPokemon className={styles.collectedTotalPet} />{collection.length} / 151</p>}</div>
+        </div>
         <div className={styles.pokedexContainer}>
           {pokemonArray.map((pokemon) => (
             <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
