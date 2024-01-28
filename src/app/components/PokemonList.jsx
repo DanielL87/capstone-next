@@ -45,6 +45,7 @@ export default function PokemonList({ startId, endId, collection }) {
             type: pokemonData.types[0].type.name,
             spriteUrl: pokemonData.sprites.front_default,
             isRare,
+            isPokedexIdInCollection,
           };
 
           newArray.push(pokemonObject);
