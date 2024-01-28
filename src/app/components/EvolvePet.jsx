@@ -3,7 +3,7 @@ import styles from "../page.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation.js";
 
-export default function EvolvePet({ pet }) {
+export default function EvolvePet({ pet, collection }) {
   const [hideEvolve, setHideEvolve] = useState(false);
   const [newData, setNewData] = useState(null);
   const [error, setError] = useState("");
@@ -58,7 +58,6 @@ export default function EvolvePet({ pet }) {
         }
       } catch (error) {}
     };
-
     fetchPokemonData(pet.pokedexId);
   }, []);
 
@@ -145,7 +144,9 @@ export default function EvolvePet({ pet }) {
         evolutionData.name.charAt(0).toUpperCase() +
         evolutionData.name.slice(1);
 
-      console.log(capitalizedName);
+      const isPokedexIdInCollection = collection.collectedPets.includes(
+        +evolutionData.id
+      );
 
       const response = await fetch(`/api/pets/${pet.id}`, {
         method: "PUT",
@@ -154,6 +155,7 @@ export default function EvolvePet({ pet }) {
           name: capitalizedName,
           pokedexId: evolutionData.id,
           spriteUrl,
+          collectedNumber: isPokedexIdInCollection ? null : evolutionData.id,
         }),
       });
       const info = await response.json();
@@ -173,7 +175,11 @@ export default function EvolvePet({ pet }) {
   return (
     <div>
       {!hideEvolve && (
-        <button className={styles.loginBtn} onClick={handleEvolution} disabled={loading}>
+        <button
+          className={styles.loginBtn}
+          onClick={handleEvolution}
+          disabled={loading}
+        >
           {loading ? "Evolving..." : "Evolve Me!"}
         </button>
       )}

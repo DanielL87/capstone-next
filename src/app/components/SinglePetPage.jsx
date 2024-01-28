@@ -4,7 +4,13 @@ import DisplayTasks from "./DisplayTasks.jsx";
 import EvolvePet from "./EvolvePet.jsx";
 import PetHearts from "./PetHearts.jsx";
 
-export default function SinglePetInfo({ pokemonData, pet, user, tasks }) {
+export default function SinglePetInfo({
+  pokemonData,
+  pet,
+  user,
+  tasks,
+  collection,
+}) {
   const imageSrc = pet.isShiny
     ? pokemonData.sprites.other["official-artwork"].front_shiny
     : pokemonData.sprites.other["official-artwork"].front_default;
@@ -17,7 +23,7 @@ export default function SinglePetInfo({ pokemonData, pet, user, tasks }) {
           <div className={styles.singlePetContainer}>
             <img src={imageSrc} alt={`${pokemonData.name} sprite`} />
             <div className={styles.singlePetEvolve}>
-            <EvolvePet pet={pet} />
+              <EvolvePet pet={pet} collection={collection} />
             </div>
             <div className={styles.singlePetHearts}>
               <PetHearts showHearts={true} />

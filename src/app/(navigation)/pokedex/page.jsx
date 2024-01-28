@@ -1,36 +1,19 @@
-"use client";
-import React, { useState } from "react";
-import PokemonList from "../../components/PokemonList.jsx";
-import styles from "../../page.module.css";
+import Pokedex from "@/app/components/Pokedex.jsx";
+import { fetchUser } from "@/app/lib/fetchUser.js";
+import { prisma } from "@/app/lib/prisma.js";
 
-export default function Pokedex() {
-  const [endId, setEndId] = useState(10);
-  const [isLoading, setIsLoading] = useState(false);
+export default async function PokedexPage() {
+  const user = await fetchUser();
 
-  async function handleShowMore() {
-    setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate a delay
-    if (endId + 10 <= 151) {
-      setEndId((prevEndId) => prevEndId + 10);
-    } else {
-      setEndId(151);
-    }
+  let collection;
+  if (user.id) {
+    const userData = await prisma.user.findUnique({
+      where: { id: user.id },
+      select: { collectedPets: true },
+    });
 
-    setIsLoading(false);
+    collection = userData ? userData.collectedPets : null;
   }
 
-  return (
-    <div className={styles.pokedexCardMainContainer}>
-      <PokemonList startId={1} endId={endId} />
-      {endId < 151 ? (
-        <button
-          className={styles.loginBtn}
-          onClick={handleShowMore}
-          disabled={isLoading}
-        >
-          {isLoading ? "Loading..." : "Show More"}
-        </button>
-      ) : null}
-    </div>
-  );
+  return <Pokedex collection={collection} />;
 }

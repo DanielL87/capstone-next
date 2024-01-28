@@ -49,7 +49,6 @@ export default function SelectPet({ user, collection }) {
   useEffect(() => {
     fetchPokemon();
     fetchUserPokemon();
-    console.log(collection);
   }, []);
 
   function handleConfirmPet() {
