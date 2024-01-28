@@ -72,7 +72,7 @@ export default function PokemonList({ startId, endId, collection }) {
         </div>
         <div className={styles.pokedexContainer}>
           {pokemonArray.map((pokemon) => (
-            <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
+            <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} isProfilePage={false}/>
           ))}
         </div>
         <p>{error}</p>

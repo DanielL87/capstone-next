@@ -707,6 +707,12 @@
   margin-right: auto;
 }
 
+.showButtonsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
 .heroUserBlurb {
   font-family: 'Jura', sans-serif;
   font-size: 24px;
@@ -854,7 +860,7 @@
   padding: 0 0 20px 0;
   position: relative;
   z-index: 1;
-  height: 120px;
+  height: 118px;
 }
 
 .pokeTypeContainer {
@@ -875,13 +881,13 @@
 .pokemon {
   display: flex;
   align-items: center;
-  width: 53%;
+  width: 52%;
   position: relative;
   z-index: 2;
   margin: 0;
   clip-path: inset(0 5px 10px 5px);
   object-fit: fill;
-  object-position: 0 -8px;
+  object-position: 0 -10px;
 }
 
 @keyframes glitter {

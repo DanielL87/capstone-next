@@ -1,8 +1,7 @@
-"use client";
-import React, { useState } from "react";
-
-import styles from "../page.module.css";
-import PokemonList from "./PokemonList.jsx";
+'use client';
+import React, { useState } from 'react';
+import styles from '../page.module.css';
+import PokemonList from './PokemonList.jsx';
 
 export default function Pokedex({ collection }) {
   const [startId, setStartId] = useState(1);
@@ -37,27 +36,33 @@ export default function Pokedex({ collection }) {
   }
 
   return (
-    <div className={styles.pokedexCardMainContainer}>
+    <>
+      <div className={styles.pokedexCardMainContainer}>
       <PokemonList startId={startId} endId={endId} collection={collection} />
-      {endId < 151 ? (
-        <button
-          className={styles.loginBtn}
-          onClick={handleShowMore}
-          disabled={isLoading}
-        >
-          {isLoading ? "Loading..." : "Show More"}
-        </button>
-      ) : null}
-      {/* handle showless */}
-      {endId > 10 ? (
-        <button
-          className={styles.loginBtn}
-          onClick={handleShowLess}
-          disabled={isLoading}
-        >
-          {isLoading ? "Loading..." : "Show Less"}
-        </button>
-      ) : null}
-    </div>
+      <div className={styles.showButtonsContainer}>
+        {endId > 10 ? (
+          <button
+            className={styles.loginFormBtn}
+            onClick={handleShowLess}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Loading...' : 'Show 10 Less'}
+          </button>
+        ) : null}
+
+        
+
+        {endId < 151 ? (
+          <button
+            className={styles.loginBtn}
+            onClick={handleShowMore}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Loading...' : 'Show 10 More'}
+          </button>
+        ) : null}
+        </div>
+      </div>
+    </>
   );
 }
