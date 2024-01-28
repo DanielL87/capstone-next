@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../page.module.css";
 import PokemonDetails from "./PokemonDetails";
 
-export default function PokemonList({ startId, endId }) {
+export default function PokemonList({ startId, endId, collection }) {
   const [pokemonArray, setPokemonArray] = useState([]);
   const [error, setError] = useState("");
 
@@ -31,6 +31,13 @@ export default function PokemonList({ startId, endId }) {
             isRare = true;
           }
 
+          //checks if collected
+          let isPokedexIdInCollection = null;
+
+          if (collection) {
+            isPokedexIdInCollection = collection.includes(+pokemonData.id);
+          }
+
           const pokemonObject = {
             pokedexId: pokemonData.id,
             name: pokemonData.name,
@@ -40,6 +47,7 @@ export default function PokemonList({ startId, endId }) {
             type: pokemonData.types[0].type.name,
             spriteUrl: pokemonData.sprites.front_default,
             isRare,
+            isPokedexIdInCollection,
           };
 
           newArray.push(pokemonObject);
@@ -50,7 +58,6 @@ export default function PokemonList({ startId, endId }) {
 
       setPokemonArray(newArray);
     };
-
     fetchPokemonRange();
   }, [startId, endId]);
 

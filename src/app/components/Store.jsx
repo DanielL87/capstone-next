@@ -9,7 +9,7 @@ import StoreInventoryPets from "@/app/components/StoreInventoryPets.jsx";
 import styles from "../page.module.css";
 import PokemonDetails from "./PokemonDetails.jsx";
 
-export default function Store({ user, wallet }) {
+export default function Store({ user, wallet, collection }) {
   const router = useRouter();
   const [section, setSection] = useState("selectPet");
   const [nickname, setNickname] = useState("");
@@ -32,6 +32,10 @@ export default function Store({ user, wallet }) {
       setError("Insufficient funds. Please add more coins to your wallet.");
     }
 
+    const isPokedexIdInCollection = collection.collectedPets.includes(
+      +selectedPokemon.pokedexId
+    );
+
     const response = await fetch("/api/pets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -43,6 +47,9 @@ export default function Store({ user, wallet }) {
         spriteUrl: selectedPokemon.spriteUrl,
         isRare: selectedPokemon.isRare,
         isShiny: selectedPokemon.isShiny,
+        collectedNumber: isPokedexIdInCollection
+          ? null
+          : selectedPokemon.pokedexId,
       }),
     });
 
@@ -95,9 +102,9 @@ export default function Store({ user, wallet }) {
   return (
     <>
       <div className={styles.storeMainContainer}>
-        <p className={styles.storeTitle}>Featured Pets of the Day!</p>
         {section === "selectPet" && (
           <div>
+            <p className={styles.storeTitle}>Featured Pets of the Day!</p>
             <div className={styles.storeInventoryContainer}>
               <StoreInventoryPets
                 isStore={true}
@@ -116,8 +123,9 @@ export default function Store({ user, wallet }) {
 
         {section === "namePet" && (
           <>
-            {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} />}
             <div className={styles.storeNamePetMainContainer}>
+              {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} />}
+
               <p className={styles.selectPetTitle}>Name your Pet!</p>
             </div>
             <div className={styles.namePetContainer}>

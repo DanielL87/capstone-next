@@ -21,7 +21,7 @@ export async function GET(req, res) {
 export async function PUT(req, res) {
   try {
     const { petId } = res.params;
-    const { name, pokedexId, spriteUrl } = await req.json();
+    const { name, pokedexId, spriteUrl, collectedNumber } = await req.json();
 
     const user = await fetchUser();
     const _pet = await prisma.pet.findFirst({
@@ -41,6 +41,18 @@ export async function PUT(req, res) {
       where: { id: petId },
       data: { name, pokedexId, spriteUrl },
     });
+
+    let _user;
+    if (collectedNumber) {
+      _user = await prisma.user.update({
+        where: { id: user.id },
+        data: {
+          collectedPets: {
+            push: collectedNumber,
+          },
+        },
+      });
+    }
 
     return NextResponse.json({
       success: true,

@@ -1,8 +1,9 @@
-'use client';
-import React from 'react';
-import pokeColor from '../lib/pokeColor.js';
-import styles from '../page.module.css';
-import PetHearts from './PetHearts.jsx';
+"use client";
+import React from "react";
+import pokeColor from "../lib/pokeColor.js";
+import styles from "../page.module.css";
+import PetHearts from "./PetHearts.jsx";
+import { MdCatchingPokemon } from "react-icons/md";
 
 export default function PokemonDetails({
   pokemon,
@@ -15,8 +16,8 @@ export default function PokemonDetails({
     selectedPokemon && selectedPokemon.pokedexId === pokemon.pokedexId;
 
   const gradient = pokeColor[pokemon.type.toLowerCase()] || {
-    start: '#ffffff',
-    end: '#ffffff',
+    start: "#ffffff",
+    end: "#ffffff",
   };
 
   const gradientBackground = `linear-gradient(45deg, ${gradient.start}, ${gradient.end})`;
@@ -34,7 +35,7 @@ export default function PokemonDetails({
         <div className={styles.pokemonMainCardContainer}>
           <div
             className={`${styles.pokemonContainer} ${
-              isSelected ? styles.selectedPokemonContainer : ''
+              isSelected ? styles.selectedPokemonContainer : ""
             }`}
             style={{
               background: `url("/poke300.png"), ${gradientBackground}`,
@@ -46,6 +47,9 @@ export default function PokemonDetails({
                 <p className={styles.pokeName}>
                   {pokemon.capitalizedName || pokemon.name}
                 </p>
+                {pokemon.isPokedexIdInCollection ? (
+                  <MdCatchingPokemon className={styles.navPet} />
+                ) : null}
                 <div className={styles.pokeInfoContainer}>
                   <div className={styles.rarityContainer}>
                     {pokemon.isRare && (
@@ -66,7 +70,7 @@ export default function PokemonDetails({
                   <p className={styles.pokeType}>Type: {pokemon.type}</p>
                   <img
                     className={`${styles.pokemon} ${
-                      isSelected ? styles.selectedPokemon : ''
+                      isSelected ? styles.selectedPokemon : ""
                     }`}
                     src={pokemon.spriteUrl}
                     alt={`${pokemon.name} sprite`}
@@ -78,7 +82,7 @@ export default function PokemonDetails({
                   <p className={styles.pokemonNickname}>Name Me!</p>
                 )}
               </div>
-              <p className={styles.stageId}>Pokedex #{pokemon.pokedexId}</p>{' '}
+              <p className={styles.stageId}>Pokedex #{pokemon.pokedexId}</p>{" "}
             </div>
           </div>
         </div>

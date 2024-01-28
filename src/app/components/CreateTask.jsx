@@ -12,6 +12,7 @@ export default function CreateTask({ user, pet }) {
   const [isLoggedIn, setIsLoggedIn] = useState(user.id);
   const [submitClicked, setSubmitClicked] = useState(false);
   const [taskName, setTaskName] = useState("");
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -80,6 +81,7 @@ export default function CreateTask({ user, pet }) {
         <button form="taskForm" className={styles.registerBtn} type="submit">
           Submit
         </button>
+        {error && <p className={styles.errorText}>{error}</p>}
         {message && <p className={styles.successText}>{message}</p>}{" "}
       </div>
     </>

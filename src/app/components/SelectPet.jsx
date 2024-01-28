@@ -4,7 +4,7 @@ import styles from "../page.module.css";
 import PokemonDetails from "../components/PokemonDetails.jsx";
 import BacktoProfile from "../components/BacktoProfile.jsx";
 
-export default function SelectPet({ user }) {
+export default function SelectPet({ user, collection }) {
   const [starterArray, setStarterArray] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [nickname, setNickname] = useState("");
@@ -69,10 +69,10 @@ export default function SelectPet({ user }) {
         type: selectedPokemon.type,
         pokedexId: selectedPokemon.pokedexId,
         spriteUrl: selectedPokemon.spriteUrl,
+        collectedNumber: selectedPokemon.pokedexId,
       }),
     });
     const info = await response.json();
-    console.log(info);
 
     getStarter(info.pet.id);
 
