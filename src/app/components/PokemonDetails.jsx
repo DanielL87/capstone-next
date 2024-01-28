@@ -11,6 +11,7 @@ export default function PokemonDetails({
   isSelectPokemon,
   selectedPokemon,
   showHearts,
+  isProfilePage,
 }) {
   const isSelected =
     selectedPokemon && selectedPokemon.pokedexId === pokemon.pokedexId;
@@ -76,9 +77,9 @@ export default function PokemonDetails({
                 </div>
                 {pokemon.isPokedexIdInCollection ? (
                   <MdCatchingPokemon className={styles.collectedPet} />
-                ) : (
+                ) : !isProfilePage ? (
                   <p className={styles.collectMe}>Collect me!</p>
-                )}
+                ) : <MdCatchingPokemon className={styles.collectedPet} />}
                 {pokemon.nickname ? (
                   <p className={styles.pokemonNickname}>{pokemon.nickname}</p>
                 ) : (

@@ -95,7 +95,9 @@ export default function StoreInventoryPets({
             {inventoryArray.map((pokemon) => (
               <div key={pokemon.pokedexId} className={styles.heroStoreButton}>
                 <div className={styles.storeInventoryPetsContainer}>
-                  <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} />
+                  
+                  <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} isProfilePage={false}/>
+
                   {isStore && user.id && (
                     <button
                       className={styles.buyPetBtn}

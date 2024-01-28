@@ -1,5 +1,4 @@
 import Link from "next/link.js";
-
 import PokemonDetails from "@/app/components/PokemonDetails.jsx";
 import { fetchUser } from "@/app/lib/fetchUser.js";
 import { prisma } from "@/app/lib/prisma.js";
@@ -33,7 +32,7 @@ export default async function ProfilePage() {
               {userPokemon.length > 0 ? (
                 userPokemon.map((pokemon) => (
                   <div key={pokemon.id} className={styles.pokedexCardContainer}>
-                    <PokemonDetails pokemon={pokemon} showHearts={true} />
+                    <PokemonDetails pokemon={pokemon} showHearts={true} isProfilePage={true}/>
                     <Link
                       className={styles.registerBtn}
                       href={`/pet/${pokemon.id}`}
