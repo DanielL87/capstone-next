@@ -31,8 +31,16 @@ export async function GET() {
 
 export async function POST(req) {
   try {
-    const { nickname, type, spriteUrl, name, pokedexId, isShiny, isRare } =
-      await req.json();
+    const {
+      nickname,
+      type,
+      spriteUrl,
+      name,
+      pokedexId,
+      isShiny,
+      isRare,
+      collectedNumber,
+    } = await req.json();
     const user = await fetchUser();
 
     if (!user) {
@@ -41,19 +49,6 @@ export async function POST(req) {
         message: "Please login to create a pet!",
       });
     }
-
-    // const existingId = await prisma.user.findFirst({
-    //   where: {
-    //     id: user.id,
-    //     collectedPets: {
-    //       some: {
-    //         equals: pokedexId,
-    //       },
-    //     },
-    //   },
-    // });
-
-    // console.log(existingId);
 
     const pet = await prisma.pet.create({
       data: {
@@ -70,16 +65,16 @@ export async function POST(req) {
 
     let _user;
 
-    // if (!existingId) {
-    _user = await prisma.user.update({
-      where: { id: user.id },
-      data: {
-        collectedPets: {
-          push: pokedexId,
+    if (collectedNumber) {
+      _user = await prisma.user.update({
+        where: { id: user.id },
+        data: {
+          collectedPets: {
+            push: collectedNumber,
+          },
         },
-      },
-    });
-    // }
+      });
+    }
 
     return NextResponse.json({ success: true, pet });
   } catch (error) {

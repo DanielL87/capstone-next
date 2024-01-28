@@ -8,6 +8,10 @@ export default async function PetPage({ params }) {
   const pet = await prisma.pet.findFirst({ where: { id: petId } });
   const user = await fetchUser();
   const tasks = await prisma.task.findMany({ where: { petId } });
+  const collection = await prisma.user.findUnique({
+    where: { id: user.id },
+    select: { collectedPets: true },
+  });
 
   const pokemon = await fetch(
     `https://pokeapi.co/api/v2/pokemon/${pet.pokedexId}`
@@ -20,6 +24,7 @@ export default async function PetPage({ params }) {
       pokemonData={pokemonData}
       user={user}
       tasks={tasks}
+      collection={collection}
     />
   );
 }

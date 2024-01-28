@@ -9,7 +9,7 @@ import StoreInventoryPets from "@/app/components/StoreInventoryPets.jsx";
 import styles from "../page.module.css";
 import PokemonDetails from "./PokemonDetails.jsx";
 
-export default function Store({ user, wallet }) {
+export default function Store({ user, wallet, collection }) {
   const router = useRouter();
   const [section, setSection] = useState("selectPet");
   const [nickname, setNickname] = useState("");
@@ -32,6 +32,12 @@ export default function Store({ user, wallet }) {
       setError("Insufficient funds. Please add more coins to your wallet.");
     }
 
+    const isPokedexIdInCollection = collection.collectedPets.includes(
+      +selectedPokemon.pokedexId
+    );
+
+    console.log(isPokedexIdInCollection);
+
     const response = await fetch("/api/pets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -43,6 +49,9 @@ export default function Store({ user, wallet }) {
         spriteUrl: selectedPokemon.spriteUrl,
         isRare: selectedPokemon.isRare,
         isShiny: selectedPokemon.isShiny,
+        collectedNumber: isPokedexIdInCollection
+          ? null
+          : selectedPokemon.pokedexId,
       }),
     });
 
