@@ -1,12 +1,14 @@
-import React from 'react';
-import Link from 'next/link';
-import Sidebar from '../components/Sidebar.jsx';
-import { fetchUser } from '../lib/fetchUser.js';
-import styles from '../page.module.css';
-import Logout from '../components/Logout.jsx';
-import { prisma } from '../lib/prisma.js';
-import { RiCoinsFill } from 'react-icons/ri';
-import { MdCatchingPokemon } from 'react-icons/md';
+import React from "react";
+
+import Link from "next/link";
+import { MdCatchingPokemon } from "react-icons/md";
+import { RiCoinsFill } from "react-icons/ri";
+
+import Logout from "../components/Logout.jsx";
+import Sidebar from "../components/Sidebar.jsx";
+import { fetchUser } from "../lib/fetchUser.js";
+import { prisma } from "../lib/prisma.js";
+import styles from "../page.module.css";
 
 export default async function Navbar() {
   const user = await fetchUser();
@@ -17,8 +19,8 @@ export default async function Navbar() {
     <>
       <div className={styles.navBarContainer}>
         <div className={styles.logoSidebarContainer}>
-          <Link href={'/'}>
-            <img className={styles.logo} src='/Logo.png' alt='Logo' />
+          <Link href={"/"}>
+            <img className={styles.logo} src="/Logo.png" alt="Logo" />
           </Link>
           <div className={styles.siderbarContainer}>
             <Sidebar user={user} />
@@ -29,10 +31,10 @@ export default async function Navbar() {
 
         {!user.id ? (
           <div className={styles.userSignInContainer}>
-            <Link className={styles.loginBtn} href={'/login'}>
+            <Link className={styles.loginBtn} href={"/login"}>
               Login
             </Link>
-            <Link className={styles.registerBtn} href={'/register'}>
+            <Link className={styles.registerBtn} href={"/register"}>
               Sign Up
             </Link>
           </div>
@@ -41,16 +43,16 @@ export default async function Navbar() {
             <div className={styles.username}>
               Welcome {user.username}!
               <p className={styles.userNavCoins}>
-                Coins: <RiCoinsFill className={styles.navCoin} />{' '}
-                <span className={styles.spanCoin}>{wallet.coin}</span>{' '}
+                Coins: <RiCoinsFill className={styles.navCoin} />{" "}
+                <span className={styles.spanCoin}>{wallet.coin}</span>{" "}
               </p>
               <p className={styles.userNavPet}>
                 Pets:
                 <span className={styles.spanPet}>
-                  {' '}
-                  <MdCatchingPokemon className={styles.navPet} />{' '}
+                  {" "}
+                  <MdCatchingPokemon className={styles.navPet} />{" "}
                   {petOwned.length}
-                </span>{' '}
+                </span>{" "}
               </p>
             </div>
             <Logout />

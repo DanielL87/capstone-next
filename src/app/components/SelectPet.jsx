@@ -1,8 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import styles from "../page.module.css";
-import PokemonDetails from "../components/PokemonDetails.jsx";
+
+import Link from "next/link";
+
 import BacktoProfile from "../components/BacktoProfile.jsx";
+import PokemonDetails from "../components/PokemonDetails.jsx";
+import styles from "../page.module.css";
 
 export default function SelectPet({ user, collection }) {
   const [starterArray, setStarterArray] = useState([]);
@@ -185,10 +188,15 @@ export default function SelectPet({ user, collection }) {
                   </p>
                   <br />
                   <div className={styles.congratsPetBtnContainer}>
-                    <button className={styles.confirmPetBtn}>
-                      Go to Tasks
-                    </button>
-                    <button className={styles.confirmPetBtn}>Profile</button>
+                    <Link href={"/store"} className={styles.confirmPetBtn}>
+                      Back to store
+                    </Link>
+                    <Link
+                      href={"/user/userId"}
+                      className={styles.confirmPetBtn}
+                    >
+                      Profile
+                    </Link>
                   </div>
                 </div>
               </div>

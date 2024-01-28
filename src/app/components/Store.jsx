@@ -184,7 +184,9 @@ export default function Store({ user, wallet, collection }) {
                 </p>
                 <br />
                 <div className={styles.congratsPetBtnContainer}>
-                  <button className={styles.confirmPetBtn}>Go to Tasks</button>
+                  <Link href={"/store"} className={styles.confirmPetBtn}>
+                    Back to store
+                  </Link>
                   <Link href="user/userId" className={styles.confirmPetBtn}>
                     Profile
                   </Link>
