@@ -13,19 +13,19 @@ export default function GenerateBonusTask() {
       let randomTask = getRandomTask();
       console.log(randomTask.name);
 
-      const response = await fetch("/api/tasks", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: taskName,
-          category: category,
-          worth: worth,
-          petId: pet.id,
-        }),
-      });
-      const data = await response.json();
+      //   const response = await fetch("/api/tasks", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({
+      //       name: taskName,
+      //       category: category,
+      //       worth: worth,
+      //       petId: pet.id,
+      //     }),
+      //   });
+      //   const data = await response.json();
     }
   }
 
