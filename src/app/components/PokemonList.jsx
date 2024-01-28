@@ -32,9 +32,11 @@ export default function PokemonList({ startId, endId, collection }) {
           }
 
           //checks if collected
-          const isPokedexIdInCollection = collection.includes(+pokemonData.id);
+          let isPokedexIdInCollection = null;
 
-          console.log(isPokedexIdInCollection);
+          if (collection) {
+            isPokedexIdInCollection = collection.includes(+pokemonData.id);
+          }
 
           const pokemonObject = {
             pokedexId: pokemonData.id,
