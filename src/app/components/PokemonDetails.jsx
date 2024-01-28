@@ -76,7 +76,9 @@ export default function PokemonDetails({
                 </div>
                 {pokemon.isPokedexIdInCollection ? (
                   <MdCatchingPokemon className={styles.collectedPet} />
-                ) : null}
+                ) : (
+                  <p className={styles.collectMe}>Collect me!</p>
+                )}
                 {pokemon.nickname ? (
                   <p className={styles.pokemonNickname}>{pokemon.nickname}</p>
                 ) : (
