@@ -4,7 +4,7 @@ import { NextResponse } from "next/server.js";
 
 export async function POST(req, res) {
   try {
-    const { name, pet, category, worth } = await req.json();
+    const { name, pet, category, worth, isBonus } = await req.json();
 
     const user = await fetchUser();
 
@@ -15,6 +15,7 @@ export async function POST(req, res) {
         petId: pet.id,
         category: category,
         worth: worth,
+        isBonus,
       },
     });
 

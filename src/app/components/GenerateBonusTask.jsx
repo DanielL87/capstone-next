@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import bonustasks from "../lib/bonusTasks.js";
 
-export default function GenerateBonusTask() {
+export default function GenerateBonusTask({ pet }) {
   function getRandomTask() {
     const randomIndex = Math.floor(Math.random() * bonustasks.length);
     return bonustasks[randomIndex];
@@ -13,19 +13,21 @@ export default function GenerateBonusTask() {
       let randomTask = getRandomTask();
       console.log(randomTask.name);
 
-      //   const response = await fetch("/api/tasks", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //       name: taskName,
-      //       category: category,
-      //       worth: worth,
-      //       petId: pet.id,
-      //     }),
-      //   });
-      //   const data = await response.json();
+      const response = await fetch("/api/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: randomTask.name,
+          category: randomTask.category,
+          worth: 10,
+          pet,
+          isBonus: true,
+        }),
+      });
+      const info = await response.json();
+      console.log(info);
     }
   }
 

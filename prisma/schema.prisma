@@ -53,7 +53,7 @@ model Task {
   id          String   @id @default(uuid())
   name        String
   category    String?
-  isCompleted Boolean
+  isCompleted Boolean  @default(false)
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String
   pet         Pet      @relation(fields: [petId], references: [id], onDelete: Cascade)

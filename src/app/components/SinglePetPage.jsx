@@ -21,7 +21,7 @@ export default function SinglePetInfo({
 
   return (
     <>
-      <GenerateBonusTask />
+      <GenerateBonusTask pet={pet} />
       <div className={styles.pokedexSinglePetMainContainer}>
         <div className={styles.singlePetMainContainer}>
           <div className={styles.singlePetContainer}>
