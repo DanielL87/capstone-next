@@ -79,6 +79,31 @@
   margin-right: 2px;
 }
 
+.userNavPet {
+  font-family: 'Jura', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #a1f8c3;
+  letter-spacing: 0.05em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.navPet {
+  color: #46b9c5;
+  margin-left: 5px;
+  margin-right: 2px;
+  padding: 0;
+}
+
+.spanPet {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
 .spanCoin {
   font-family: 'Jura', sans-serif;
   font-size: 18px;
@@ -1203,12 +1228,20 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .singlePetContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.singlePetEvolve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 4rem;
 }
 
 .singlePetHearts {
@@ -1348,12 +1381,42 @@
 
 .taskContainer {
   display: flex;
+  flex-direction: column;
   background-color: #d5f0c1;
   border-radius: 10px;
   border: 10px solid #003550d3;
-  width: 950px;
+  width: 1050px;
   height: auto;
   padding: 40px;
+}
+
+.tasksUserContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.taskTitlesContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+}
+.bonusTitle {
+  font-family: 'Jura', sans-serif;
+  font-size: 24px;
+  color: #003650;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin: 0;
+  padding: 0;
+  text-decoration-line: underline;
 }
 
 .taskPageTitle {
@@ -1367,18 +1430,66 @@
   color: #003650;
 }
 
-.taskList {
+.dailyTaskContainer {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
+  flex-direction: row;
+  align-items: center;
   margin: 0;
   padding: 0;
+  gap: 15px;
+}
+
+.taskCategoryTitle {
   font-family: 'Jura', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
+  color: #003650;
+  font-weight: 600;
+  text-shadow: 1px 1px 1px #fff;
+  letter-spacing: 0.05em;
+}
+
+.taskName {
+  font-family: 'Jura', sans-serif;
+  font-size: 20px;
+  color: #003650;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-wrap: wrap;
+}
+
+.dueDate{
+  font-family: 'Jura', sans-serif;
+  font-size: 20px;
   color: #003650;
   font-weight: 600;
   letter-spacing: 0.05em;
+  text-wrap: wrap;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+.taskCheckbox {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  border-radius: 5px;
+  background: linear-gradient(to right, #f9f7c9, #e5bf22);
+  background-color: #f9f7c9;
+}
+
+.taskCheckbox:hover {
+  background: linear-gradient(to right, #a1f8c3, #46b9c5);
+  background-color: #f9f7c9;
+  cursor: pointer;
+}
+
+.bonusTaskContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  gap: 15px;
 }
 
 /* User wallet Page */
@@ -1428,6 +1539,12 @@
   min-height: 100vh;
 }
 
+.storeNamePetMainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+}
 .storeTitle {
   text-align: center;
   justify-content: center;
@@ -1523,7 +1640,6 @@
   padding-bottom: 2rem;
   text-align: center;
 }
-
 
 .congratsStoreMainContainer {
   display: flex;

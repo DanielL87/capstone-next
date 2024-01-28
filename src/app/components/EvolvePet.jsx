@@ -1,5 +1,5 @@
 "use client";
-
+import styles from "../page.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation.js";
 
@@ -173,7 +173,7 @@ export default function EvolvePet({ pet }) {
   return (
     <div>
       {!hideEvolve && (
-        <button onClick={handleEvolution} disabled={loading}>
+        <button className={styles.loginBtn} onClick={handleEvolution} disabled={loading}>
           {loading ? "Evolving..." : "Evolve Me!"}
         </button>
       )}
