@@ -16,7 +16,9 @@ export default function SinglePetInfo({ pokemonData, pet, user, tasks }) {
         <div className={styles.singlePetMainContainer}>
           <div className={styles.singlePetContainer}>
             <img src={imageSrc} alt={`${pokemonData.name} sprite`} />
+            <div className={styles.singlePetEvolve}>
             <EvolvePet pet={pet} />
+            </div>
             <div className={styles.singlePetHearts}>
               <PetHearts showHearts={true} />
             </div>

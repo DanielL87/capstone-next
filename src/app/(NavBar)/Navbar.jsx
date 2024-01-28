@@ -6,10 +6,12 @@ import styles from '../page.module.css';
 import Logout from '../components/Logout.jsx';
 import { prisma } from '../lib/prisma.js';
 import { RiCoinsFill } from 'react-icons/ri';
+import { MdCatchingPokemon } from 'react-icons/md';
 
 export default async function Navbar() {
   const user = await fetchUser();
   const wallet = await prisma.wallet.findFirst({ where: { userId: user.id } });
+  const petOwned = await prisma.pet.findMany({ where: { userId: user.id } });
 
   return (
     <>
@@ -41,6 +43,14 @@ export default async function Navbar() {
               <p className={styles.userNavCoins}>
                 Coins: <RiCoinsFill className={styles.navCoin} />{' '}
                 <span className={styles.spanCoin}>{wallet.coin}</span>{' '}
+              </p>
+              <p className={styles.userNavPet}>
+                Pets:
+                <span className={styles.spanPet}>
+                  {' '}
+                  <MdCatchingPokemon className={styles.navPet} />{' '}
+                  {petOwned.length}
+                </span>{' '}
               </p>
             </div>
             <Logout />

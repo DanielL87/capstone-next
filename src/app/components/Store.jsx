@@ -36,8 +36,6 @@ export default function Store({ user, wallet, collection }) {
       +selectedPokemon.pokedexId
     );
 
-    console.log(isPokedexIdInCollection);
-
     const response = await fetch("/api/pets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -104,9 +102,9 @@ export default function Store({ user, wallet, collection }) {
   return (
     <>
       <div className={styles.storeMainContainer}>
-        <p className={styles.storeTitle}>Featured Pets of the Day!</p>
         {section === "selectPet" && (
           <div>
+            <p className={styles.storeTitle}>Featured Pets of the Day!</p>
             <div className={styles.storeInventoryContainer}>
               <StoreInventoryPets
                 isStore={true}
@@ -125,8 +123,9 @@ export default function Store({ user, wallet, collection }) {
 
         {section === "namePet" && (
           <>
-            {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} />}
             <div className={styles.storeNamePetMainContainer}>
+              {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} />}
+
               <p className={styles.selectPetTitle}>Name your Pet!</p>
             </div>
             <div className={styles.namePetContainer}>
