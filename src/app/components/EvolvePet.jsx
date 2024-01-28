@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { useRouter } from "next/navigation.js";
 
 export default function EvolvePet({ pet }) {
@@ -146,6 +147,8 @@ export default function EvolvePet({ pet }) {
         evolutionData.name.slice(1);
 
       console.log(capitalizedName);
+      console.log(spriteUrl);
+      console.log(evolutionData.id);
 
       const response = await fetch(`/api/pets/${pet.id}`, {
         method: "PUT",

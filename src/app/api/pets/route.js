@@ -71,14 +71,14 @@ export async function POST(req) {
     let _user;
 
     // if (!existingId) {
-    _user = await prisma.user.update({
-      where: { id: user.id },
-      data: {
-        collectedPets: {
-          push: pokedexId,
-        },
-      },
-    });
+    // _user = await prisma.user.update({
+    //   where: { id: user.id },
+    //   data: {
+    //     collectedPets: {
+    //       push: pokedexId,
+    //     },
+    //   },
+    // });
     // }
 
     return NextResponse.json({ success: true, pet });
