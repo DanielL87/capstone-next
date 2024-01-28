@@ -61,4 +61,5 @@ model Task {
   worth       Int      @default(0)
   dueDate     DateTime @default(now())
   createdAt   DateTime @default(now())
+  isBonus     Boolean  @default(false)
 }

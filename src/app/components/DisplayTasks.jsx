@@ -1,7 +1,7 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import styles from '@/app/page.module.css';
-import { IoMdCheckboxOutline } from 'react-icons/io';
+"use client";
+import React, { useState, useEffect } from "react";
+import styles from "@/app/page.module.css";
+import { IoMdCheckboxOutline } from "react-icons/io";
 
 export default function DisplayTasks({ user, userId, petId, tasks }) {
   const [taskList, setTaskList] = useState([]);
@@ -27,7 +27,7 @@ export default function DisplayTasks({ user, userId, petId, tasks }) {
           {tasks.map((task) => (
             <div
               className={`${styles.tasksUserContainer} ${
-                completedTasks.includes(task) ? styles.completedTask : ''
+                completedTasks.includes(task) ? styles.completedTask : ""
               }`}
               key={task.id}
             >
@@ -40,17 +40,18 @@ export default function DisplayTasks({ user, userId, petId, tasks }) {
                 <p className={styles.taskCategoryTitle}>{task.category}:</p>
                 <p
                   className={`${styles.taskName} ${
-                    completedTasks.includes(task) ? styles.strikeThrough : ''
+                    completedTasks.includes(task) ? styles.strikeThrough : ""
                   }`}
                 >
                   {task.name}
                 </p>
                 <p
                   className={`${styles.taskName} ${
-                    completedTasks.includes(task) ? styles.strikeThrough : ''
+                    completedTasks.includes(task) ? styles.strikeThrough : ""
                   }`}
                 >
-                  <span className={styles.dueDate}>Due:</span> {new Date(task.dueDate).toLocaleDateString()}
+                  <span className={styles.dueDate}>Due:</span>{" "}
+                  {new Date(task.dueDate).toLocaleDateString()}
                 </p>
               </div>
 
@@ -62,7 +63,7 @@ export default function DisplayTasks({ user, userId, petId, tasks }) {
                 />
                 <p
                   className={`${styles.taskName} ${
-                    completedTasks.includes(task) ? styles.strikeThrough : ''
+                    completedTasks.includes(task) ? styles.strikeThrough : ""
                   }`}
                 >
                   This is a bonus task from the pet.
