@@ -47,9 +47,7 @@ export default function PokemonDetails({
                 <p className={styles.pokeName}>
                   {pokemon.capitalizedName || pokemon.name}
                 </p>
-                {pokemon.isPokedexIdInCollection ? (
-                  <MdCatchingPokemon className={styles.navPet} />
-                ) : null}
+                
                 <div className={styles.pokeInfoContainer}>
                   <div className={styles.rarityContainer}>
                     {pokemon.isRare && (
@@ -76,6 +74,9 @@ export default function PokemonDetails({
                     alt={`${pokemon.name} sprite`}
                   />
                 </div>
+                {pokemon.isPokedexIdInCollection ? (
+                  <MdCatchingPokemon className={styles.collectedPet} />
+                ) : null}
                 {pokemon.nickname ? (
                   <p className={styles.pokemonNickname}>{pokemon.nickname}</p>
                 ) : (

@@ -802,7 +802,7 @@
   text-transform: capitalize;
   margin: 0;
   height: 23px;
-  padding-top: 3px;
+  padding-top: 1px;
 }
 .rarePokemon {
   text-align: center;
@@ -821,7 +821,7 @@
   align-items: center;
   gap: 5px;
   margin: 0;
-  padding: 0;
+  padding: 2px 0 2px 0;
 }
 
 .rareIcon {
@@ -850,11 +850,11 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: 0;
+  margin: 0 0 1.65rem 0;
   padding: 0;
   position: relative;
   z-index: 1;
-  height: 160px;
+  height: 140px;
 }
 
 .pokeTypeContainer {
@@ -875,15 +875,32 @@
 .pokemon {
   display: flex;
   align-items: center;
-  width: 60%;
+  width: 55%;
   position: relative;
   z-index: 2;
   margin: 0;
-  clip-path: inset(0 10px 10px 10px);
+  clip-path: inset(0 5px 10px 5px);
   object-fit: fill;
-  object-position: 5px -15px;
+  object-position: 0 -8px;
 }
 
+@keyframes glitter {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+.collectedPet {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: #46b9c5;
+  width: 25px;
+  height: 25px;
+  z-index: 2;
+  top: 33%;
+  position: absolute;
+  animation: glitter 1s infinite;
+}
 .pokemonNickname {
   text-align: center;
   font-family: 'pokemon', sans-serif;
@@ -892,7 +909,7 @@
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
   text-transform: capitalize;
-  margin: 6px 0 5px 0;
+  margin: 0;
 }
 .stageId {
   text-align: center;
