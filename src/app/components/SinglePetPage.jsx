@@ -1,8 +1,12 @@
+"use client";
+import { useEffect } from "react";
 import styles from "../page.module.css";
 import CreateTask from "./CreateTask.jsx";
 import DisplayTasks from "./DisplayTasks.jsx";
 import EvolvePet from "./EvolvePet.jsx";
 import PetHearts from "./PetHearts.jsx";
+import bonustasks from "../lib/bonusTasks.js";
+import GenerateBonusTask from "./GenerateBonusTask.jsx";
 
 export default function SinglePetInfo({
   pokemonData,
@@ -15,9 +19,9 @@ export default function SinglePetInfo({
     ? pokemonData.sprites.other["official-artwork"].front_shiny
     : pokemonData.sprites.other["official-artwork"].front_default;
 
-  console.log(tasks);
   return (
     <>
+      <GenerateBonusTask />
       <div className={styles.pokedexSinglePetMainContainer}>
         <div className={styles.singlePetMainContainer}>
           <div className={styles.singlePetContainer}>
