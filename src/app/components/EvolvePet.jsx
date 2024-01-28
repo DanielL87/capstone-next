@@ -1,7 +1,9 @@
 "use client";
-import styles from "../page.module.css";
 import { useEffect, useState } from "react";
+
 import { useRouter } from "next/navigation.js";
+
+import styles from "../page.module.css";
 
 export default function EvolvePet({ pet, collection }) {
   const [hideEvolve, setHideEvolve] = useState(false);

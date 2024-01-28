@@ -5,14 +5,14 @@ import { prisma } from "@/app/lib/prisma.js";
 export default async function PokedexPage() {
   const user = await fetchUser();
 
-  let collection;
+  let collection = null;
   if (user.id) {
     const userData = await prisma.user.findUnique({
       where: { id: user.id },
       select: { collectedPets: true },
     });
 
-    collection = userData ? userData.collectedPets : null;
+    collection = userData.collectedPets;
   }
 
   return <Pokedex collection={collection} />;

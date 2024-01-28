@@ -32,7 +32,7 @@ export default function Store({ user, wallet, collection }) {
       setError("Insufficient funds. Please add more coins to your wallet.");
     }
 
-    const isPokedexIdInCollection = collection.collectedPets.includes(
+    const isPokedexIdInCollection = collection.includes(
       +selectedPokemon.pokedexId
     );
 
