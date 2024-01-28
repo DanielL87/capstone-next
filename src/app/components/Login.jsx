@@ -6,47 +6,27 @@ import { useRouter } from "next/navigation.js";
 
 import styles from "../page.module.css";
 
-export default function SignUp({ user }) {
+export default function Login({ user }) {
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
 
   const router = useRouter();
 
-  async function handleSignUp(e) {
+  async function handleLogin(e) {
     e.preventDefault();
-
-    if (!username || !email || !password) {
-      setError("Please enter username, email, and password.");
-      return;
-    }
-
-    const response = await fetch("/api/users/register", {
+    const response = await fetch("/api/users/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, email, password }), // Include email in the payload
+      body: JSON.stringify({ username, password }),
     });
-
     const info = await response.json();
 
-    if (info.token) {
-      // Set the token in localStorage
-      localStorage.setItem("token", info.token);
-    }
-
     if (info.error) {
-      setError(info.error);
-      setSuccessMessage("");
-    } else {
-      setSuccessMessage("Sign-up successful! Redirecting to homepage...");
-      setError("");
-      setTimeout(() => {
-        router.push("/selectPet");
-        router.refresh();
-      }, 2000);
+      return setError(info.error);
     }
+    router.push("/");
+    router.refresh();
   }
 
   return (
@@ -54,25 +34,15 @@ export default function SignUp({ user }) {
       <div className={styles.formMainContainer}>
         {!user.id ? (
           <div className={styles.formContainer}>
-            <form onSubmit={handleSignUp} className={styles.form}>
+            <form onSubmit={handleLogin} className={styles.form}>
               <label htmlFor="username">Username:</label>
               <input
+                className={styles.formInput}
                 type="text"
                 id="username"
                 onChange={(e) => setUsername(e.target.value)}
                 value={username}
                 placeholder="Enter your username"
-                className={styles.formInput}
-              />
-
-              <label htmlFor="email">Email:</label>
-              <input
-                className={styles.formInput}
-                type="email"
-                id="email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                placeholder="Enter your email"
               />
 
               <label htmlFor="password">Password:</label>
@@ -86,16 +56,13 @@ export default function SignUp({ user }) {
               />
 
               <button className={styles.loginFormBtn} type="submit">
-                Sign Up
+                Login
               </button>
-
               <p className={styles.formText}>
-                Already have an account?
-                <Link href="/login"> Login</Link>{" "}
+                No account yet?
+                <Link href={"/register"}> Sign Up</Link>
               </p>
-
               <p className={styles.errorText}>{error}</p>
-              <p className={styles.successText}>{successMessage}</p>
             </form>
           </div>
         ) : (
