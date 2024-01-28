@@ -3,5 +3,5 @@ import { fetchUser } from "@/app/lib/fetchUser.js";
 
 export default async function SignUpPage() {
   let user = await fetchUser();
-  return <SignUp />;
+  return <SignUp user={user} />;
 }
