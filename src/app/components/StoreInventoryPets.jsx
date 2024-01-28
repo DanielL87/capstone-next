@@ -16,6 +16,7 @@ export default function StoreInventoryPets({
   selectedPokemon,
   setCost,
   wallet,
+  collection,
 }) {
   const [randomArray, setRandomArray] = useState(randomDataArray);
   const [inventoryArray, setInventoryArray] = useState(null);
@@ -51,6 +52,8 @@ export default function StoreInventoryPets({
         cost *= 2;
       }
 
+      const isPokedexIdInCollection = collection.includes(+pokemonData.id);
+
       const pokemonObject = {
         pokedexId: pokemonData.id,
         name: pokemonData.name,
@@ -63,6 +66,7 @@ export default function StoreInventoryPets({
         isShiny: boolean,
         isRare,
         cost,
+        isPokedexIdInCollection,
       };
 
       inventory.push(pokemonObject);
@@ -88,15 +92,17 @@ export default function StoreInventoryPets({
 
   return (
     <>
-      
       <div className={styles.heroStoreContainer}>
         {inventoryArray && (
           <div className={styles.StoreInventoryPets}>
             {inventoryArray.map((pokemon) => (
               <div key={pokemon.pokedexId} className={styles.heroStoreButton}>
                 <div className={styles.storeInventoryPetsContainer}>
-                  
-                  <PokemonDetails key={pokemon.pokedexId} pokemon={pokemon} isProfilePage={false}/>
+                  <PokemonDetails
+                    key={pokemon.pokedexId}
+                    pokemon={pokemon}
+                    isProfilePage={false}
+                  />
 
                   {isStore && user.id && (
                     <button
