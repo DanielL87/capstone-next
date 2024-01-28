@@ -1,5 +1,4 @@
 import Link from "next/link.js";
-
 import PokemonDetails from "@/app/components/PokemonDetails.jsx";
 import { fetchUser } from "@/app/lib/fetchUser.js";
 import { prisma } from "@/app/lib/prisma.js";

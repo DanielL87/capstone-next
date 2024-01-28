@@ -115,6 +115,7 @@ export default function Store({ user, wallet, collection }) {
                 setCost={setCost}
                 wallet={wallet}
                 setError={setError}
+                isProfilePage={false}
               />
               <p className={styles.errorStoreTitle}>{error}</p>
             </div>
@@ -124,7 +125,7 @@ export default function Store({ user, wallet, collection }) {
         {section === "namePet" && (
           <>
             <div className={styles.storeNamePetMainContainer}>
-              {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} />}
+              {selectedPokemon && <PokemonDetails pokemon={selectedPokemon} isProfilePage={false}/>}
 
               <p className={styles.selectPetTitle}>Name your Pet!</p>
             </div>
@@ -159,7 +160,7 @@ export default function Store({ user, wallet, collection }) {
               <div className={styles.congratsStoreContainer}>
                 <p className={styles.selectPetTitle}>Congratulations!</p>
                 <div className={styles.pokedexContainer}>
-                  {purchasedPet && <PokemonDetails pokemon={purchasedPet} />}
+                  {purchasedPet && <PokemonDetails pokemon={purchasedPet} isProfilePage={true}/>}
                 </div>
                 <p className={styles.paraText}>
                   You've successfully bought your pet. This is a big step in

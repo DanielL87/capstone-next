@@ -462,10 +462,11 @@
 
 .heroStoreContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+  gap: 20px;
 }
 
 .heroStoreTitle {
