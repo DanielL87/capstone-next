@@ -164,7 +164,7 @@ export default function SelectPet({ user, collection }) {
                   <div className={styles.pokedexContainer}>
                     {/* <PokemonDetails pokemon={starterPokemon} /> */}
                     {starterPokemon && (
-                      <PokemonDetails pokemon={starterPokemon} />
+                      <PokemonDetails pokemon={starterPokemon} isProfilePage={true}/>
                     )}
                   </div>
                   <p className={styles.paraText}>
