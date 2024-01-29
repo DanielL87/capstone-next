@@ -12,11 +12,7 @@ export default async function ProfilePage() {
       userId: user.id,
     },
   });
-  // const userWallet = await prisma.wallet.findFirst({
-  //   where: {
-  //     userId: user.id,
-  //   },
-  // });
+  
   return (
     <>
       {user.id ? (
