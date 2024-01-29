@@ -9,13 +9,13 @@ export default function DisplayBonusTasks({ task, pet }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        taskId: task.id,
         isCompleted: true,
         petId: pet.id,
         worth: task.worth,
       }),
     });
     const info = await response.json();
-    console.log(info);
   }
 
   return (

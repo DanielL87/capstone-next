@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
-
 import BacktoProfile from "../components/BacktoProfile.jsx";
 import PokemonDetails from "../components/PokemonDetails.jsx";
 import styles from "../page.module.css";
+import { useRouter } from "next/navigation";
 
 export default function SelectPet({ user, collection }) {
   const [starterArray, setStarterArray] = useState([]);
@@ -15,6 +15,8 @@ export default function SelectPet({ user, collection }) {
   const [section, setSection] = useState("selectPet");
   const [userPokemon, setUserPokemon] = useState(null);
   const [error, setError] = useState("");
+
+  const router = useRouter();
 
   async function fetchUserPokemon() {
     const response = await fetch("/api/pets", {
@@ -82,6 +84,7 @@ export default function SelectPet({ user, collection }) {
     setSection("congrats");
     setSelectedPokemon(null);
     setNickname("");
+    router.refresh();
   }
 
   async function getStarter(petId) {

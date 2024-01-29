@@ -81,6 +81,7 @@ export default function Store({ user, wallet, collection }) {
     setSection("selectPet");
     setCost(0);
     setSelectedPokemon(null);
+    router.refresh();
   }
 
   async function handlePurchase() {
@@ -196,7 +197,11 @@ export default function Store({ user, wallet, collection }) {
                 </p>
                 <br />
                 <div className={styles.congratsPetBtnContainer}>
-                  <Link href={"/store"} className={styles.confirmPetBtn}>
+                  <Link
+                    href={"/store"}
+                    className={styles.confirmPetBtn}
+                    onClick={handleCancel}
+                  >
                     Back to store
                   </Link>
                   <Link href="user/userId" className={styles.confirmPetBtn}>
