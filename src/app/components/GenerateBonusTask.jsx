@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import bonustasks from "../lib/bonusTasks.js";
 
 export default function GenerateBonusTask({ pet }) {
@@ -8,11 +8,25 @@ export default function GenerateBonusTask({ pet }) {
     return bonustasks[randomIndex];
   }
 
-  async function GenerateBonusTask() {
-    if (Math.random() < 0.1) {
-      let randomTask = getRandomTask();
-      console.log(randomTask.name);
+  async function fetchPetData() {
+    const response = await fetch(`/api/pets/${pet.id}`, {});
+    const info = await response.json();
+    return info.pet.task;
+  }
 
+  async function GenerateBonusTask() {
+    const petTasks = await fetchPetData();
+
+    console.log(petTasks);
+
+    const filteredTasks = petTasks.filter(
+      (task) => task.isBonus && !task.isCompleted
+    );
+
+    if (filteredTasks.length < 3) {
+      let randomTask = getRandomTask();
+      const dueDate = new Date();
+      dueDate.setDate(dueDate.getDate() + 1);
       const response = await fetch("/api/tasks", {
         method: "POST",
         headers: {
@@ -24,10 +38,10 @@ export default function GenerateBonusTask({ pet }) {
           worth: 10,
           pet,
           isBonus: true,
+          dueDate: dueDate.toISOString(),
         }),
       });
       const info = await response.json();
-      console.log(info);
     }
   }
 
@@ -37,8 +51,8 @@ export default function GenerateBonusTask({ pet }) {
       GenerateBonusTask();
     }, 1000);
 
-    // Clear interval on component unmount
     return () => clearInterval(intervalId);
   }, []);
+
   return null;
 }

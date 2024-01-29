@@ -10,6 +10,7 @@ export async function GET(req, res) {
 
     const pet = await prisma.pet.findFirst({
       where: { id: petId },
+      include: { task: true },
     });
 
     return NextResponse.json({ success: true, pet });
