@@ -14,16 +14,18 @@ import GenerateBonusTask from "../components/GenerateBonusTask.jsx";
 export default async function Navbar() {
   const user = await fetchUser();
   const wallet = await prisma.wallet.findFirst({ where: { userId: user.id } });
-  const pets = await prisma.pet.findMany({
-    where: { userId: user.id },
-    include: { task: true },
-  });
+
+  let pets = null;
+  if (user.id) {
+    pets = await prisma.pet.findMany({
+      where: { userId: user.id },
+      include: { task: true },
+    });
+  }
 
   return (
     <>
-      {pets.map((pet) => (
-        <GenerateBonusTask key={pet.id} pet={pet} />
-      ))}
+      {pets && pets.map((pet) => <GenerateBonusTask key={pet.id} pet={pet} />)}
       <div className={styles.navBarContainer}>
         <div className={styles.logoSidebarContainer}>
           <Link href={"/"}>

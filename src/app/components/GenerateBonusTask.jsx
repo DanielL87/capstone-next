@@ -17,8 +17,6 @@ export default function GenerateBonusTask({ pet }) {
   async function GenerateBonusTask() {
     const petTasks = await fetchPetData();
 
-    console.log(petTasks);
-
     const filteredTasks = petTasks.filter(
       (task) => task.isBonus && !task.isCompleted
     );
