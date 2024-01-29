@@ -723,7 +723,7 @@
 }
 
 /* Pokemon Details page  */
-@keyframes glitter {
+@keyframes selectGlitter {
   0% {
     border-color: #46b9c5;
   }
@@ -743,7 +743,7 @@
 
 .selectedPokemonContainer {
   border: 6px solid #003650;
-  animation: glitter 2s linear infinite;
+  animation: selectGlitter 2s linear infinite;
 }
 
 .pokemonMainContainer {
