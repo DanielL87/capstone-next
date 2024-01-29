@@ -723,7 +723,7 @@
 }
 
 /* Pokemon Details page  */
-@keyframes glitter {
+@keyframes selectGlitter {
   0% {
     border-color: #46b9c5;
   }
@@ -743,7 +743,7 @@
 
 .selectedPokemonContainer {
   border: 6px solid #003650;
-  animation: glitter 2s linear infinite;
+  animation: selectGlitter 2s linear infinite;
 }
 
 .pokemonMainContainer {
@@ -1452,8 +1452,8 @@
 
 /* Display Task page */
 .taskMainContainer {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   margin-bottom: 2rem;
 }
@@ -1562,6 +1562,16 @@
   cursor: pointer;
 }
 
+.bonusTaskMainContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #d5f0c1;
+  border-radius: 10px;
+  border: 10px solid #003550d3;
+  width: 1050px;
+  height: auto;
+  padding: 40px;
+}
 .bonusTaskContainer {
   display: flex;
   flex-direction: row;
