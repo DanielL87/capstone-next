@@ -4,7 +4,7 @@ import { NextResponse } from "next/server.js";
 
 export async function POST(req, res) {
   try {
-    const { name, pet, category, worth, isBonus } = await req.json();
+    const { name, pet, category, worth, isBonus, dueDate } = await req.json();
 
     const user = await fetchUser();
 
@@ -16,6 +16,7 @@ export async function POST(req, res) {
         category: category,
         worth: worth,
         isBonus,
+        dueDate,
       },
     });
 
@@ -23,4 +24,11 @@ export async function POST(req, res) {
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message });
   }
+}
+
+export async function PUT(req, res) {
+  const { petId, isCompleted, worth } = await req.json();
+
+  const user = await fetchUser();
+  return NextResponse.json({ success: true, petId, isCompleted, worth });
 }

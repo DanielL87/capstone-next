@@ -9,14 +9,23 @@ import Sidebar from "../components/Sidebar.jsx";
 import { fetchUser } from "../lib/fetchUser.js";
 import { prisma } from "../lib/prisma.js";
 import styles from "../page.module.css";
+import GenerateBonusTask from "../components/GenerateBonusTask.jsx";
 
 export default async function Navbar() {
   const user = await fetchUser();
   const wallet = await prisma.wallet.findFirst({ where: { userId: user.id } });
-  const petOwned = await prisma.pet.findMany({ where: { userId: user.id } });
+
+  let pets = null;
+  if (user.id) {
+    pets = await prisma.pet.findMany({
+      where: { userId: user.id },
+      include: { task: true },
+    });
+  }
 
   return (
     <>
+      {pets && pets.map((pet) => <GenerateBonusTask key={pet.id} pet={pet} />)}
       <div className={styles.navBarContainer}>
         <div className={styles.logoSidebarContainer}>
           <Link href={"/"}>
@@ -50,8 +59,7 @@ export default async function Navbar() {
                 Pets:
                 <span className={styles.spanPet}>
                   {" "}
-                  <MdCatchingPokemon className={styles.navPet} />{" "}
-                  {petOwned.length}
+                  <MdCatchingPokemon className={styles.navPet} /> {pets.length}
                 </span>{" "}
               </p>
             </div>

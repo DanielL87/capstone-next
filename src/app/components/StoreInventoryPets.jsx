@@ -52,7 +52,10 @@ export default function StoreInventoryPets({
         cost *= 2;
       }
 
-      const isPokedexIdInCollection = collection.includes(+pokemonData.id);
+      let isPokedexIdInCollection = null;
+      if (collection) {
+        isPokedexIdInCollection = collection.includes(+pokemonData.id);
+      }
 
       const pokemonObject = {
         pokedexId: pokemonData.id,

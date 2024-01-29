@@ -2,14 +2,21 @@
 import React, { useState, useEffect } from "react";
 import styles from "@/app/page.module.css";
 import { IoMdCheckboxOutline } from "react-icons/io";
+import DisplayBonusTasks from "./DisplayBonusTasks.jsx";
 
-export default function DisplayTasks({ user, userId, petId, tasks }) {
+export default function DisplayTasks({ user, userId, pet, tasks }) {
   const [taskList, setTaskList] = useState([]);
+  const [bonusList, setBonusList] = useState(null);
   const [completedTasks, setCompletedTasks] = useState([]);
 
+  // useEffect(() => {
+  //   console.log(taskList);
+  // }, [userId, petId]);
+
   useEffect(() => {
-    console.log(taskList);
-  }, [userId, petId]);
+    const bonusTasks = tasks.filter((task) => task.isBonus === true);
+    setBonusList(bonusTasks);
+  }, [tasks]);
 
   const handleTaskCompletion = (task) => {
     setCompletedTasks((prevTasks) => [...prevTasks, task]);
@@ -65,13 +72,15 @@ export default function DisplayTasks({ user, userId, petId, tasks }) {
                   className={`${styles.taskName} ${
                     completedTasks.includes(task) ? styles.strikeThrough : ""
                   }`}
-                >
-                  This is a bonus task from the pet.
-                </p>
+                ></p>
               </div>
             </div>
           ))}
         </div>
+        {bonusList &&
+          bonusList.map((bonusTask) => (
+            <DisplayBonusTasks key={bonusTask.id} task={bonusTask} pet={pet} />
+          ))}
       </div>
     </>
   );
