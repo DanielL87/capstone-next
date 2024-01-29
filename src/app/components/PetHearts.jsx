@@ -1,27 +1,50 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import styles from '../page.module.css';
+"use client";
+import React, { useEffect, useState } from "react";
 
-export default function PetHearts() {
-       const [hearts, setHearts] = useState(5);
+import styles from "../page.module.css";
 
-       useEffect(() => {
-              const timer = setInterval(() => {
-                     setHearts((prevHearts) => (prevHearts > 0 ? prevHearts - 1 : 0));
-              }, 24 * 60 * 60 * 1000); // Decrease a heart every day
+export default function PetHearts({ pokemon }) {
+  const [hearts, setHearts] = useState(1);
+  const [showRunAwayMessage, setShowRunAwayMessage] = useState(false);
 
-              return () => clearInterval(timer); // Clean up on component unmount
-       }, []);
+  useEffect(() => {
+    async function fetchHearts() {
+      try {
+        const response = await fetch(`/api/pets/${pokemon.id}`);
+        const data = await response.json();
+        console.log(data);
+        const fetchedHearts = data.pet.hearts;
 
-       return (
-              <>
-              <div className={styles.petHeartContainer}>
-                     {hearts > 0 ? (
-                            <p>{'❤️ '.repeat(hearts)}</p>
-                     ) : (
-                            <p>Pet has Run Away!</p>
-                     )}
-              </div>
-              </>
-       );
+        setHearts(fetchedHearts);
+      } catch (error) {
+        console.error("Error fetching hearts:", error);
+      }
+    }
+
+    fetchHearts();
+
+    const timer = setInterval(() => {
+      if (hearts === 5) {
+        setShowRunAwayMessage(true);
+      } else if (hearts === 0) {
+        setShowRunAwayMessage(false);
+      }
+
+      setHearts((prevHearts) => (prevHearts < 5 ? prevHearts + 1 : 0));
+    }, 24 * 60 * 60 * 1000);
+
+    return () => clearInterval(timer);
+  }, [pokemon]);
+
+  return (
+    <>
+      <div className={styles.petHeartContainer}>
+        {showRunAwayMessage ? (
+          <p>Your pet ran away!</p>
+        ) : (
+          <p>{"❤️ ".repeat(hearts)}</p>
+        )}
+      </div>
+    </>
+  );
 }

@@ -21,7 +21,7 @@ export async function POST(request, response) {
     if (!user) {
       return NextResponse.json({
         success: false,
-        error: "User not found. Please register",
+        error: "User not found. Please Sign up",
       });
     }
 
@@ -35,12 +35,12 @@ export async function POST(request, response) {
     }
 
     delete user.password;
-   
+
     const token = jwt.sign(
       { userId: user.id, username: user.username },
       process.env.JWT_SECRET
     );
-  
+
     cookieStore.set("token", token);
     return NextResponse.json({ success: true, user, token });
   } catch (error) {
