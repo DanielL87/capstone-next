@@ -1,12 +1,14 @@
+import styles from '@/app/page.module.css';
+import { IoMdCheckboxOutline } from 'react-icons/io';
 export default function DisplayBonusTasks({ task, pet }) {
   const formattedDueDate = new Date(task.dueDate).toLocaleString();
   const completed = task.isCompleted;
 
   async function handleCompleteTask() {
-    const response = await fetch("/api/tasks", {
-      method: "PUT",
+    const response = await fetch('/api/tasks', {
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         isCompleted: true,
@@ -19,12 +21,29 @@ export default function DisplayBonusTasks({ task, pet }) {
   }
 
   return (
-    <div>
-      <p>Task: {task.name}</p>
-      <p>Category: {task.category}</p>
-      <p>Due Date: {formattedDueDate}</p>
-      <p>Worth: {task.worth}</p>
-      <button onClick={handleCompleteTask}>Complete Task!</button>
-    </div>
+    <>
+      
+      <div className={styles.bonusTaskContainer}>
+        <p className={styles.taskName}>
+          <span className={styles.taskCategoryTitle}>Task: </span>
+          {task.name}
+        </p>
+        <p className={styles.taskName}>
+          <span className={styles.taskCategoryTitle}>Category: </span>
+          {task.category}
+        </p>
+        <p className={styles.taskName}>
+          <span className={styles.dueDate}>Due:</span>{' '}
+          {new Date(formattedDueDate).toLocaleDateString()}
+        </p>
+        <p className={styles.taskName}>
+          <span className={styles.taskCategoryTitle}>Worth:</span> {task.worth}
+        </p>
+        <IoMdCheckboxOutline
+          className={styles.taskCheckbox}
+          onClick={handleCompleteTask}
+        />
+      </div>
+    </>
   );
 }
