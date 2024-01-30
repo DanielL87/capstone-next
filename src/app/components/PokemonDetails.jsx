@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
+
+import { MdCatchingPokemon } from "react-icons/md";
+
 import pokeColor from "../lib/pokeColor.js";
 import styles from "../page.module.css";
 import PetHearts from "./PetHearts.jsx";
-import { MdCatchingPokemon } from "react-icons/md";
 
 export default function PokemonDetails({
   pokemon,
@@ -32,7 +34,7 @@ export default function PokemonDetails({
   return (
     <>
       <div className={styles.pokemonMainContainer}>
-        {showHearts && <PetHearts showHearts={true} />}
+        {showHearts && <PetHearts pokemon={pokemon} showHearts={true} />}
         <div className={styles.pokemonMainCardContainer}>
           <div
             className={`${styles.pokemonContainer} ${
@@ -48,7 +50,7 @@ export default function PokemonDetails({
                 <p className={styles.pokeName}>
                   {pokemon.capitalizedName || pokemon.name}
                 </p>
-                
+
                 <div className={styles.pokeInfoContainer}>
                   <div className={styles.rarityContainer}>
                     {pokemon.isRare && (
@@ -79,7 +81,9 @@ export default function PokemonDetails({
                   <MdCatchingPokemon className={styles.collectedPet} />
                 ) : !isProfilePage ? (
                   <p className={styles.collectMe}>Collect me!</p>
-                ) : <MdCatchingPokemon className={styles.collectedPet} />}
+                ) : (
+                  <MdCatchingPokemon className={styles.collectedPet} />
+                )}
                 {pokemon.nickname ? (
                   <p className={styles.pokemonNickname}>{pokemon.nickname}</p>
                 ) : (

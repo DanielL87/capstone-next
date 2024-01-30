@@ -56,7 +56,6 @@ export default function StoreInventoryPets({
       if (collection) {
         isPokedexIdInCollection = collection.includes(+pokemonData.id);
       }
-
       const pokemonObject = {
         pokedexId: pokemonData.id,
         name: pokemonData.name,
