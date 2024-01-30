@@ -15,6 +15,13 @@ export async function POST(req, res) {
       include: { task: true },
     });
 
+    if (_pet.userId !== user.id) {
+      return NextResponse.json({
+        success: false,
+        message: "You must be the owner of this pet to Update!",
+      });
+    }
+
     if (isBonus) {
       if (_pet) {
         const filteredBonusTasks = await _pet.task.filter(
@@ -68,12 +75,27 @@ export async function PUT(req, res) {
     });
   }
 
+  const _pet = await prisma.pet.findFirst({
+    where: { id: pet.id },
+    include: { task: true },
+  });
+
+  if (_pet.userId !== user.id) {
+    return NextResponse.json({
+      success: false,
+      message: "You must be the owner of this pet to Update!",
+    });
+  }
+
   const updatedTask = await prisma.task.update({
     where: { id: taskId },
     data: { isCompleted },
   });
 
   if (updatedTask) {
+    if (_pet.hearts === 5) {
+      worth *= 2;
+    }
     const wallet = await prisma.wallet.update({
       where: { userId: user.id },
       data: {
@@ -83,16 +105,18 @@ export async function PUT(req, res) {
       },
     });
 
-    const pet = await prisma.pet.update({
-      where: {
-        id: petId,
-      },
-      data: {
-        hearts: {
-          increment: 1,
+    if (_pet.hearts < 5) {
+      const pet = await prisma.pet.update({
+        where: {
+          id: petId,
         },
-      },
-    });
+        data: {
+          hearts: {
+            increment: 1,
+          },
+        },
+      });
+    }
   }
 
   return NextResponse.json({ success: true, updatedTask });
