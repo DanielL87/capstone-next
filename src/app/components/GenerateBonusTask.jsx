@@ -1,7 +1,7 @@
-"use client";
-import { useEffect, useState } from "react";
-import bonustasks from "../lib/bonusTasks.js";
-import { useRouter } from "next/navigation";
+'use client';
+import { useEffect, useState } from 'react';
+import bonustasks from '../lib/bonusTasks.js';
+import { useRouter } from 'next/navigation';
 
 export default function GenerateBonusTask({ pet }) {
   const router = useRouter();
@@ -30,8 +30,8 @@ export default function GenerateBonusTask({ pet }) {
           // console.log("Pet ran away");
         } else if (pet.hearts > 0) {
           const response = await fetch(`/api/pets/`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               petId: pet.id,
             }),
@@ -46,10 +46,10 @@ export default function GenerateBonusTask({ pet }) {
       let randomTask = getRandomTask();
       const dueDate = new Date();
       dueDate.setDate(dueDate.getDate() + 3);
-      const response = await fetch("/api/tasks", {
-        method: "POST",
+      const response = await fetch('/api/tasks', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           name: randomTask.name,
@@ -62,7 +62,6 @@ export default function GenerateBonusTask({ pet }) {
       });
       const info = await response.json();
 
-      console.log(info);
       router.refresh();
     }
   }

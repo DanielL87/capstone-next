@@ -74,7 +74,7 @@ export async function PUT(req, res) {
       message: "You must be the owner of this task to Update!",
     });
   }
-console.log(_task.userId, user.id)
+
   const _pet = await prisma.pet.findFirst({
     where: { id: petId },
     include: { task: true },

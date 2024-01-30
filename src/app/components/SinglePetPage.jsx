@@ -18,10 +18,7 @@ export default function SinglePetInfo({
     ? pokemonData.sprites.other["official-artwork"].front_shiny
     : pokemonData.sprites.other["official-artwork"].front_default;
 
-  useEffect(() => {
-    // console.log(tasks);
-  }, []);
-
+  
   return (
     <>
       <div className={styles.pokedexSinglePetMainContainer}>

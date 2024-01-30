@@ -24,16 +24,12 @@ export default function CreateTask({ user, pet }) {
       dueDate,
     };
 
-    console.log (dueDate, name, category);
-
     setSubmitClicked(true);
 
     if (!isLoggedIn) {
       setError('You must be logged in to submit.');
       return;
     }
-
-    
 
     try {
       const response = await fetch('/api/tasks', {
@@ -64,8 +60,6 @@ export default function CreateTask({ user, pet }) {
     setDueDate('');
     setCategory('');
   };
-
-  
 
   return (
     <>
