@@ -26,7 +26,7 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
     setTaskList(userTasks);
   }, [tasks]);
 
-  async function handleCompleteTask( task ) {
+  async function handleCompleteTask(task) {
     const response = await fetch('/api/tasks', {
       method: 'PUT',
       headers: {
@@ -47,7 +47,6 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
 
   return (
     <>
-    
       <div className={styles.taskMainContainer}>
         <p className={styles.taskPageTitle}>Tasks</p>
 
@@ -79,18 +78,17 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
                   <div className={styles.bonusCheckboxContainer}>
                     <IoMdCheckboxOutline
                       className={styles.taskCheckbox}
-                      onClick={ ()=> handleCompleteTask (task)}
+                      onClick={() => handleCompleteTask(task)}
                       disabled={completedTasks.includes(task)}
                     />
                   </div>
-                  
                 </div>
                 <div className={styles.bonusTaskInfoContainer}>
-                    <p className={styles.taskName}>
-                      <span className={styles.taskCategoryTitle}>Task: </span>
-                      {task.name}
-                    </p>
-                  </div>
+                  <p className={styles.taskName}>
+                    <span className={styles.taskCategoryTitle}>Task: </span>
+                    {task.name}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
