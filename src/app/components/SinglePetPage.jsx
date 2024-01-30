@@ -1,10 +1,11 @@
 "use client";
+import { useEffect } from "react";
+
 import styles from "../page.module.css";
 import CreateTask from "./CreateTask.jsx";
 import DisplayTasks from "./DisplayTasks.jsx";
 import EvolvePet from "./EvolvePet.jsx";
 import PetHearts from "./PetHearts.jsx";
-import { useEffect } from "react";
 
 export default function SinglePetInfo({
   pokemonData,
@@ -31,7 +32,7 @@ export default function SinglePetInfo({
               <EvolvePet pet={pet} collection={collection} />
             </div>
             <div className={styles.singlePetHearts}>
-              <PetHearts showHearts={true} />
+              <PetHearts pokemon={pet} showHearts={true} />
             </div>
           </div>
           <div className={styles.pokemonStatsMainContainer}>

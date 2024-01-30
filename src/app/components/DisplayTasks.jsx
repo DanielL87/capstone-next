@@ -25,9 +25,8 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
   return (
     <>
       <div className={styles.taskMainContainer}>
-        <div >
-          <p className={styles.taskPageTitle}>Tasks</p>
-
+        <p className={styles.taskPageTitle}>Tasks</p>
+        <div className={styles.mainContainer}>
           <div className={styles.taskContainer}>
             <div className={styles.taskTitlesContainer}>
               <p className={styles.bonusTitle}>Daily Tasks</p>
@@ -35,27 +34,25 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
             {tasks.map((task) => (
               <div className={styles.tasksUserContainer} key={task.id}>
                 <div className={styles.dailyTaskContainer}>
-                  <IoMdCheckboxOutline
-                    className={styles.taskCheckbox}
-                    onChange={() => handleTaskCompletion(task)}
-                    disabled={completedTasks.includes(task)}
-                  />
-                  <p className={styles.taskCategoryTitle}>{task.category}:</p>
-                  <p className={styles.taskName}>{task.name}</p>
-                  <p className={styles.taskName}>
-                    <span className={styles.dueDate}>Due:</span>{' '}
-                    {new Date(task.dueDate).toLocaleDateString()}
-                  </p>
+                  <div className={styles.taskInfoContainer}>
+                    <p className={styles.taskCategoryTitle}>{task.category}:</p>
+                    <p className={styles.taskName}>{task.name}</p>
+                  </div>
+
+                  <div className={styles.taskInfoContainer}>
+                    <p className={styles.taskName}>
+                      <span className={styles.dueDate}>Due:</span>{' '}
+                      {new Date(task.dueDate).toLocaleDateString()}
+                    </p>
+                    <IoMdCheckboxOutline
+                      className={styles.taskCheckbox}
+                      onChange={() => handleTaskCompletion(task)}
+                      disabled={completedTasks.includes(task)}
+                    />
+                  </div>
                 </div>
 
-                <div className={styles.bonusTaskContainer}>
-                  <IoMdCheckboxOutline
-                    className={styles.taskCheckbox}
-                    onChange={() => handleTaskCompletion(task)}
-                    disabled={completedTasks.includes(task)}
-                  />
-                  <p className={styles.taskName}></p>
-                </div>
+                <div className={styles.bonusTaskContainer}></div>
               </div>
             ))}
           </div>
