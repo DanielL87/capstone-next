@@ -47,6 +47,7 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
 
   return (
     <>
+    
       <div className={styles.taskMainContainer}>
         <p className={styles.taskPageTitle}>Tasks</p>
 
@@ -55,6 +56,10 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
             <div className={styles.taskTitlesContainer}>
               <p className={styles.bonusTitle}>Daily Tasks</p>
             </div>
+
+            {taskList.length === 0 && (
+              <p className={styles.taskName}>Create a task to get started!</p>
+            )}
 
             {taskList.map((task) => (
               <div className={styles.bonusTaskContainer} key={task.id}>
