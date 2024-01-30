@@ -124,4 +124,3 @@ export async function PUT(req, res) {
   }
   return NextResponse.json({ success: true, updatedTask });
 }
-}
