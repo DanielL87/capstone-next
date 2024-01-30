@@ -93,14 +93,16 @@ export async function PUT(req, res) {
   });
 
   if (updatedTask) {
+    let coinIncrease = worth;
+
     if (_pet.hearts === 5) {
-      worth *= 2;
+      coinIncrease *= 2;
     }
     const wallet = await prisma.wallet.update({
       where: { userId: user.id },
       data: {
         coin: {
-          increment: worth,
+          increment: coinIncrease,
         },
       },
     });
