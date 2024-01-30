@@ -3,15 +3,14 @@ import React, { useState, useEffect } from 'react';
 import styles from '@/app/page.module.css';
 import { IoMdCheckboxOutline } from 'react-icons/io';
 import DisplayBonusTasks from './DisplayBonusTasks.jsx';
+import { useRouter } from 'next/navigation.js';
 
 export default function DisplayTasks({ user, userId, pet, tasks }) {
   const [taskList, setTaskList] = useState([]);
   const [bonusList, setBonusList] = useState(null);
   const [completedTasks, setCompletedTasks] = useState([]);
 
-  // useEffect(() => {
-  //   console.log(taskList);
-  // }, [userId, petId]);
+  const router = useRouter();
 
   useEffect(() => {
     const bonusTasks = tasks.filter(
@@ -27,9 +26,24 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
     setTaskList(userTasks);
   }, [tasks]);
 
-  const handleTaskCompletion = (task) => {
-    setCompletedTasks((prevTasks) => [...prevTasks, task]);
-  };
+  async function handleCompleteTask( task ) {
+    const response = await fetch('/api/tasks', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        taskId: task.id,
+        isCompleted: true,
+        petId: pet.id,
+        worth: task.worth,
+      }),
+    });
+    const info = await response.json();
+    console.log(info);
+
+    router.refresh();
+  }
 
   return (
     <>
@@ -60,7 +74,7 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
                   <div className={styles.bonusCheckboxContainer}>
                     <IoMdCheckboxOutline
                       className={styles.taskCheckbox}
-                      onChange={() => handleTaskCompletion(task)}
+                      onClick={ ()=> handleCompleteTask (task)}
                       disabled={completedTasks.includes(task)}
                     />
                   </div>
