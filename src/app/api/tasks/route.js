@@ -27,8 +27,44 @@ export async function POST(req, res) {
 }
 
 export async function PUT(req, res) {
-  const { petId, isCompleted, worth } = await req.json();
-
+  const { petId, isCompleted, worth, taskId } = await req.json();
   const user = await fetchUser();
-  return NextResponse.json({ success: true, petId, isCompleted, worth });
+
+  const _task = await prisma.task.findFirst({ where: { id: taskId } });
+
+  if (_task.userId !== user.id) {
+    return NextResponse.json({
+      success: false,
+      message: "You must be the owner of this task to Update!",
+    });
+  }
+
+  const updatedTask = await prisma.task.update({
+    where: { id: taskId },
+    data: { isCompleted },
+  });
+
+  if (updatedTask) {
+    const wallet = await prisma.wallet.update({
+      where: { userId: user.id },
+      data: {
+        coin: {
+          increment: worth,
+        },
+      },
+    });
+
+    const pet = await prisma.pet.update({
+      where: {
+        id: petId,
+      },
+      data: {
+        hearts: {
+          increment: 1,
+        },
+      },
+    });
+  }
+
+  return NextResponse.json({ success: true, updatedTask });
 }

@@ -1,14 +1,15 @@
-import styles from '@/app/page.module.css';
-import { IoMdCheckboxOutline } from 'react-icons/io';
+import styles from "@/app/page.module.css";
+import { IoMdCheckboxOutline } from "react-icons/io";
+import { useRouter } from "next/navigation";
 export default function DisplayBonusTasks({ task, pet }) {
+  const router = useRouter();
   const formattedDueDate = new Date(task.dueDate).toLocaleString();
-  const completed = task.isCompleted;
 
   async function handleCompleteTask() {
-    const response = await fetch('/api/tasks', {
-      method: 'PUT',
+    const response = await fetch("/api/tasks", {
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         taskId: task.id,
@@ -18,11 +19,13 @@ export default function DisplayBonusTasks({ task, pet }) {
       }),
     });
     const info = await response.json();
+    console.log(info);
+
+    router.refresh();
   }
 
   return (
     <>
-      
       <div className={styles.bonusTaskContainer}>
         <p className={styles.taskName}>
           <span className={styles.taskCategoryTitle}>Task: </span>
@@ -33,7 +36,7 @@ export default function DisplayBonusTasks({ task, pet }) {
           {task.category}
         </p>
         <p className={styles.taskName}>
-          <span className={styles.dueDate}>Due:</span>{' '}
+          <span className={styles.dueDate}>Due:</span>{" "}
           {new Date(formattedDueDate).toLocaleDateString()}
         </p>
         <p className={styles.taskName}>

@@ -12,7 +12,7 @@ export default function PetHearts({ pokemon }) {
       try {
         const response = await fetch(`/api/pets/${pokemon.id}`);
         const data = await response.json();
-        console.log(data);
+
         const fetchedHearts = data.pet.hearts;
 
         setHearts(fetchedHearts);

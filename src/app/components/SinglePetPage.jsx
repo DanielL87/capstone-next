@@ -19,7 +19,7 @@ export default function SinglePetInfo({
     : pokemonData.sprites.other["official-artwork"].front_default;
 
   useEffect(() => {
-    console.log(tasks);
+    // console.log(tasks);
   }, []);
 
   return (

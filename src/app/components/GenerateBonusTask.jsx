@@ -1,8 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import bonustasks from "../lib/bonusTasks.js";
+import { useRouter } from "next/navigation";
 
 export default function GenerateBonusTask({ pet }) {
+  const router = useRouter();
   function getRandomTask() {
     const randomIndex = Math.floor(Math.random() * bonustasks.length);
     return bonustasks[randomIndex];
@@ -21,10 +23,10 @@ export default function GenerateBonusTask({ pet }) {
       (task) => task.isBonus && !task.isCompleted
     );
 
-    if (filteredTasks.length >= 3) {
+    if (filteredTasks.length > 3) {
       if (pet.hearts === 0) {
         console.log("Pet ran away");
-      } else {
+      } else if (pet.hearts > 0) {
         const response = await fetch(`/api/pets/`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -33,7 +35,6 @@ export default function GenerateBonusTask({ pet }) {
           }),
         });
         const info = await response.json();
-        console.log(info);
       }
     }
 
@@ -63,7 +64,7 @@ export default function GenerateBonusTask({ pet }) {
   useEffect(() => {
     const intervalId = setInterval(() => {
       GenerateBonusTask();
-    }, 1000);
+    }, 60000);
 
     return () => clearInterval(intervalId);
   }, []);

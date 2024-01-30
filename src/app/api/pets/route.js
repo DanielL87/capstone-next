@@ -83,24 +83,46 @@ export async function POST(req) {
 }
 
 export async function PUT(req) {
-  const { petId } = await req.json();
-  const user = await fetchUser();
+  try {
+    const { petId } = await req.json();
+    const user = await fetchUser();
 
-  const _pet = await prisma.pet.findFirst({
-    where: {
-      id: petId,
-    },
-  });
+    const _pet = await prisma.pet.findFirst({
+      where: {
+        id: petId,
+      },
+    });
 
-  console.log(_pet);
-  console.log(user);
+    if (_pet.userId !== user.id) {
+      return NextResponse.json({
+        success: false,
+        message: "You must be the owner of this pet to Update!",
+      });
+    }
 
-  if (_pet.userId !== user.id) {
+    let updatedPet = null;
+    if (_pet.hearts > 0) {
+      updatedPet = await prisma.pet.update({
+        where: {
+          id: petId,
+        },
+        data: {
+          hearts: {
+            decrement: 1,
+          },
+        },
+      });
+    }
+
     return NextResponse.json({
-      success: false,
-      message: "You must be the owner of this pet to Update!",
+      success: true,
+      message: "Put Router",
+      updatedPet,
+    });
+  } catch (error) {
+    return NextResponse.json({
+      success: true,
+      error: error.message,
     });
   }
-
-  return NextResponse.json({ success: true, message: "Put Router", petId });
 }

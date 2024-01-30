@@ -1,8 +1,8 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import styles from '@/app/page.module.css';
-import { IoMdCheckboxOutline } from 'react-icons/io';
-import DisplayBonusTasks from './DisplayBonusTasks.jsx';
+"use client";
+import React, { useState, useEffect } from "react";
+import styles from "@/app/page.module.css";
+import { IoMdCheckboxOutline } from "react-icons/io";
+import DisplayBonusTasks from "./DisplayBonusTasks.jsx";
 
 export default function DisplayTasks({ user, userId, pet, tasks }) {
   const [taskList, setTaskList] = useState([]);
@@ -14,8 +14,17 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
   // }, [userId, petId]);
 
   useEffect(() => {
-    const bonusTasks = tasks.filter((task) => task.isBonus === true);
+    const bonusTasks = tasks.filter(
+      (task) => task.isBonus === true && !task.isCompleted
+    );
     setBonusList(bonusTasks);
+  }, [tasks]);
+
+  useEffect(() => {
+    const userTasks = tasks.filter(
+      (task) => !task.isBonus === true && !task.isCompleted
+    );
+    setTaskList(userTasks);
   }, [tasks]);
 
   const handleTaskCompletion = (task) => {
@@ -31,7 +40,7 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
             <div className={styles.taskTitlesContainer}>
               <p className={styles.bonusTitle}>Daily Tasks</p>
             </div>
-            {tasks.map((task) => (
+            {taskList.map((task) => (
               <div className={styles.tasksUserContainer} key={task.id}>
                 <div className={styles.dailyTaskContainer}>
                   <div className={styles.taskInfoContainer}>
@@ -41,7 +50,7 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
 
                   <div className={styles.taskInfoContainer}>
                     <p className={styles.taskName}>
-                      <span className={styles.dueDate}>Due:</span>{' '}
+                      <span className={styles.dueDate}>Due:</span>{" "}
                       {new Date(task.dueDate).toLocaleDateString()}
                     </p>
                     <IoMdCheckboxOutline

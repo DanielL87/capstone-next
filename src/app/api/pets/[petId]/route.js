@@ -40,7 +40,7 @@ export async function PUT(req, res) {
 
     const updatedPet = await prisma.pet.update({
       where: { id: petId },
-      data: { name, pokedexId, spriteUrl },
+      data: { name, pokedexId, spriteUrl, hearts: 1 },
     });
 
     let _user;
