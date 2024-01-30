@@ -81,3 +81,26 @@ export async function POST(req) {
     return NextResponse.json({ success: false, error: error.message });
   }
 }
+
+export async function PUT(req) {
+  const { petId } = await req.json();
+  const user = await fetchUser();
+
+  const _pet = await prisma.pet.findFirst({
+    where: {
+      id: petId,
+    },
+  });
+
+  console.log(_pet);
+  console.log(user);
+
+  if (_pet.userId !== user.id) {
+    return NextResponse.json({
+      success: false,
+      message: "You must be the owner of this pet to Update!",
+    });
+  }
+
+  return NextResponse.json({ success: true, message: "Put Router", petId });
+}

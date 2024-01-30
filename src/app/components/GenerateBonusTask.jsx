@@ -21,6 +21,22 @@ export default function GenerateBonusTask({ pet }) {
       (task) => task.isBonus && !task.isCompleted
     );
 
+    if (filteredTasks.length >= 3) {
+      if (pet.hearts === 0) {
+        console.log("Pet ran away");
+      } else {
+        const response = await fetch(`/api/pets/`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            petId: pet.id,
+          }),
+        });
+        const info = await response.json();
+        console.log(info);
+      }
+    }
+
     if (filteredTasks.length < 3) {
       let randomTask = getRandomTask();
       const dueDate = new Date();
