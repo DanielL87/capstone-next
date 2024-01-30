@@ -43,6 +43,17 @@ export async function PUT(req, res) {
       data: { name, pokedexId, spriteUrl, hearts: 1 },
     });
 
+    if (updatedPet) {
+      const wallet = await prisma.wallet.update({
+        where: { userId: user.id },
+        data: {
+          coin: {
+            decrement: 100,
+          },
+        },
+      });
+    }
+
     let _user;
     if (collectedNumber) {
       _user = await prisma.user.update({

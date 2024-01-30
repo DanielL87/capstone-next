@@ -7,6 +7,7 @@ export default async function PetPage({ params }) {
   const petId = params.petId;
   const pet = await prisma.pet.findFirst({ where: { id: petId } });
   const user = await fetchUser();
+  const wallet = await prisma.wallet.findFirst({ where: { userId: user.id } });
   const tasks = await prisma.task.findMany({ where: { petId } });
   const collection = await prisma.user.findUnique({
     where: { id: user.id },
@@ -25,6 +26,7 @@ export default async function PetPage({ params }) {
       user={user}
       tasks={tasks}
       collection={collection}
+      wallet={wallet}
     />
   );
 }

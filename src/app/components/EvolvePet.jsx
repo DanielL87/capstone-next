@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation.js";
 
 import styles from "../page.module.css";
 
-export default function EvolvePet({ pet, collection }) {
+export default function EvolvePet({ pet, collection, wallet }) {
   const [hideEvolve, setHideEvolve] = useState(false);
   const [newData, setNewData] = useState(null);
   const [error, setError] = useState("");
@@ -134,6 +134,13 @@ export default function EvolvePet({ pet, collection }) {
       setLoading(true);
       await fetchEvolutionData();
 
+      //checks wallet
+      if (wallet.coin < 100) {
+        setError("Insufficient coins to evolve pet!");
+        setLoading(false);
+        return;
+      }
+
       // Check if evolutionData is not null before accessing its properties
       if (!evolutionData) {
         return setError(" No evolution Data Found!");
@@ -182,7 +189,7 @@ export default function EvolvePet({ pet, collection }) {
           onClick={handleEvolution}
           disabled={loading}
         >
-          {loading ? "Evolving..." : "Evolve Me!"}
+          {loading ? "Evolving..." : "Evolve Me! (Cost: 100 Coins)"}
         </button>
       )}
       <p>{error}</p>
