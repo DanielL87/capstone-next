@@ -45,7 +45,7 @@ export default function GenerateBonusTask({ pet }) {
       // if (filteredTasks.length < 3) {
       let randomTask = getRandomTask();
       const dueDate = new Date();
-      dueDate.setDate(dueDate.getDate() + 1);
+      dueDate.setDate(dueDate.getDate() + 3);
       const response = await fetch("/api/tasks", {
         method: "POST",
         headers: {
@@ -70,11 +70,13 @@ export default function GenerateBonusTask({ pet }) {
   // useEffect to run GenerateTask every second
   useEffect(() => {
     const intervalId = setInterval(() => {
-      GenerateTask();
+      if (pet.isActive) {
+        GenerateTask();
+      }
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [pet.isActive]);
 
   return null;
 }

@@ -39,8 +39,13 @@ export default function DisplayTasks({ user, userId, pet, tasks }) {
         worth: task.worth,
       }),
     });
-    const info = await response.json();
-    console.log(info);
+
+    if (response.ok) {
+      const info = await response.json();
+      console.log(info);
+    } else {
+      console.error('Response not OK');
+    }
 
     router.refresh();
   }
