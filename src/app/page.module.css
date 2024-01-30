@@ -1463,7 +1463,7 @@
 
 .mainContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   gap: 20px;
 }
@@ -1473,9 +1473,9 @@
   background-color: #d5f0c1;
   border-radius: 10px;
   border: 10px solid #003550d3;
-  width: 500px;
+  width: 800px;
   height: auto;
-  padding: 40px;
+  padding: 20px;
 }
 
 .tasksUserContainer {
@@ -1503,7 +1503,7 @@
   text-shadow: 1px 1px 1px #fff;
   font-weight: 600;
   letter-spacing: 0.05em;
-  margin: 0;
+  margin: 0 0 10px 0;
   padding: 0;
   text-decoration-line: underline;
   text-align: center;
@@ -1540,7 +1540,7 @@
 
 .taskCategoryTitle {
   font-family: 'Jura', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   color: #003650;
   font-weight: 600;
   text-shadow: 1px 1px 1px #fff;
@@ -1549,7 +1549,7 @@
 
 .taskName {
   font-family: 'Jura', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   color: #003650;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -1558,7 +1558,7 @@
 
 .dueDate {
   font-family: 'Jura', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   color: #003650;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -1589,17 +1589,51 @@
   background-color: #d5f0c1;
   border-radius: 10px;
   border: 10px solid #003550d3;
-  width: 500px;
+  width: 800px;
   height: auto;
-  padding: 40px;
+  padding: 20px;
 }
 .bonusTaskContainer {
   display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 10px 0;
+  gap: 10px;
+  width: 100%;
+  border-bottom: 2px solid #003550d3;
+}
+
+.bonusTaskContainer:last-child {
+  border-bottom: none;
+}
+
+.bonusTasks {
+  display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 15px 0 0 0;
+  padding: 0;
+  height: 5px;
+  width: 100%;
+}
+.bonusTaskInfoContainer {
+  display: flex;
+  justify-content: space-between;
   margin: 0;
   padding: 0;
-  gap: 15px;
+  gap: 10px;
+  width: auto;
+  text-wrap: wrap;
+}
+
+.bonusCheckboxContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin: 0;
+  padding: 0;
 }
 
 /* User wallet Page */
