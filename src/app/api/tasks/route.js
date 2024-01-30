@@ -8,17 +8,46 @@ export async function POST(req, res) {
 
     const user = await fetchUser();
 
-    const task = await prisma.task.create({
-      data: {
-        name,
-        userId: user.id,
-        petId: pet.id,
-        category: category,
-        worth: worth,
-        isBonus,
-        dueDate,
-      },
+    let task = null;
+
+    const _pet = await prisma.pet.findFirst({
+      where: { id: pet.id },
+      include: { task: true },
     });
+
+    if (isBonus) {
+      if (_pet) {
+        const filteredBonusTasks = await _pet.task.filter(
+          (task) => task.isBonus && !task.isCompleted
+        );
+
+        if (filteredBonusTasks.length < 3) {
+          task = await prisma.task.create({
+            data: {
+              name,
+              userId: user.id,
+              petId: pet.id,
+              category: category,
+              worth: worth,
+              isBonus,
+              dueDate,
+            },
+          });
+        }
+      }
+    } else {
+      task = await prisma.task.create({
+        data: {
+          name,
+          userId: user.id,
+          petId: pet.id,
+          category: category,
+          worth: worth,
+          isBonus,
+          dueDate,
+        },
+      });
+    }
 
     return NextResponse.json({ success: true, task });
   } catch (error) {
