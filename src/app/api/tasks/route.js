@@ -1,6 +1,6 @@
-import { fetchUser } from "@/app/lib/fetchUser.js";
-import { prisma } from "@/app/lib/prisma.js";
-import { NextResponse } from "next/server.js";
+import { fetchUser } from '@/app/lib/fetchUser.js';
+import { prisma } from '@/app/lib/prisma.js';
+import { NextResponse } from 'next/server.js';
 
 export async function POST(req, res) {
   try {
@@ -63,7 +63,7 @@ export async function POST(req, res) {
 }
 
 export async function PUT(req, res) {
-  const { petId, isCompleted, worth, taskId } = await req.json();
+  const { petId, isCompleted, worth, taskId, isBonus } = await req.json();
   const user = await fetchUser();
 
   const _task = await prisma.task.findFirst({ where: { id: taskId } });
@@ -71,7 +71,7 @@ export async function PUT(req, res) {
   if (_task.userId !== user.id) {
     return NextResponse.json({
       success: false,
-      message: "You must be the owner of this task to Update!",
+      message: 'You must be the owner of this task to Update!',
     });
   }
 
@@ -107,7 +107,10 @@ export async function PUT(req, res) {
       },
     });
 
+    if (isBonus) {
+
     if (_pet.hearts < 5) {
+
       const pet = await prisma.pet.update({
         where: {
           id: petId,
@@ -120,6 +123,5 @@ export async function PUT(req, res) {
       });
     }
   }
-
   return NextResponse.json({ success: true, updatedTask });
 }

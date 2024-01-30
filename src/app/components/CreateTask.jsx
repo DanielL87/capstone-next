@@ -11,7 +11,7 @@ export default function CreateTask({ user, pet }) {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(user.id);
   const [submitClicked, setSubmitClicked] = useState(false);
-  
+  const [taskName, setTaskName] = useState('');
   const [error, setError] = useState(null);
   const [dueDate, setDueDate] = useState('');
 
@@ -23,6 +23,8 @@ export default function CreateTask({ user, pet }) {
       name,
       dueDate,
     };
+
+    console.log (dueDate, name, category);
 
     setSubmitClicked(true);
 
@@ -43,8 +45,9 @@ export default function CreateTask({ user, pet }) {
           name: task.name,
           category: task.category,
           worth: worth,
-          petId: pet.id,
-          dueDate: task.dueDate,
+          pet,
+          dueDate: new Date(task.dueDate + 'T00:00:00').toISOString(),
+          isBonus: false,
         }),
       });
       const data = await response.json();
@@ -57,7 +60,12 @@ export default function CreateTask({ user, pet }) {
     } catch (error) {
       console.error(error);
     }
+    setName('');
+    setDueDate('');
+    setCategory('');
   };
+
+  
 
   return (
     <>

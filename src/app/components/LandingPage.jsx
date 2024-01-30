@@ -99,7 +99,7 @@ export default function LandingPage({ user }) {
                 In this exciting world, you get to choose your own pet and
                 embark on a journey filled with tasks and challenges. Your
                 mission? Keep your pet happy and prevent it from running away by
-                accomplishing tasks. But that’s not all!
+                accomplishing bonus tasks. But that’s not all!
               </p>
 
               <p className={styles.aboutBlurbSubtitle}>Earn and Spend Coins</p>
