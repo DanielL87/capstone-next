@@ -1109,12 +1109,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  background-color: #d2fef46c;
+  margin-top: 2rem;
 }
 .congratsContainer {
   display: flex;
   flex-direction: column;
-  background-color: #d2fef46c;
-  min-height: 100vh;
+  margin: 0;
 }
 .paraText {
   font-family: 'Jura', sans-serif;
@@ -1137,6 +1139,7 @@
   width: 300px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 3rem;
 }
 
 /* Hero Section - Footer */
@@ -1452,19 +1455,25 @@
 
 /* Display Task page */
 .taskMainContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
 }
 
-.taskContainer {
+.mainContainer {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+.taskContainer {
+  flex: 1;
   flex-direction: column;
   background-color: #d5f0c1;
   border-radius: 10px;
   border: 10px solid #003550d3;
-  width: 1050px;
+  width: 500px;
   height: auto;
   padding: 40px;
 }
@@ -1491,11 +1500,13 @@
   font-family: 'Jura', sans-serif;
   font-size: 24px;
   color: #003650;
+  text-shadow: 1px 1px 1px #fff;
   font-weight: 600;
   letter-spacing: 0.05em;
   margin: 0;
   padding: 0;
   text-decoration-line: underline;
+  text-align: center;
 }
 
 .taskPageTitle {
@@ -1510,6 +1521,15 @@
 }
 
 .dailyTaskContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  gap: 15px;
+}
+
+.taskInfoContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1563,12 +1583,13 @@
 }
 
 .bonusTaskMainContainer {
+  flex: 1;
   display: flex;
   flex-direction: column;
   background-color: #d5f0c1;
   border-radius: 10px;
   border: 10px solid #003550d3;
-  width: 1050px;
+  width: 500px;
   height: auto;
   padding: 40px;
 }
