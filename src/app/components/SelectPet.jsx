@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
 import Link from "next/link";
 import BacktoProfile from "../components/BacktoProfile.jsx";
 import PokemonDetails from "../components/PokemonDetails.jsx";
