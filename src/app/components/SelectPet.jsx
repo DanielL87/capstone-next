@@ -128,7 +128,7 @@ export default function SelectPet({ user, collection }) {
               >
                 Confirm
               </button>
-              <p>{error}</p>
+              <p className={styles.errorText}>{error}</p>
             </>
           )}
 
