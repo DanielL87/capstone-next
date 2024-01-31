@@ -60,6 +60,7 @@ export async function POST(req) {
         pokedexId,
         isShiny,
         isRare,
+        hearts: 1,
       },
     });
 
