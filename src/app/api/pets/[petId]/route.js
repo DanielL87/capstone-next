@@ -1,6 +1,6 @@
-import { fetchUser } from '@/app/lib/fetchUser.js';
-import { prisma } from '@/app/lib/prisma.js';
-import { NextResponse } from 'next/server.js';
+import { fetchUser } from "@/app/lib/fetchUser.js";
+import { prisma } from "@/app/lib/prisma.js";
+import { NextResponse } from "next/server.js";
 
 //Get Pet by ID
 
@@ -22,8 +22,15 @@ export async function GET(req, res) {
 export async function PUT(req, res) {
   try {
     const { petId } = res.params;
-    const { name, pokedexId, spriteUrl, collectedNumber, isActive, hearts } =
-      await req.json();
+    const {
+      name,
+      pokedexId,
+      spriteUrl,
+      collectedNumber,
+      isActive,
+      hearts,
+      isPaused,
+    } = await req.json();
 
     const user = await fetchUser();
     const _pet = await prisma.pet.findFirst({
@@ -35,10 +42,11 @@ export async function PUT(req, res) {
     if (_pet.userId !== user.id) {
       return NextResponse.json({
         success: false,
-        message: 'You must be the owner of this pet to Update!',
+        message: "You must be the owner of this pet to Update!",
       });
     }
     let updatedPet = null;
+
     if (isActive) {
       updatedPet = await prisma.pet.update({
         where: {
@@ -61,6 +69,15 @@ export async function PUT(req, res) {
         });
       }
       return NextResponse.json({ success: true, updatedPet });
+    } else if (isPaused !== undefined) {
+      updatedPet = await prisma.pet.update({
+        where: {
+          id: petId,
+        },
+        data: {
+          isPaused,
+        },
+      });
     } else {
       updatedPet = await prisma.pet.update({
         where: { id: petId },

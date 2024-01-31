@@ -18,7 +18,7 @@ export default function GenerateBonusTask({ pet }) {
   }
 
   async function GenerateTask() {
-    if (Math.random() < 0.05) {
+    if (Math.random() < 0.1) {
       const petTasks = await fetchPetData();
 
       const filteredTasks = petTasks.filter(
@@ -80,13 +80,13 @@ export default function GenerateBonusTask({ pet }) {
   // useEffect to run GenerateTask every second
   useEffect(() => {
     const intervalId = setInterval(() => {
-      if (pet.isActive) {
+      if (pet.isActive && !pet.isPaused) {
         GenerateTask();
       }
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [pet.isActive]);
+  }, [pet.isActive, pet.isPaused]);
 
   return null;
 }

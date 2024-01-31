@@ -40,6 +40,20 @@ export default function SinglePetInfo({
     router.refresh();
   };
 
+  async function handlePausePet() {
+    const response = await fetch(`/api/pets/${pet.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        isPaused: !pet.isPaused,
+      }),
+    });
+
+    const info = await response.json();
+    console.log(info);
+    router.refresh();
+  }
+
   return (
     <>
       <div className={styles.pokedexSinglePetMainContainer}>
@@ -107,10 +121,20 @@ export default function SinglePetInfo({
           </div>
         </div>
 
-        {pet.isActive ? (
+        {pet.isActive && !pet.isPaused ? (
           <div>
+            <button className={styles.loginBtn} onClick={handlePausePet}>
+              Pause Pet(Pauses Tasks)
+            </button>
             <CreateTask user={user} pet={pet} />
             <DisplayTasks tasks={tasks} pet={pet} />
+          </div>
+        ) : pet.isPaused ? (
+          <div>
+            <p className={styles.petNameSpan}>Pet is sleeping</p>
+            <button className={styles.loginBtn} onClick={handlePausePet}>
+              Wake Up Pet!
+            </button>
           </div>
         ) : (
           <div>

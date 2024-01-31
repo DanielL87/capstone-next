@@ -51,6 +51,7 @@ export default function DisplayBonusTasks({ task, pet }) {
           </p>
           <p className={styles.taskName}>
             <span className={styles.taskCategoryTitle}>Worth:</span> {worth}
+            {worth === 20 && "(Bonus Time!)"}
           </p>
           <div className={styles.bonusCheckboxContainer}>
             <IoMdCheckboxOutline
@@ -63,7 +64,7 @@ export default function DisplayBonusTasks({ task, pet }) {
         <div className={styles.bonusTaskInfoContainer}>
           <p className={styles.taskName}>
             <span className={styles.taskCategoryTitle}>Bonus Task: </span>
-            {task.name} {worth === 20 && <p>Bonus Time</p>}
+            {task.name}
           </p>
         </div>
       </div>
