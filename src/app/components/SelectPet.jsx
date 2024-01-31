@@ -136,7 +136,7 @@ export default function SelectPet({ user, collection }) {
           {section === "namePet" && (
             <>
               <div>
-                <p className={styles.selectPetTitle}>Name your Pet!</p>
+                <p className={styles.selectPetTitle}>Name your 1st Pet!</p>
               </div>
 
               <div className={styles.namePetContainer}>
@@ -198,7 +198,7 @@ export default function SelectPet({ user, collection }) {
                   <br />
                   <div className={styles.congratsPetBtnContainer}>
                     <Link href={"/store"} className={styles.confirmPetBtn}>
-                      Back to store
+                      Go to store
                     </Link>
                     <Link
                       href={"/user/userId"}
