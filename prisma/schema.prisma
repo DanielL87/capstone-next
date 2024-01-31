@@ -45,7 +45,7 @@ model Pet {
   createdAt DateTime @default(now())
   isRare    Boolean  @default(false)
   isShiny   Boolean  @default(false)
-  ranAway   Boolean  @default(false)
+  isPaused  Boolean  @default(false)
   isActive  Boolean  @default(true)
 }
 

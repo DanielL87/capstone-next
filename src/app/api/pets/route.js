@@ -1,7 +1,7 @@
-import { NextResponse } from 'next/server.js';
+import { NextResponse } from "next/server.js";
 
-import { fetchUser } from '@/app/lib/fetchUser.js';
-import { prisma } from '@/app/lib/prisma.js';
+import { fetchUser } from "@/app/lib/fetchUser.js";
+import { prisma } from "@/app/lib/prisma.js";
 
 export async function GET() {
   try {
@@ -10,7 +10,7 @@ export async function GET() {
     if (!user.id) {
       return NextResponse.json({
         success: false,
-        message: 'Please login/register!',
+        message: "Please login/register!",
       });
     }
 
@@ -40,29 +40,48 @@ export async function POST(req) {
       isShiny,
       isRare,
       collectedNumber,
+      isStarter,
     } = await req.json();
     const user = await fetchUser();
 
     if (!user) {
       return NextResponse.json({
         success: false,
-        message: 'Please login to create a pet!',
+        message: "Please login to create a pet!",
       });
     }
 
-    const pet = await prisma.pet.create({
-      data: {
-        userId: user.id,
-        name,
-        nickname,
-        type,
-        spriteUrl,
-        pokedexId,
-        isShiny,
-        isRare,
-        hearts: 1,
-      },
-    });
+    let pet = null;
+
+    if (isStarter) {
+      pet = await prisma.pet.create({
+        data: {
+          userId: user.id,
+          name,
+          nickname,
+          type,
+          spriteUrl,
+          pokedexId,
+          isShiny,
+          isRare,
+          hearts: 5,
+        },
+      });
+    } else {
+      pet = await prisma.pet.create({
+        data: {
+          userId: user.id,
+          name,
+          nickname,
+          type,
+          spriteUrl,
+          pokedexId,
+          isShiny,
+          isRare,
+          hearts: 1,
+        },
+      });
+    }
 
     let _user;
 
@@ -97,7 +116,7 @@ export async function PUT(req) {
     if (_pet.userId !== user.id) {
       return NextResponse.json({
         success: false,
-        message: 'You must be the owner of this pet to Update!',
+        message: "You must be the owner of this pet to Update!",
       });
     }
 
@@ -129,7 +148,7 @@ export async function PUT(req) {
 
     return NextResponse.json({
       success: true,
-      message: 'Put Router',
+      message: "Put Router",
       updatedPet,
     });
   } catch (error) {

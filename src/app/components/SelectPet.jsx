@@ -75,6 +75,7 @@ export default function SelectPet({ user, collection }) {
         pokedexId: selectedPokemon.pokedexId,
         spriteUrl: selectedPokemon.spriteUrl,
         collectedNumber: selectedPokemon.pokedexId,
+        isStarter: true,
       }),
     });
     const info = await response.json();
@@ -164,7 +165,10 @@ export default function SelectPet({ user, collection }) {
                   <div className={styles.pokedexContainer}>
                     {/* <PokemonDetails pokemon={starterPokemon} /> */}
                     {starterPokemon && (
-                      <PokemonDetails pokemon={starterPokemon} isProfilePage={true}/>
+                      <PokemonDetails
+                        pokemon={starterPokemon}
+                        isProfilePage={true}
+                      />
                     )}
                   </div>
                   <p className={styles.paraText}>

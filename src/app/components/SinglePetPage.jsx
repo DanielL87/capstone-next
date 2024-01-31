@@ -22,6 +22,7 @@ export default function SinglePetInfo({
     : pokemonData.sprites.other["official-artwork"].front_default;
 
   const [error, setError] = useState("");
+
   const purchasePet = async () => {
     // Code to purchase the pet back
     if (wallet.coin < 200) {
@@ -32,7 +33,7 @@ export default function SinglePetInfo({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         isActive: true,
-        hearts: 1,
+        hearts: 2,
       }),
     });
     const info = await response.json();
