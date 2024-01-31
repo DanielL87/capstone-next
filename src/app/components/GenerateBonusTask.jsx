@@ -25,8 +25,20 @@ export default function GenerateBonusTask({ pet }) {
         (task) => task.isBonus && !task.isCompleted
       );
 
-      if (filteredTasks.length >= 3) {
+      // if (filteredTasks.length >= 3) {
         if (pet.hearts === 0) {
+
+          const response = await fetch(`/api/pets/`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              petId: pet.id,
+              isActive: true,
+            }),
+          });
+          const info = await response.json();
+
+          router.refresh();
           // console.log("Pet ran away");
         } else if (pet.hearts > 0) {
           const response = await fetch(`/api/pets/`, {
@@ -40,7 +52,7 @@ export default function GenerateBonusTask({ pet }) {
 
           router.refresh();
         }
-      }
+      // }
 
       // if (filteredTasks.length < 3) {
       let randomTask = getRandomTask();
