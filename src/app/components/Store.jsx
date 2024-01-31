@@ -159,7 +159,7 @@ export default function Store({ user, wallet, collection }) {
                 Cancel
               </button>
             </div>
-            <p>{error}</p>
+            <p className={styles.errorText}>{error}</p>
           </>
         )}
 
