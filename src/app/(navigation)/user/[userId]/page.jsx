@@ -32,6 +32,7 @@ export default async function ProfilePage() {
                       pokemon={pokemon}
                       showHearts={true}
                       isProfilePage={true}
+                      showRunawayMessage={true}
                     />
                     <Link
                       className={styles.registerBtn}

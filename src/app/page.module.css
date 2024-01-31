@@ -711,6 +711,16 @@
   margin-right: auto;
 }
 
+.runawayName {
+  font-family: 'Jura', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #003650;
+  margin: 0;
+  padding-top: 13px;
+  padding-bottom: 15px;
+}
+
 .showButtonsContainer {
   display: flex;
   flex-direction: row;
@@ -1376,7 +1386,7 @@
   text-shadow: 1px 1px 1px #fff;
   font-weight: 600;
   letter-spacing: 0.05em;
-  margin: 0;
+  margin:  1rem 0 2rem 0;
 }
 .petName {
   font-family: 'pokemon', sans-serif;
@@ -1454,6 +1464,14 @@
   color: #003650;
   font-weight: 400;
   letter-spacing: 0.05em;
+}
+
+.activeMainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 /* Display Task page */
@@ -1853,6 +1871,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 1rem;
+  margin-top: 2rem;
   border-radius: 10px;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
 }

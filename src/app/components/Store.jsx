@@ -118,6 +118,7 @@ export default function Store({ user, wallet, collection }) {
                 setError={setError}
                 isProfilePage={false}
                 collection={collection}
+                
               />
               <p className={styles.errorStoreTitle}>{error}</p>
             </div>
@@ -131,6 +132,7 @@ export default function Store({ user, wallet, collection }) {
                 <PokemonDetails
                   pokemon={selectedPokemon}
                   isProfilePage={false}
+                  showRunawayMessage={false}
                 />
               )}
 
@@ -171,6 +173,7 @@ export default function Store({ user, wallet, collection }) {
                     <PokemonDetails
                       pokemon={purchasedPet}
                       isProfilePage={true}
+                      showRunawayMessage={false}
                     />
                   )}
                 </div>

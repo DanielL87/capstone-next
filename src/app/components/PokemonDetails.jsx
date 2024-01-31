@@ -14,6 +14,7 @@ export default function PokemonDetails({
   selectedPokemon,
   showHearts,
   isProfilePage,
+  showRunawayMessage,
 }) {
   const isSelected =
     selectedPokemon && selectedPokemon.pokedexId === pokemon.pokedexId;
@@ -34,7 +35,11 @@ export default function PokemonDetails({
   return (
     <>
       <div className={styles.pokemonMainContainer}>
-        {pokemon.isActive && showHearts && <PetHearts pokemon={pokemon} showHearts={true} />}
+        {pokemon.isActive ? (
+          showHearts && <PetHearts pokemon={pokemon} showHearts={true} />
+        ) : (
+          showRunawayMessage && <p className={styles.runawayName}>Pet has Runaway!</p>
+        )}
         <div className={styles.pokemonMainCardContainer}>
           <div
             className={`${styles.pokemonContainer} ${

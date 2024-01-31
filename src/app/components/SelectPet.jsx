@@ -118,6 +118,7 @@ export default function SelectPet({ user, collection }) {
                     setSelectedPokemon={setSelectedPokemon}
                     selectedPokemon={selectedPokemon}
                     isSelectPokemon={true}
+                    showRunawayMessage={false}
                   />
                 ))}
               </div>
@@ -168,6 +169,7 @@ export default function SelectPet({ user, collection }) {
                       <PokemonDetails
                         pokemon={starterPokemon}
                         isProfilePage={true}
+                        showRunawayMessage={false}
                       />
                     )}
                   </div>
