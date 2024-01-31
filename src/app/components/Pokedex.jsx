@@ -46,7 +46,7 @@ export default function Pokedex({ collection }) {
             onClick={handleShowLess}
             disabled={isLoading}
           >
-            {isLoading ? 'Loading...' : 'Show 10 Less'}
+            {isLoading ? 'Loading...' : 'Previous 10'}
           </button>
         ) : null}
 
@@ -58,7 +58,7 @@ export default function Pokedex({ collection }) {
             onClick={handleShowMore}
             disabled={isLoading}
           >
-            {isLoading ? 'Loading...' : 'Show 10 More'}
+            {isLoading ? 'Loading...' : 'Next 10'}
           </button>
         ) : null}
         </div>

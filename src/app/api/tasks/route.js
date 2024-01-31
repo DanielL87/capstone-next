@@ -76,10 +76,10 @@ export async function PUT(req, res) {
   }
 
   const _pet = await prisma.pet.findFirst({
-    where: { id: pet.id },
+    where: { id: petId },
     include: { task: true },
   });
-
+ 
   if (_pet.userId !== user.id) {
     return NextResponse.json({
       success: false,
@@ -121,6 +121,7 @@ export async function PUT(req, res) {
         });
       }
     }
+    
   }
   return NextResponse.json({ success: true, updatedTask });
 }

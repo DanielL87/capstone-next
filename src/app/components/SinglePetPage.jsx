@@ -1,11 +1,11 @@
-"use client";
-import { useEffect } from "react";
-
-import styles from "../page.module.css";
-import CreateTask from "./CreateTask.jsx";
-import DisplayTasks from "./DisplayTasks.jsx";
-import EvolvePet from "./EvolvePet.jsx";
-import PetHearts from "./PetHearts.jsx";
+'use client';
+import { useState } from 'react';
+import styles from '../page.module.css';
+import CreateTask from './CreateTask.jsx';
+import DisplayTasks from './DisplayTasks.jsx';
+import EvolvePet from './EvolvePet.jsx';
+import PetHearts from './PetHearts.jsx';
+import { useRouter } from 'next/navigation.js';
 
 export default function SinglePetInfo({
   pokemonData,
@@ -15,13 +15,31 @@ export default function SinglePetInfo({
   collection,
   wallet,
 }) {
-  const imageSrc = pet.isShiny
-    ? pokemonData.sprites.other["official-artwork"].front_shiny
-    : pokemonData.sprites.other["official-artwork"].front_default;
 
-  useEffect(() => {
-    // console.log(tasks);
-  }, []);
+  const router = useRouter();
+
+  const imageSrc = pet.isShiny
+    ? pokemonData.sprites.other['official-artwork'].front_shiny
+    : pokemonData.sprites.other['official-artwork'].front_default;
+
+    const [error, setError] = useState("");
+    const purchasePet = async () => {
+      // Code to purchase the pet back
+      if (wallet.coin < 200) {
+       return setError("Not enough coins to purchase pet back");
+      }
+      const response = await fetch(`/api/pets/${pet.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          isActive: true,
+          hearts: 1,
+        }),
+      });  
+      const info = await response.json();
+      router.refresh();
+    };
+
 
   return (
     <>
@@ -30,21 +48,23 @@ export default function SinglePetInfo({
           <div className={styles.singlePetContainer}>
             <img src={imageSrc} alt={`${pokemonData.name} sprite`} />
             <div className={styles.singlePetEvolve}>
-              <EvolvePet pet={pet} collection={collection} wallet={wallet} />
+              {pet.isActive && (
+                <EvolvePet pet={pet} collection={collection} wallet={wallet} />
+              )}
             </div>
             <div className={styles.singlePetHearts}>
-              <PetHearts pokemon={pet} showHearts={true} />
+              {pet.isActive && (<PetHearts pokemon={pet} showHearts={true} />)}
             </div>
           </div>
           <div className={styles.pokemonStatsMainContainer}>
             <div className={styles.pokemonStatsContainer}>
               <div className={styles.content}>
                 <p className={styles.petName}>
-                  <span className={styles.petNameSpan}>Name: </span>{" "}
+                  <span className={styles.petNameSpan}>Name: </span>{' '}
                   {pet.nickname}
                 </p>
                 <p className={styles.species}>
-                  <span className={styles.speciesName}>Species:</span>{" "}
+                  <span className={styles.speciesName}>Species:</span>{' '}
                   {pet.name}
                 </p>
 
@@ -60,12 +80,12 @@ export default function SinglePetInfo({
                           <span className={styles.speciesInfo}>
                             <br />
                             Hidden:
-                            <br />{" "}
+                            <br />{' '}
                           </span>
                         )}
                         {ability.ability.name.charAt(0).toUpperCase() +
                           ability.ability.name.slice(1)}
-                        {ability.is_hidden && " "}
+                        {ability.is_hidden && ' '}
                       </p>
                     ))}
                   </div>
@@ -87,8 +107,18 @@ export default function SinglePetInfo({
             </div>
           </div>
         </div>
-        <CreateTask user={user} pet={pet} />
-        <DisplayTasks tasks={tasks} pet={pet} />
+
+        {pet.isActive ? (
+          <div>
+            <CreateTask user={user} pet={pet} />
+            <DisplayTasks tasks={tasks} pet={pet} />
+          </div>
+        ) : (
+          <div>
+            <p className={styles.petNameSpan}>Pet has Runaway!</p>
+            <button className={styles.loginBtn} onClick={purchasePet}>Purchase Pet Back 200 Coin</button>
+          </div>
+        )}
       </div>
     </>
   );

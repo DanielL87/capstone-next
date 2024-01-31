@@ -9,7 +9,7 @@ export default async function PetPage({ params }) {
   const user = await fetchUser();
   const wallet = await prisma.wallet.findFirst({ where: { userId: user.id } });
   const tasks = await prisma.task.findMany({ where: { petId } });
-  const collection = await prisma.user.findUnique({
+  const collection = await prisma.user.findFirst({
     where: { id: user.id },
     select: { collectedPets: true },
   });

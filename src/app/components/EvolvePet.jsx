@@ -177,10 +177,6 @@ export default function EvolvePet({ pet, collection, wallet }) {
     }
   }
 
-  //   useEffect(() => {
-  //     console.log(newData);
-  //   }, [newData]);
-
   return (
     <div>
       {!hideEvolve && (

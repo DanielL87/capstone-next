@@ -1,7 +1,7 @@
-"use client";
-import { useEffect, useState } from "react";
-import bonustasks from "../lib/bonusTasks.js";
-import { useRouter } from "next/navigation";
+'use client';
+import { useEffect, useState } from 'react';
+import bonustasks from '../lib/bonusTasks.js';
+import { useRouter } from 'next/navigation';
 
 export default function GenerateBonusTask({ pet }) {
   const router = useRouter();
@@ -18,20 +18,32 @@ export default function GenerateBonusTask({ pet }) {
   }
 
   async function GenerateTask() {
-    if (Math.random() < 0.1) {
+    if (Math.random() < 0.05) {
       const petTasks = await fetchPetData();
 
       const filteredTasks = petTasks.filter(
         (task) => task.isBonus && !task.isCompleted
       );
 
-      if (filteredTasks.length >= 3) {
+      // if (filteredTasks.length >= 3) {
         if (pet.hearts === 0) {
+
+          const response = await fetch(`/api/pets/`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              petId: pet.id,
+              isActive: true,
+            }),
+          });
+          const info = await response.json();
+
+          router.refresh();
           // console.log("Pet ran away");
         } else if (pet.hearts > 0) {
           const response = await fetch(`/api/pets/`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               petId: pet.id,
             }),
@@ -40,16 +52,16 @@ export default function GenerateBonusTask({ pet }) {
 
           router.refresh();
         }
-      }
+      // }
 
       // if (filteredTasks.length < 3) {
       let randomTask = getRandomTask();
       const dueDate = new Date();
-      dueDate.setDate(dueDate.getDate() + 1);
-      const response = await fetch("/api/tasks", {
-        method: "POST",
+      dueDate.setDate(dueDate.getDate() + 3);
+      const response = await fetch('/api/tasks', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           name: randomTask.name,
@@ -62,7 +74,6 @@ export default function GenerateBonusTask({ pet }) {
       });
       const info = await response.json();
 
-      console.log(info);
       router.refresh();
     }
   }
@@ -70,11 +81,13 @@ export default function GenerateBonusTask({ pet }) {
   // useEffect to run GenerateTask every second
   useEffect(() => {
     const intervalId = setInterval(() => {
-      GenerateTask();
+      if (pet.isActive) {
+        GenerateTask();
+      }
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [pet.isActive]);
 
   return null;
 }
