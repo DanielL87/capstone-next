@@ -61,7 +61,8 @@ export default function EvolvePet({ pet, collection, wallet }) {
       } catch (error) {}
     };
     fetchPokemonData(pet.pokedexId);
-  }, []);
+    router.refresh();
+  }, [pet]);
 
   async function fetchEvolutionData() {
     const response = await fetch(

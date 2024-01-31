@@ -7,6 +7,12 @@ export default function DisplayBonusTasks({ task, pet }) {
   const router = useRouter();
   const formattedDueDate = new Date(task.dueDate).toLocaleString();
 
+  let worth = task.worth;
+
+  if (pet.hearts === 5) {
+    worth = worth * 2;
+  }
+
   async function handleCompleteTask() {
     const response = await fetch("/api/tasks", {
       method: "PUT",
@@ -44,8 +50,7 @@ export default function DisplayBonusTasks({ task, pet }) {
             {new Date(formattedDueDate).toLocaleDateString()}
           </p>
           <p className={styles.taskName}>
-            <span className={styles.taskCategoryTitle}>Worth:</span>{" "}
-            {task.worth}
+            <span className={styles.taskCategoryTitle}>Worth:</span> {worth}
           </p>
           <div className={styles.bonusCheckboxContainer}>
             <IoMdCheckboxOutline
@@ -58,7 +63,7 @@ export default function DisplayBonusTasks({ task, pet }) {
         <div className={styles.bonusTaskInfoContainer}>
           <p className={styles.taskName}>
             <span className={styles.taskCategoryTitle}>Bonus Task: </span>
-            {task.name}
+            {task.name} {worth === 20 && <p>Bonus Time</p>}
           </p>
         </div>
       </div>
