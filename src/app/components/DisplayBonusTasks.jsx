@@ -1,6 +1,7 @@
 import styles from "@/app/page.module.css";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function DisplayBonusTasks({ task, pet }) {
   const router = useRouter();
@@ -22,10 +23,13 @@ export default function DisplayBonusTasks({ task, pet }) {
     });
 
     const info = await response.json();
-    console.log(info);
 
     router.refresh();
   }
+
+  useEffect(() => {
+    router.refresh();
+  }, [pet]);
 
   return (
     <>

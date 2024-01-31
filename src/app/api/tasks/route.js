@@ -79,7 +79,7 @@ export async function PUT(req, res) {
     where: { id: petId },
     include: { task: true },
   });
- 
+
   if (_pet.userId !== user.id) {
     return NextResponse.json({
       success: false,
@@ -107,21 +107,18 @@ export async function PUT(req, res) {
       },
     });
 
-    if (isBonus) {
-      if (_pet.hearts < 5) {
-        const pet = await prisma.pet.update({
-          where: {
-            id: petId,
+    if (isBonus && _pet.hearts < 5) {
+      const pet = await prisma.pet.update({
+        where: {
+          id: petId,
+        },
+        data: {
+          hearts: {
+            increment: 1,
           },
-          data: {
-            hearts: {
-              increment: 1,
-            },
-          },
-        });
-      }
+        },
+      });
     }
-    
   }
   return NextResponse.json({ success: true, updatedTask });
 }

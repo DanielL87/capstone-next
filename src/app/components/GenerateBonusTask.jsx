@@ -1,7 +1,7 @@
-'use client';
-import { useEffect, useState } from 'react';
-import bonustasks from '../lib/bonusTasks.js';
-import { useRouter } from 'next/navigation';
+"use client";
+import { useEffect } from "react";
+import bonustasks from "../lib/bonusTasks.js";
+import { useRouter } from "next/navigation";
 
 export default function GenerateBonusTask({ pet }) {
   const router = useRouter();
@@ -18,19 +18,18 @@ export default function GenerateBonusTask({ pet }) {
   }
 
   async function GenerateTask() {
-    if (Math.random() < 0.05) {
+    if (Math.random() < 0.1) {
       const petTasks = await fetchPetData();
 
       const filteredTasks = petTasks.filter(
         (task) => task.isBonus && !task.isCompleted
       );
 
-      // if (filteredTasks.length >= 3) {
+      if (filteredTasks.length >= 3) {
         if (pet.hearts === 0) {
-
           const response = await fetch(`/api/pets/`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               petId: pet.id,
               isActive: true,
@@ -42,8 +41,8 @@ export default function GenerateBonusTask({ pet }) {
           // console.log("Pet ran away");
         } else if (pet.hearts > 0) {
           const response = await fetch(`/api/pets/`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               petId: pet.id,
             }),
@@ -52,16 +51,16 @@ export default function GenerateBonusTask({ pet }) {
 
           router.refresh();
         }
-      // }
+      }
 
       // if (filteredTasks.length < 3) {
       let randomTask = getRandomTask();
       const dueDate = new Date();
       dueDate.setDate(dueDate.getDate() + 3);
-      const response = await fetch('/api/tasks', {
-        method: 'POST',
+      const response = await fetch("/api/tasks", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           name: randomTask.name,

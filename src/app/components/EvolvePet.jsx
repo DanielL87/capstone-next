@@ -33,9 +33,9 @@ export default function EvolvePet({ pet, collection, wallet }) {
         // Fetch evolution chain
         const evolutionChainResponse = await fetch(evolutionChainUrl);
         const evolutionChainData = await evolutionChainResponse.json();
-        // if (pet.hearts != 5) {
-        //   setHideEvolve(true);
-        // }
+        if (pet.hearts != 5) {
+          setHideEvolve(true);
+        }
         if (
           !evolutionChainData.chain ||
           !evolutionChainData.chain.evolves_to ||
