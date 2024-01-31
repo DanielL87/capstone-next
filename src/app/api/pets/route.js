@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server.js";
+import { NextResponse } from 'next/server.js';
 
-import { fetchUser } from "@/app/lib/fetchUser.js";
-import { prisma } from "@/app/lib/prisma.js";
+import { fetchUser } from '@/app/lib/fetchUser.js';
+import { prisma } from '@/app/lib/prisma.js';
 
 export async function GET() {
   try {
@@ -10,7 +10,7 @@ export async function GET() {
     if (!user.id) {
       return NextResponse.json({
         success: false,
-        message: "Please login/register!",
+        message: 'Please login/register!',
       });
     }
 
@@ -46,7 +46,7 @@ export async function POST(req) {
     if (!user) {
       return NextResponse.json({
         success: false,
-        message: "Please login to create a pet!",
+        message: 'Please login to create a pet!',
       });
     }
 
@@ -60,6 +60,7 @@ export async function POST(req) {
         pokedexId,
         isShiny,
         isRare,
+        hearts: 1,
       },
     });
 
@@ -84,7 +85,7 @@ export async function POST(req) {
 
 export async function PUT(req) {
   try {
-    const { petId } = await req.json();
+    const { petId, isActive } = await req.json();
     const user = await fetchUser();
 
     const _pet = await prisma.pet.findFirst({
@@ -96,27 +97,39 @@ export async function PUT(req) {
     if (_pet.userId !== user.id) {
       return NextResponse.json({
         success: false,
-        message: "You must be the owner of this pet to Update!",
+        message: 'You must be the owner of this pet to Update!',
       });
     }
 
     let updatedPet = null;
-    if (_pet.hearts > 0) {
+
+    if (isActive) {
       updatedPet = await prisma.pet.update({
         where: {
           id: petId,
         },
         data: {
-          hearts: {
-            decrement: 1,
-          },
+          isActive: false,
         },
       });
+    } else {
+      if (_pet.hearts > 0) {
+        updatedPet = await prisma.pet.update({
+          where: {
+            id: petId,
+          },
+          data: {
+            hearts: {
+              decrement: 1,
+            },
+          },
+        });
+      }
     }
 
     return NextResponse.json({
       success: true,
-      message: "Put Router",
+      message: 'Put Router',
       updatedPet,
     });
   } catch (error) {

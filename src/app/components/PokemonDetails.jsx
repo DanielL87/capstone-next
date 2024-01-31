@@ -34,7 +34,7 @@ export default function PokemonDetails({
   return (
     <>
       <div className={styles.pokemonMainContainer}>
-        {showHearts && <PetHearts pokemon={pokemon} showHearts={true} />}
+        {pokemon.isActive && showHearts && <PetHearts pokemon={pokemon} showHearts={true} />}
         <div className={styles.pokemonMainCardContainer}>
           <div
             className={`${styles.pokemonContainer} ${

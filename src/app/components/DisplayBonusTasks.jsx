@@ -20,7 +20,9 @@ export default function DisplayBonusTasks({ task, pet }) {
         isBonus: true,
       }),
     });
+
     const info = await response.json();
+    console.log(info);
 
     router.refresh();
   }

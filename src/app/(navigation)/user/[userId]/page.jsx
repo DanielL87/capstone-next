@@ -12,7 +12,7 @@ export default async function ProfilePage() {
       userId: user.id,
     },
   });
-  
+
   return (
     <>
       {user.id ? (
@@ -28,7 +28,11 @@ export default async function ProfilePage() {
               {userPokemon.length > 0 ? (
                 userPokemon.map((pokemon) => (
                   <div key={pokemon.id} className={styles.pokedexCardContainer}>
-                    <PokemonDetails pokemon={pokemon} showHearts={true} isProfilePage={true}/>
+                    <PokemonDetails
+                      pokemon={pokemon}
+                      showHearts={true}
+                      isProfilePage={true}
+                    />
                     <Link
                       className={styles.registerBtn}
                       href={`/pet/${pokemon.id}`}
