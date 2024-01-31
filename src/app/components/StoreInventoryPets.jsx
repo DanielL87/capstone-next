@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { RiCoinsFill } from "react-icons/ri";
 
-import { randomDataArray } from "../lib/randomStorePets.js";
+import { randomDataArray } from "../../lib/randomStorePets.js";
 import styles from "../page.module.css";
 import PokemonDetails from "./PokemonDetails.jsx";
 

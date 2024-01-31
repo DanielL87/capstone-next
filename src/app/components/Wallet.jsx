@@ -1,9 +1,7 @@
 import React from "react";
-
 import styles from "@/app/page.module.css";
-
-import { fetchUser } from "../lib/fetchUser";
-import { prisma } from "../lib/prisma";
+import { fetchUser } from "../../lib/fetchUser";
+import { prisma } from "../../lib/prisma";
 
 export default async function Wallet({}) {
   const user = await fetchUser();

@@ -1,13 +1,16 @@
 import SelectPet from "@/app/components/SelectPet.jsx";
-import { fetchUser } from "@/app/lib/fetchUser.js";
-import { prisma } from "@/app/lib/prisma.js";
+import { fetchUser } from "@/lib/fetchUser.js";
+import { prisma } from "@/lib/prisma.js";
 
 export default async function SelectPetPage() {
   const user = await fetchUser();
-  const collection = await prisma.user.findUnique({
-    where: { id: user.id },
-    select: { collectedPets: true },
-  });
+  let collection = null;
+  if (user.id) {
+    collection = await prisma.user.findFirst({
+      where: { id: user.id },
+      select: { collectedPets: true },
+    });
+  }
 
   return <SelectPet user={user} collection={collection} />;
 }

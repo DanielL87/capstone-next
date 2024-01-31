@@ -6,7 +6,7 @@ import PokemonDetails from "../components/PokemonDetails.jsx";
 import styles from "../page.module.css";
 import { useRouter } from "next/navigation";
 
-export default function SelectPet({ user, collection }) {
+export default function SelectPet({ user }) {
   const [starterArray, setStarterArray] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [nickname, setNickname] = useState("");

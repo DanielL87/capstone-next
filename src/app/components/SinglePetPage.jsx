@@ -37,6 +37,8 @@ export default function SinglePetInfo({
       }),
     });
     const info = await response.json();
+
+    setError("");
     router.refresh();
   };
 
@@ -142,6 +144,7 @@ export default function SinglePetInfo({
             <button className={styles.loginBtn} onClick={purchasePet}>
               Purchase Pet Back 200 Coin
             </button>
+            <p className={styles.errorText}>{error}</p>
           </div>
         )}
       </div>

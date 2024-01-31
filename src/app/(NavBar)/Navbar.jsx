@@ -1,13 +1,12 @@
 import React from "react";
-
 import Link from "next/link";
 import { MdCatchingPokemon } from "react-icons/md";
 import { RiCoinsFill } from "react-icons/ri";
 
 import Logout from "../components/Logout.jsx";
 import Sidebar from "../components/Sidebar.jsx";
-import { fetchUser } from "../lib/fetchUser.js";
-import { prisma } from "../lib/prisma.js";
+import { fetchUser } from "../../lib/fetchUser.js";
+import { prisma } from "../../lib/prisma.js";
 import styles from "../page.module.css";
 import GenerateBonusTask from "../components/GenerateBonusTask.jsx";
 

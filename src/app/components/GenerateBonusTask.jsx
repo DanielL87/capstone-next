@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import bonustasks from "../lib/bonusTasks.js";
+import bonustasks from "../../lib/bonusTasks.js";
 import { useRouter } from "next/navigation";
 
 export default function GenerateBonusTask({ pet }) {
@@ -38,7 +38,6 @@ export default function GenerateBonusTask({ pet }) {
           const info = await response.json();
 
           router.refresh();
-          // console.log("Pet ran away");
         } else if (pet.hearts > 0) {
           const response = await fetch(`/api/pets/`, {
             method: "PUT",

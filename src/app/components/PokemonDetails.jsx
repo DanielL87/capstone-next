@@ -3,7 +3,7 @@ import React from "react";
 
 import { MdCatchingPokemon } from "react-icons/md";
 
-import pokeColor from "../lib/pokeColor.js";
+import pokeColor from "../../lib/pokeColor.js";
 import styles from "../page.module.css";
 import PetHearts from "./PetHearts.jsx";
 
@@ -35,11 +35,11 @@ export default function PokemonDetails({
   return (
     <>
       <div className={styles.pokemonMainContainer}>
-        {pokemon.isActive ? (
-          showHearts && <PetHearts pokemon={pokemon} showHearts={true} />
-        ) : (
-          showRunawayMessage && <p className={styles.runawayName}>Pet has Runaway!</p>
-        )}
+        {pokemon.isActive
+          ? showHearts && <PetHearts pokemon={pokemon} showHearts={true} />
+          : showRunawayMessage && (
+              <p className={styles.runawayName}>Pet has Runaway!</p>
+            )}
         <div className={styles.pokemonMainCardContainer}>
           <div
             className={`${styles.pokemonContainer} ${

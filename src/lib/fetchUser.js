@@ -20,7 +20,6 @@ export async function fetchUser() {
 
     return user;
   } catch (error) {
-    console.log(error);
     return { user: {}, token: null };
   }
 }

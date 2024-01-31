@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server.js";
 
-import { fetchUser } from "@/app/lib/fetchUser.js";
-import { prisma } from "@/app/lib/prisma.js";
+import { fetchUser } from "@/lib/fetchUser.js";
+import { prisma } from "@/lib/prisma.js";
 
 export async function GET() {
   try {

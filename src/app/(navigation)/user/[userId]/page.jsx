@@ -1,17 +1,21 @@
 import Link from "next/link.js";
 import PokemonDetails from "@/app/components/PokemonDetails.jsx";
-import { fetchUser } from "@/app/lib/fetchUser.js";
-import { prisma } from "@/app/lib/prisma.js";
+import { fetchUser } from "@/lib/fetchUser.js";
+import { prisma } from "@/lib/prisma.js";
 import styles from "@/app/page.module.css";
 
 export default async function ProfilePage() {
   const user = await fetchUser();
 
-  const userPokemon = await prisma.pet.findMany({
-    where: {
-      userId: user.id,
-    },
-  });
+  let userPokemon = null;
+
+  if (user.id) {
+    userPokemon = await prisma.pet.findMany({
+      where: {
+        userId: user.id,
+      },
+    });
+  }
 
   return (
     <>
