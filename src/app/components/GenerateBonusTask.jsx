@@ -18,7 +18,7 @@ export default function GenerateBonusTask({ pet }) {
   }
 
   async function GenerateTask() {
-    if (Math.random() < 0.1) {
+    if (Math.random() < 0.05) {
       const petTasks = await fetchPetData();
 
       const filteredTasks = petTasks.filter(
