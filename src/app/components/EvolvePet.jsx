@@ -189,7 +189,7 @@ export default function EvolvePet({ pet, collection, wallet }) {
           {loading ? "Evolving..." : "Evolve Me! (Cost: 100 Coins)"}
         </button>
       )}
-      <p>{error}</p>
+      {error && <p className={styles.errorText}>{error}</p>}
     </div>
   );
 }
