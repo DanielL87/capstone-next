@@ -1,5 +1,5 @@
-import Login from "@/app/components/Login";
-import { fetchUser } from "@/app/lib/fetchUser.js";
+import Login from "../../components/Login.jsx";
+import { fetchUser } from "../../lib/fetchUser.js";
 
 export default async function SignUpPage() {
   let user = await fetchUser();
