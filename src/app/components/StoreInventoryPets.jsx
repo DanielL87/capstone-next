@@ -104,6 +104,7 @@ export default function StoreInventoryPets({
                     key={pokemon.pokedexId}
                     pokemon={pokemon}
                     isProfilePage={false}
+                    showRunawayMessage={false}
                   />
 
                   {isStore && user.id && (

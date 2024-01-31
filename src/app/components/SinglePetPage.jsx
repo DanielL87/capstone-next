@@ -122,22 +122,22 @@ export default function SinglePetInfo({
         </div>
 
         {pet.isActive && !pet.isPaused ? (
-          <div>
+          <div className={styles.activeMainContainer}>
             <button className={styles.loginBtn} onClick={handlePausePet}>
-              Pause Pet(Pauses Tasks)
+              Pause Pet (Pause Tasks)
             </button>
             <CreateTask user={user} pet={pet} />
             <DisplayTasks tasks={tasks} pet={pet} />
           </div>
         ) : pet.isPaused ? (
-          <div>
+          <div className={styles.activeMainContainer}>
             <p className={styles.petNameSpan}>Pet is sleeping</p>
             <button className={styles.loginBtn} onClick={handlePausePet}>
               Wake Up Pet!
             </button>
           </div>
         ) : (
-          <div>
+          <div className={styles.activeMainContainer}>
             <p className={styles.petNameSpan}>Pet has Runaway!</p>
             <button className={styles.loginBtn} onClick={purchasePet}>
               Purchase Pet Back 200 Coin
