@@ -82,6 +82,8 @@ export default function Store({ user, wallet, collection }) {
     setSection("selectPet");
     setCost(0);
     setSelectedPokemon(null);
+    setError("");
+    setNickname("");
     router.refresh();
   }
 
