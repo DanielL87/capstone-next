@@ -3,6 +3,7 @@ import PokemonDetails from "@/app/components/PokemonDetails.jsx";
 import { fetchUser } from "@/lib/fetchUser.js";
 import { prisma } from "@/lib/prisma.js";
 import styles from "@/app/page.module.css";
+import { FaFaceSadCry } from "react-icons/fa6";
 
 export default async function ProfilePage() {
   const user = await fetchUser();
@@ -44,9 +45,6 @@ export default async function ProfilePage() {
                     >
                       Pet Details Page
                     </Link>
-                    {pokemon.isPaused && (
-                      <div className={styles.runawayName}>💤Sleeping💤</div>
-                    )}
                   </div>
                 ))
               ) : (
