@@ -69,7 +69,7 @@ export default function LandingPage({ user }) {
 
             <p className={styles.blurb}>
               Start your journey with Pet Taskmaster and receive your first pet
-              for free! Engage in delightful activities, earn points, and unlock
+              for free! Engage in delightful activities, earn coins, and unlock
               a world of possibilities in our virtual store.
             </p>
           </div>
