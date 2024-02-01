@@ -133,15 +133,15 @@ export default function LandingPage({ user }) {
       <div className={styles.heroVideoMainContainer}>
         <div className={styles.heroVideoContainer}>
           <CgPokemon className={styles.heroVideoIcon} />
-          <p className={styles.heroVideoTitle}>Video Title</p>
+          <p className={styles.heroVideoTitle}>Pet Taskmaster in Action!</p>
           <div className={styles.heroVideo}>
-            <iframe
+            <video 
               width="800"
               height="500"
-              src="https://www.youtube.com/embed/1roy4o4tqQM?si=09w81yFz3LRMxeef"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            ></iframe>
+              src="./appClip.mp4"
+              loop 
+              autoPlay
+            ></video>
           </div>
         </div>
       </div>
