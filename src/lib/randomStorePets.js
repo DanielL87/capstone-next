@@ -1,8 +1,8 @@
 // Function to generate a random boolean with a 50% chance to be true
 function generateRandomBoolean() {
   // return Math.random() < 0.5;
-  //1-2000 instead
-  return Math.floor(Math.random() * 2000) === 0;
+  //1-100 instead
+  return Math.floor(Math.random() * 100) === 0;
 }
 
 // Function to generate an array of objects with a number and its corresponding boolean
