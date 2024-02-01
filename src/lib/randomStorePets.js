@@ -2,7 +2,7 @@
 function generateRandomBoolean() {
   // return Math.random() < 0.5;
   //1-50 instead
-  return Math.floor(Math.random() * 50) === 0;
+  return Math.floor(Math.random() * 10) === 0;
 }
 
 // Function to generate an array of objects with a number and its corresponding boolean

@@ -14,19 +14,19 @@ export default function GenerateBonusTask({ pet }) {
   async function fetchPetData() {
     const response = await fetch(`/api/pets/${pet.id}`, {});
     const info = await response.json();
-    return info.pet.task;
+    return info.pet;
   }
 
   async function GenerateTask() {
     if (Math.random() < 0.05) {
-      const petTasks = await fetchPetData();
+      let foundPet = await fetchPetData();
 
-      const filteredTasks = petTasks.filter(
+      const filteredTasks = await foundPet.task.filter(
         (task) => task.isBonus && !task.isCompleted
       );
 
       if (filteredTasks.length >= 3) {
-        if (pet.hearts === 0) {
+        if (foundPet.hearts === 0) {
           const response = await fetch(`/api/pets/`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -38,7 +38,7 @@ export default function GenerateBonusTask({ pet }) {
           const info = await response.json();
 
           router.refresh();
-        } else if (pet.hearts > 0) {
+        } else if (foundPet.hearts > 0) {
           const response = await fetch(`/api/pets/`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -47,7 +47,6 @@ export default function GenerateBonusTask({ pet }) {
             }),
           });
           const info = await response.json();
-
           router.refresh();
         }
       }
@@ -78,8 +77,10 @@ export default function GenerateBonusTask({ pet }) {
 
   // useEffect to run GenerateTask every second
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (pet.isActive && !pet.isPaused) {
+    const intervalId = setInterval(async () => {
+      let foundPet = await fetchPetData();
+
+      if (foundPet.isActive && !foundPet.isPaused) {
         GenerateTask();
       }
     }, 1000);

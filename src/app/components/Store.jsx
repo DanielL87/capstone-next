@@ -59,6 +59,7 @@ export default function Store({ user, wallet, collection }) {
       getPurchasedPet(info.pet.id);
       handlePurchase();
       setError("");
+      setNickname("");
       setSection("congrats");
     } else {
       setError("Failed to create pet. Please try again.");
@@ -118,7 +119,6 @@ export default function Store({ user, wallet, collection }) {
                 setError={setError}
                 isProfilePage={false}
                 collection={collection}
-                
               />
               <p className={styles.errorStoreTitle}>{error}</p>
             </div>

@@ -38,12 +38,23 @@ export default function PetHearts({ pokemon }) {
   return (
     <>
       <div className={styles.petHeartContainer}>
-        {showRunAwayMessage ? (
-          <p>Your pet ran away!</p>
-        ) : (
-          <p>{"❤️ ".repeat(hearts)}</p>
-        )}
+        {Array.from({ length: 5 }, (_, index) => (
+          <p
+            key={index}
+            className={
+              index < pokemon.hearts ? styles.redHeart : styles.whiteHeart
+            }
+          >
+            {index < pokemon.hearts ? "❤️" : "🤍"}
+          </p>
+        ))}
       </div>
     </>
   );
+}
+
+{
+  /* <div className={styles.petHeartContainer}>
+{pokemon.hearts === 0 ? <p>🤍</p> : <p>{"❤️ ".repeat(hearts)}</p>}
+</div> */
 }

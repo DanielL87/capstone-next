@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&family=Marhey:wght@300;400;500;600;700&family=Philosopher:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Sansita:wght@400;700;800;900&family=Tenor+Sans&family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&family=Marhey:wght@300;400;500;600;700&family=Philosopher:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Sansita:wght@400;700;800;900&family=Tenor+Sans&family=Varela+Round&display=swap");
 
 /* Navbar styles */
 
@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 44px;
   color: #d5f0c1;
   text-shadow: 1px 1px 1px #282727;
@@ -49,12 +49,12 @@
   flex-direction: row;
   align-items: center;
   gap: 20px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   padding-right: 2rem;
 }
 
 .username {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 18px;
   font-weight: 600;
   color: #a1f8c3;
@@ -63,7 +63,7 @@
 }
 
 .userNavCoins {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 18px;
   font-weight: 600;
   color: #a1f8c3;
@@ -80,7 +80,7 @@
 }
 
 .userNavPet {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 18px;
   font-weight: 600;
   color: #a1f8c3;
@@ -105,7 +105,7 @@
 }
 
 .spanCoin {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 18px;
   font-weight: 600;
   color: #fff;
@@ -127,7 +127,7 @@
   border-radius: 10px;
   display: inline-block;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 .loginBtn:hover {
   background: linear-gradient(to right, #a1f8c3, #46b9c5);
@@ -152,7 +152,7 @@
   border-radius: 10px;
   display: inline-block;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 .registerBtn:hover {
   background: linear-gradient(to right, #a1f8c3, #46b9c5);
@@ -185,7 +185,7 @@
 
 .menuText {
   font-size: 16px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   color: #000;
   text-shadow: 1px 1px 1px #fff;
 }
@@ -279,7 +279,7 @@
 }
 
 .heroSiteTitle {
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 48px;
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
@@ -294,7 +294,7 @@
 }
 
 .blurb {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 24px;
   margin: 0;
   font-weight: 600;
@@ -333,7 +333,7 @@
 }
 
 .aboutTitle {
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 48px;
   color: #fff;
   text-shadow: 1px 1px 1px #000;
@@ -343,7 +343,7 @@
 }
 
 .aboutSubtitle {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 30px;
   color: #e5bf22;
   text-shadow: 1px 1px 1px #000;
@@ -365,7 +365,7 @@
   padding-bottom: 20px;
 }
 .aboutBlurbSubtitle {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 26px;
   color: #fff;
   text-shadow: 1px 1px 1px #000;
@@ -377,7 +377,7 @@
 }
 
 .aboutBlurbSubtitle::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: 14px;
@@ -387,7 +387,7 @@
   margin-right: 2rem;
 }
 .aboutBlurb {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 22px;
   color: #fff;
   text-shadow: 1px 1px 1px #000;
@@ -433,7 +433,7 @@
   padding: 0;
 }
 .heroVideoTitle {
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 48px;
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
@@ -470,7 +470,7 @@
 }
 
 .heroStoreTitle {
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 48px;
   color: #fff;
   text-shadow: 1px 1px 1px #000;
@@ -522,7 +522,7 @@
 }
 
 .heroTaskTitle {
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 48px;
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
@@ -538,7 +538,7 @@
 }
 
 .heroTaskInfo {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 18px;
   text-align: center;
 }
@@ -547,7 +547,7 @@
   width: 500px;
 }
 .heroBlurb {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 24px;
   font-weight: 600;
   text-align: center;
@@ -581,14 +581,14 @@
   align-items: center;
   gap: 15px;
   padding-top: 20px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 
 .formInput {
   height: 25px;
   padding: 5px;
   border-radius: 5px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   width: 250px;
 }
 
@@ -610,7 +610,7 @@
   border-radius: 10px;
   display: inline-block;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 .loginFormBtn:hover {
   background: linear-gradient(to right, #a1f8c3, #46b9c5);
@@ -623,17 +623,17 @@
 
 .errorText {
   color: red;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-weight: 600;
   font-size: 18px;
   text-align: center;
-  width:380px;
+  width: 380px;
 }
 
 .successText {
   padding-top: 10px;
   color: green;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-weight: 600;
   font-size: 22px;
 }
@@ -666,7 +666,7 @@
 .pokedexUserTitle {
   text-align: center;
   justify-content: center;
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   letter-spacing: 0.06em;
   font-size: 48px;
   color: #003650;
@@ -680,7 +680,7 @@
 }
 
 .userBlurb {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 24px;
   font-weight: 600;
   text-align: center;
@@ -712,7 +712,7 @@
 }
 
 .runawayName {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 22px;
   font-weight: 600;
   color: #003650;
@@ -728,7 +728,7 @@
   gap: 20px;
 }
 .heroUserBlurb {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 24px;
   font-weight: 600;
   text-align: center;
@@ -802,7 +802,7 @@
 
 .pokeName {
   text-align: center;
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: #003650;
@@ -815,7 +815,7 @@
 
 .commonPokemon {
   text-align: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #003650;
@@ -826,7 +826,7 @@
 }
 .rarePokemon {
   text-align: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #003650;
@@ -850,7 +850,7 @@
 
 .shinyPokemon {
   text-align: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #003650;
@@ -884,7 +884,7 @@
 }
 .pokeType {
   text-align: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #003650;
@@ -932,11 +932,11 @@
   margin: 10px 0 0 0;
   color: #46b9c5;
   font-size: 14px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 .pokemonNickname {
   text-align: center;
-  font-family: 'pokemon', sans-serif;
+  font-family: "pokemon", sans-serif;
   font-size: 20px;
   letter-spacing: 0.09em;
   color: #003650;
@@ -946,7 +946,7 @@
 }
 .stageId {
   text-align: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 20px;
   font-weight: 600;
   color: #003650;
@@ -975,7 +975,7 @@
 .pokedexTitle {
   text-align: center;
   justify-content: center;
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   letter-spacing: 0.06em;
   font-size: 48px;
   color: #003650;
@@ -996,7 +996,7 @@
 }
 
 .totalPetsTitle {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 24px;
   font-weight: 600;
   color: #003650;
@@ -1011,7 +1011,7 @@
   animation: glitter 1s infinite;
 }
 .totalCollectedPets {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 24px;
   font-weight: 600;
   color: #003650;
@@ -1035,7 +1035,7 @@
 .selectPetTitle {
   text-align: center;
   justify-content: center;
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   letter-spacing: 0.06em;
   font-size: 48px;
   color: #003650;
@@ -1055,7 +1055,7 @@
   border: 0px solid #000;
   border-radius: 10px;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
@@ -1085,7 +1085,7 @@
   height: 25px;
   padding: 5px;
   border-radius: 5px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   width: 250px;
   margin-top: 20px;
   margin-left: auto;
@@ -1106,7 +1106,7 @@
   border: 0px solid #000;
   border-radius: 10px;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
@@ -1132,7 +1132,7 @@
   margin: 0;
 }
 .paraText {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 22px;
   font-weight: 600;
   color: #003650;
@@ -1182,7 +1182,7 @@
 }
 
 .heroFooterInfoTitle {
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 32px;
   color: #fff;
   text-shadow: 1px 1px 1px #000;
@@ -1192,7 +1192,7 @@
 }
 
 .heroFooterBlurb {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 16px;
   color: #e5bf22;
   text-shadow: 1px 1px 1px #000;
@@ -1208,7 +1208,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   color: #fff;
   text-shadow: 1px 1px 1px #000;
   font-size: 22px;
@@ -1251,7 +1251,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   color: #fff;
   text-align: center;
   text-shadow: 1px 1px 1px #000;
@@ -1263,7 +1263,7 @@
 }
 .heroFooterHomeLink,
 .heroFooterHomeLink:visited {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 20px;
   color: #e5bf22;
   text-shadow: 1px 1px 1px #000;
@@ -1300,7 +1300,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 14px;
   color: #fff;
   font-weight: 600;
@@ -1343,6 +1343,9 @@
   font-size: 40px;
   margin-right: 5rem;
 }
+.petHeartContainer {
+  display: flex;
+}
 
 .pokemonStatsMainContainer {
   margin-top: 3rem;
@@ -1351,7 +1354,7 @@
   position: relative;
   z-index: 2; /* Move the content to the front */
   margin-left: 2rem;
-  background-image: url('/border.png');
+  background-image: url("/border.png");
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 10px;
@@ -1361,7 +1364,7 @@
 }
 
 .pokemonStatsContainer::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1380,16 +1383,16 @@
   margin-left: 4rem;
 }
 .petNameSpan {
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 48px;
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
   font-weight: 600;
   letter-spacing: 0.05em;
-  margin:  1rem 0 2rem 0;
+  margin: 1rem 0 2rem 0;
 }
 .petName {
-  font-family: 'pokemon', sans-serif;
+  font-family: "pokemon", sans-serif;
   font-size: 50px;
   color: #003650;
   letter-spacing: 0.07em;
@@ -1400,7 +1403,7 @@
 }
 
 .speciesName {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 24px;
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
@@ -1409,7 +1412,7 @@
 }
 
 .species {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 24px;
   color: #003650;
   font-weight: 600;
@@ -1422,7 +1425,7 @@
   align-items: flex-start;
 }
 .speciesInfo {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 18px;
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
@@ -1436,7 +1439,7 @@
   flex-direction: column;
 }
 .abilityInfo {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 18px;
   color: #003650;
   font-weight: 600;
@@ -1448,7 +1451,7 @@
 }
 
 .baseStats {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 18px;
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
@@ -1459,7 +1462,7 @@
 }
 
 .baseStatsList {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 18px;
   color: #003650;
   font-weight: 400;
@@ -1518,7 +1521,7 @@
   padding: 0;
 }
 .bonusTitle {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 24px;
   color: #003650;
   text-shadow: 1px 1px 1px #fff;
@@ -1533,7 +1536,7 @@
 .taskPageTitle {
   text-align: center;
   justify-content: center;
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   text-shadow: 1px 1px 1px #fff;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -1560,7 +1563,7 @@
 }
 
 .taskCategoryTitle {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 16px;
   color: #003650;
   font-weight: 600;
@@ -1569,7 +1572,7 @@
 }
 
 .taskName {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 16px;
   color: #003650;
   font-weight: 400;
@@ -1578,7 +1581,7 @@
 }
 
 .dueDate {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 16px;
   color: #003650;
   font-weight: 600;
@@ -1662,7 +1665,7 @@
 .userWalletTitle {
   text-align: center;
   justify-content: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-weight: 600;
   letter-spacing: 0.06em;
   font-size: 36px;
@@ -1673,7 +1676,7 @@
 .userCoins {
   text-align: center;
   justify-content: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 
   letter-spacing: 0.06em;
   font-size: 28px;
@@ -1685,7 +1688,7 @@
 .userCoinName {
   text-align: center;
   justify-content: center;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-weight: 600;
   letter-spacing: 0.06em;
   font-size: 28px;
@@ -1713,7 +1716,7 @@
 .storeTitle {
   text-align: center;
   justify-content: center;
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-weight: 600;
   letter-spacing: 0.06em;
   font-size: 48px;
@@ -1759,7 +1762,7 @@
   border: 0px solid #000;
   border-radius: 10px;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
 }
 
 .buyPetBtn:hover {
@@ -1783,7 +1786,7 @@
   border: 0px solid #000;
   border-radius: 10px;
   box-shadow: 1px 2px 7px -3px #2d2d2d;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   margin-top: 20px;
 }
 
@@ -1794,7 +1797,7 @@
 }
 
 .errorStoreTitle {
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   font-size: 48px;
   color: red;
   text-shadow: 1px 1px 1px #000;
@@ -1819,7 +1822,7 @@
   margin: 0;
 }
 .paraText {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 22px;
   font-weight: 600;
   color: #003650;
@@ -1852,7 +1855,7 @@
 .formTitle {
   text-align: center;
   justify-content: center;
-  font-family: 'Sansita', sans-serif;
+  font-family: "Sansita", sans-serif;
   text-shadow: 1px 1px 1px #fff;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -1886,7 +1889,7 @@
 }
 
 .categoryTitle {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-size: 16px;
   color: #003650;
   font-weight: 600;
@@ -1901,7 +1904,7 @@
   height: 25px;
   padding: 5px;
   border-radius: 5px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   width: auto;
 }
 
@@ -1910,7 +1913,7 @@
   height: 25px;
   padding: 5px;
   border-radius: 5px;
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   width: 100%;
   margin-top: 20px;
 }

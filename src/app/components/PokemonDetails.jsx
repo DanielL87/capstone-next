@@ -90,7 +90,11 @@ export default function PokemonDetails({
                   <MdCatchingPokemon className={styles.collectedPet} />
                 )}
                 {pokemon.nickname ? (
-                  <p className={styles.pokemonNickname}>{pokemon.nickname}</p>
+                  <p className={styles.pokemonNickname}>
+                    {pokemon.isPaused
+                      ? `💤 ${pokemon.nickname} 💤`
+                      : pokemon.nickname}
+                  </p>
                 ) : (
                   <p className={styles.pokemonNickname}>Name Me!</p>
                 )}

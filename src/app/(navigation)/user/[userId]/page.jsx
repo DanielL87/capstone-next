@@ -3,7 +3,6 @@ import PokemonDetails from "@/app/components/PokemonDetails.jsx";
 import { fetchUser } from "@/lib/fetchUser.js";
 import { prisma } from "@/lib/prisma.js";
 import styles from "@/app/page.module.css";
-import { FaFaceSadCry } from "react-icons/fa6";
 
 export default async function ProfilePage() {
   const user = await fetchUser();
@@ -24,9 +23,7 @@ export default async function ProfilePage() {
         <div className={styles.pokedexUserMainContainer}>
           <h1 className={styles.pokedexUserTitle}>Welcome {user.username}!</h1>
 
-          <div className={styles.pokedexUserWalletContainer}>
-            {/* <Wallet user={user} userWallet={userWallet} /> */}
-          </div>
+          <div className={styles.pokedexUserWalletContainer}></div>
 
           <div className={styles.pokedexUserContainer}>
             <div className={styles.pokedexContainer}>

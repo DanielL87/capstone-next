@@ -52,7 +52,7 @@ export default function SinglePetInfo({
     });
 
     const info = await response.json();
-    console.log(info);
+
     router.refresh();
   }
 
