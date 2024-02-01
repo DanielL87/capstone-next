@@ -9,7 +9,7 @@ import PokemonDetails from "./PokemonDetails.jsx";
 import styles from "../page.module.css";
 import StoreInventoryPets from "./StoreInventoryPets";
 
-export default function LandingPage({ user }) {
+export default function LandingPage({ user, collection }) {
   const [pokemonArray, setPokemonArray] = useState([]);
 
   async function fetchPokemon() {
@@ -135,11 +135,11 @@ export default function LandingPage({ user }) {
           <CgPokemon className={styles.heroVideoIcon} />
           <p className={styles.heroVideoTitle}>Pet Taskmaster in Action!</p>
           <div className={styles.heroVideo}>
-            <video 
+            <video
               width="800"
               height="500"
               src="./appClip.mp4"
-              loop 
+              loop
               autoPlay
             ></video>
           </div>
@@ -150,7 +150,7 @@ export default function LandingPage({ user }) {
       <div className={styles.heroStoreMainContainer}>
         <p className={styles.heroStoreTitle}>Featured Pets of the Day!</p>
         <div className={styles.heroStoreCardContainer}>
-          <StoreInventoryPets showHearts={false} />
+          <StoreInventoryPets showHearts={false} collection={collection} />
         </div>
         <div className={styles.heroStoreButton}>
           <Link className={styles.registerBtn} href={`/store`}>

@@ -12,6 +12,7 @@ import { GoMoveToTop } from "react-icons/go";
 import { Link as ScrollLink } from "react-scroll";
 
 import styles from "../page.module.css";
+import Link from "next/link.js";
 
 export default function Footer() {
   return (
@@ -63,7 +64,7 @@ export default function Footer() {
           <h2 className={styles.heroFooterLinkTitle}>Links</h2>
           <ul>
             <li className={styles.heroFooterHomeLink}>
-              <span href={"/"}>Home</span>
+              <Link href={"/"}>Home</Link>
             </li>
             <li className={styles.heroFooterHomeLink}>
               <ScrollLink to="aboutSection" smooth={true} duration={500}>
