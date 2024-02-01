@@ -44,6 +44,9 @@ export default async function ProfilePage() {
                     >
                       Pet Details Page
                     </Link>
+                    {pokemon.isPaused && (
+                      <div className={styles.runawayName}>💤Sleeping💤</div>
+                    )}
                   </div>
                 ))
               ) : (
