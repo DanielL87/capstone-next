@@ -17,7 +17,7 @@ export default async function Navbar() {
   let pets = null;
   if (user.id) {
     pets = await prisma.pet.findMany({
-      where: { userId: user.id },
+      where: { userId: user.id, isActive: true },
       include: { task: true },
     });
   }

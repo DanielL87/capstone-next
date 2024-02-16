@@ -32,7 +32,7 @@ export default function GenerateBonusTask({ pet }) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               petId: pet.id,
-              isActive: true,
+              isActive: false,
             }),
           });
           const info = await response.json();
@@ -83,7 +83,7 @@ export default function GenerateBonusTask({ pet }) {
       if (foundPet.isActive && !foundPet.isPaused) {
         GenerateTask();
       }
-    }, 1000);
+    }, 10000);
 
     return () => clearInterval(intervalId);
   }, [pet.isActive, pet.isPaused]);

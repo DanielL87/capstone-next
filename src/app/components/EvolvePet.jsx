@@ -139,6 +139,7 @@ export default function EvolvePet({ pet, collection, wallet }) {
       if (wallet.coin < 100) {
         setError("Insufficient coins to evolve pet!");
         setLoading(false);
+
         return;
       }
 

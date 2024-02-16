@@ -122,15 +122,26 @@ export async function PUT(req) {
 
     let updatedPet = null;
 
-    if (isActive) {
+    if (isActive !== undefined) {
       updatedPet = await prisma.pet.update({
         where: {
           id: petId,
         },
         data: {
-          isActive: false,
+          isActive,
         },
       });
+
+      if (updatedPet) {
+        const wallet = await prisma.wallet.update({
+          where: { userId: user.id },
+          data: {
+            coin: {
+              increment: 20,
+            },
+          },
+        });
+      }
     } else {
       if (_pet.hearts > 0) {
         updatedPet = await prisma.pet.update({
